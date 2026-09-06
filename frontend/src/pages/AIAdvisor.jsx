@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { analyticsApi } from '../services/api';
 import { 
   Sparkles, Send, Bot, User, CheckCircle, 
-  HelpCircle, ShieldAlert, ArrowRight, Lightbulb, TrendingUp 
+  HelpCircle, ShieldAlert, ArrowRight, Lightbulb, TrendingUp,
+  RotateCcw, ShieldCheck, Zap
 } from 'lucide-react';
 
 export default function AIAdvisor() {
@@ -11,15 +12,20 @@ export default function AIAdvisor() {
   const [messages, setMessages] = useState([
     {
       sender: 'bot',
-      text: "Hello! I am your AI Financial Advisor. Ask me anything about your expenses, 50-30-20 budget recommendation, upcoming bills, or investment allocation."
+      text: "Hello! I am your AI Financial Advisor. I have synchronized with your bank accounts, budget categories, and investment portfolio in PostgreSQL.\n\nAsk me anything about your spending trends, 50-30-20 budget recommendations, Section 80C tax optimization, upcoming bills, or financial goals!"
     }
   ]);
   const [inputQuery, setInputQuery] = useState('');
   const [chatLoading, setChatLoading] = useState(false);
+  const chatBottomRef = useRef(null);
 
   useEffect(() => {
     loadInsights();
   }, []);
+
+  useEffect(() => {
+    chatBottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages, chatLoading]);
 
   const loadInsights = async () => {
     setLoading(true);
@@ -33,23 +39,47 @@ export default function AIAdvisor() {
     }
   };
 
-  const handleSendMessage = async (e) => {
-    e.preventDefault();
-    if (!inputQuery.trim()) return;
+  const submitQuery = async (queryText) => {
+    if (!queryText || !queryText.trim()) return;
 
-    const query = inputQuery.trim();
+    const query = queryText.trim();
     setMessages(prev => [...prev, { sender: 'user', text: query }]);
     setInputQuery('');
     setChatLoading(true);
 
     try {
       const res = await analyticsApi.chat(query);
-      setMessages(prev => [...prev, { sender: 'bot', text: res.data.answer }]);
+      const botResponse = res.data?.answer || "I have analyzed your request. Please check your financial dashboard for updated numbers.";
+      setMessages(prev => [...prev, { sender: 'bot', text: botResponse }]);
     } catch (err) {
-      setMessages(prev => [...prev, { sender: 'bot', text: "Sorry, I encountered an issue processing your query." }]);
+      setMessages(prev => [
+        ...prev, 
+        { sender: 'bot', text: "I encountered an error retrieving data. Please check your backend connection or try again." }
+      ]);
     } finally {
       setChatLoading(false);
     }
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    submitQuery(inputQuery);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      submitQuery(inputQuery);
+    }
+  };
+
+  const clearChat = () => {
+    setMessages([
+      {
+        sender: 'bot',
+        text: "Conversation refreshed. How can I assist with your personal finances today?"
+      }
+    ]);
   };
 
   if (loading) {
@@ -72,6 +102,10 @@ export default function AIAdvisor() {
             <div className="flex items-center gap-2">
               <Sparkles className="w-6 h-6 text-emerald-600" />
               <h1 className="text-2xl font-bold text-slate-900">AI Financial Advisor & Intelligence</h1>
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Active
+              </span>
             </div>
             <p className="text-xs text-slate-500 mt-1">
               Personalized health scoring (0–850), 50-30-20 budget models, debt avalanche optimizer, and conversational NLP
@@ -112,14 +146,14 @@ export default function AIAdvisor() {
           <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4 text-xs">
             <h2 className="text-base font-bold text-slate-900">50-30-20 Budget Optimization</h2>
             <p className="text-slate-500 text-xs">
-              Based on monthly recorded income of ₹{Number(insights?.totalIncome || 100000).toLocaleString('en-IN')}:
+              Based on monthly recorded income of ₹{Number(insights?.totalIncome || 125000).toLocaleString('en-IN')}:
             </p>
 
             <div className="space-y-3">
               <div>
                 <div className="flex justify-between font-semibold mb-1">
                   <span>50% Needs (Rent, Utilities, Groceries)</span>
-                  <span>Target: ₹{Number(rule?.needsTarget || 50000).toLocaleString('en-IN')}</span>
+                  <span>Target: ₹{Number(rule?.needsTarget || 62500).toLocaleString('en-IN')}</span>
                 </div>
                 <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
                   <div className="h-full bg-blue-500 rounded-full" style={{ width: '50%' }}></div>
@@ -129,7 +163,7 @@ export default function AIAdvisor() {
               <div>
                 <div className="flex justify-between font-semibold mb-1">
                   <span>30% Wants (Dining, Shopping, Movies)</span>
-                  <span>Target: ₹{Number(rule?.wantsTarget || 30000).toLocaleString('en-IN')}</span>
+                  <span>Target: ₹{Number(rule?.wantsTarget || 37500).toLocaleString('en-IN')}</span>
                 </div>
                 <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
                   <div className="h-full bg-amber-500 rounded-full" style={{ width: '30%' }}></div>
@@ -139,7 +173,7 @@ export default function AIAdvisor() {
               <div>
                 <div className="flex justify-between font-semibold mb-1">
                   <span>20% Savings & Debt Repayment</span>
-                  <span>Target: ₹{Number(rule?.savingsTarget || 20000).toLocaleString('en-IN')}</span>
+                  <span>Target: ₹{Number(rule?.savingsTarget || 25000).toLocaleString('en-IN')}</span>
                 </div>
                 <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
                   <div className="h-full bg-emerald-500 rounded-full" style={{ width: '20%' }}></div>
@@ -177,27 +211,36 @@ export default function AIAdvisor() {
 
         {/* Interactive NLP Financial Chatbot (FR15) */}
         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
-          <div className="flex items-center gap-2">
-            <Bot className="w-5 h-5 text-emerald-600" />
-            <h2 className="text-base font-bold text-slate-900">Ask Your Financial Assistant</h2>
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <Bot className="w-5 h-5 text-emerald-600" />
+              <h2 className="text-base font-bold text-slate-900">Interactive AI Financial Assistant</h2>
+            </div>
+            <button
+              onClick={clearChat}
+              className="text-xs text-slate-500 hover:text-slate-700 flex items-center gap-1 transition-colors"
+              title="Reset Chat"
+            >
+              <RotateCcw className="w-3.5 h-3.5" /> Clear History
+            </button>
           </div>
 
           {/* Chat transcript */}
-          <div className="bg-slate-50 rounded-xl p-4 h-64 overflow-y-auto space-y-3 border border-slate-200">
+          <div className="bg-slate-50 rounded-xl p-4 h-80 overflow-y-auto space-y-3 border border-slate-200">
             {messages.map((m, idx) => (
               <div
                 key={idx}
                 className={`flex gap-2.5 ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {m.sender === 'bot' && (
-                  <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0 text-xs">
+                  <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0 text-xs shadow-sm">
                     <Bot className="w-4 h-4" />
                   </div>
                 )}
                 <div
-                  className={`p-3 rounded-2xl max-w-lg text-xs leading-relaxed ${
+                  className={`p-3 rounded-2xl max-w-xl text-xs leading-relaxed whitespace-pre-line ${
                     m.sender === 'user'
-                      ? 'bg-emerald-600 text-white rounded-br-none'
+                      ? 'bg-emerald-600 text-white rounded-br-none shadow-sm'
                       : 'bg-white text-slate-800 border border-slate-200 shadow-sm rounded-bl-none'
                   }`}
                 >
@@ -211,52 +254,83 @@ export default function AIAdvisor() {
               </div>
             ))}
             {chatLoading && (
-              <div className="flex gap-2 items-center text-xs text-slate-500">
-                <Bot className="w-4 h-4 animate-spin text-emerald-600" /> Thinking...
+              <div className="flex gap-2 items-center text-xs text-emerald-600 font-medium bg-emerald-50/50 p-2 rounded-lg w-fit">
+                <Bot className="w-4 h-4 animate-spin" /> Analyzing your financial data...
               </div>
             )}
+            <div ref={chatBottomRef} />
           </div>
 
-          {/* Suggested Queries */}
-          <div className="flex flex-wrap gap-2 text-xs">
-            <button
-              onClick={() => setInputQuery("How much did I spend on dining this month?")}
-              className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200"
-            >
-              "How much did I spend on dining?"
-            </button>
-            <button
-              onClick={() => setInputQuery("What is my 50-30-20 budget recommendation?")}
-              className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200"
-            >
-              "50-30-20 budget advice"
-            </button>
-            <button
-              onClick={() => setInputQuery("What are my upcoming bills?")}
-              className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200"
-            >
-              "Upcoming bills?"
-            </button>
-            <button
-              onClick={() => setInputQuery("What is my total net worth?")}
-              className="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 hover:bg-slate-200"
-            >
-              "Net worth summary"
-            </button>
+          {/* Quick-Prompt Chips */}
+          <div>
+            <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
+              Suggested Financial Queries (Click to Ask):
+            </p>
+            <div className="flex flex-wrap gap-2 text-xs">
+              <button
+                onClick={() => submitQuery("Analyze my food and dining expenses")}
+                className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 border border-slate-200 transition-all text-[11px]"
+              >
+                🍔 Food & Dining Spend
+              </button>
+              <button
+                onClick={() => submitQuery("What is my 50-30-20 budget recommendation?")}
+                className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 border border-slate-200 transition-all text-[11px]"
+              >
+                📊 50-30-20 Budget Rule
+              </button>
+              <button
+                onClick={() => submitQuery("How can I save tax under Section 80C?")}
+                className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 border border-slate-200 transition-all text-[11px]"
+              >
+                💡 Section 80C Tax Headroom
+              </button>
+              <button
+                onClick={() => submitQuery("Review my investment portfolio and XIRR")}
+                className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 border border-slate-200 transition-all text-[11px]"
+              >
+                📈 Portfolio & XIRR
+              </button>
+              <button
+                onClick={() => submitQuery("What are my active goals and required monthly savings?")}
+                className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 border border-slate-200 transition-all text-[11px]"
+              >
+                🎯 Goal Savings Plan
+              </button>
+              <button
+                onClick={() => submitQuery("What are my upcoming recurring bills?")}
+                className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 border border-slate-200 transition-all text-[11px]"
+              >
+                ⚡ Upcoming Bills
+              </button>
+              <button
+                onClick={() => submitQuery("Should I use Debt Avalanche or Snowball to pay off my loans?")}
+                className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 border border-slate-200 transition-all text-[11px]"
+              >
+                ⚖️ Debt Avalanche Strategy
+              </button>
+              <button
+                onClick={() => submitQuery("How much should I keep in my emergency fund?")}
+                className="px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 border border-slate-200 transition-all text-[11px]"
+              >
+                🛡️ Emergency Fund Adequacy
+              </button>
+            </div>
           </div>
 
-          {/* Input Box */}
-          <form onSubmit={handleSendMessage} className="flex gap-2">
+          {/* Input Form */}
+          <form onSubmit={handleFormSubmit} className="flex gap-2 pt-2">
             <input
               type="text"
               placeholder="Ask anything about your personal finance..."
               value={inputQuery}
               onChange={(e) => setInputQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
               className="flex-1 px-4 py-2.5 border border-slate-300 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-emerald-500"
             />
             <button
               type="submit"
-              disabled={chatLoading}
+              disabled={chatLoading || !inputQuery.trim()}
               className="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold shadow-sm transition-all flex items-center gap-1.5 disabled:opacity-50"
             >
               <Send className="w-3.5 h-3.5" /> Send

@@ -19,12 +19,10 @@ services:
       - key: SERVER_PORT
         value: 8080
 
-  # 2. React 18 Frontend Static Site
+  # 2. React 18 Frontend Static Site (Served globally via Render CDN)
   - type: web
     name: finance-frontend
     runtime: static
-    plan: free
-    region: oregon
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: ./frontend/dist
     routes:
@@ -36,6 +34,5 @@ databases:
   # 3. Managed PostgreSQL Database
   - name: financedb
     databaseName: financedb
-    user: postgres
     plan: free
     region: oregon

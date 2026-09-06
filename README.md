@@ -17,7 +17,7 @@ graph TD
     Client["React 18 SPA (Port 8081)<br/>Tailwind CSS • Lucide Icons"]
     Gateway["Reverse Proxy / Vite Proxy"]
     Backend["Spring Boot 3.2.5 REST API (Port 8080)<br/>Java 17 • Spring Security 6 • JJWT"]
-    DB[(H2 Database / MySQL 8.0<br/>AES-256 at Rest)]
+    DB[(PostgreSQL 14+ / 16<br/>AES-256 at Rest)]
     AA["RBI Account Aggregator Framework<br/>(OAuth Consent & Auto-Sync)"]
 
     Client -->|REST / JWT Bearer| Gateway
@@ -55,13 +55,12 @@ graph TD
 git clone https://github.com/keerthana-rajamani/finance-app.git
 cd finance-app
 
-# Launch entire stack (MySQL 8.0 + Backend + Frontend)
+# Launch entire stack (PostgreSQL 16 + Backend + Frontend)
 docker compose up --build -d
 ```
 
 - **Frontend UI:** [http://localhost:8081](http://localhost:8081)
 - **Backend API:** [http://localhost:8080/api](http://localhost:8080/api)
-- **H2 DB Console:** [http://localhost:8080/h2-console](http://localhost:8080/h2-console)
 
 ---
 
@@ -72,7 +71,7 @@ docker compose up --build -d
 cd backend
 mvn clean spring-boot:run
 ```
-Backend runs on port `8080` with in-memory H2 database pre-loaded with realistic demo data.
+Backend runs on port `8080` with PostgreSQL database (financedb) pre-loaded with realistic demo data.
 
 Run backend tests:
 ```bash

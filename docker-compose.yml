@@ -1,19 +1,18 @@
 version: '3.8'
 
 services:
-  mysql:
-    image: mysql:8.0
-    container_name: finance_mysql
+  postgres:
+    image: postgres:16-alpine
+    container_name: finance_postgres
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: financedb
-      MYSQL_USER: finance
-      MYSQL_PASSWORD: financepassword
+      POSTGRES_DB: financedb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
     ports:
-      - "3306:3306"
+      - "5432:5432"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - finance_net
 
@@ -26,13 +25,13 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/financedb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-      SPRING_DATASOURCE_USERNAME: finance
-      SPRING_DATASOURCE_PASSWORD: financepassword
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/financedb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgrespassword
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       APP_JWT_SECRET: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
     depends_on:
-      - mysql
+      - postgres
     networks:
       - finance_net
 
@@ -50,7 +49,7 @@ services:
       - finance_net
 
 volumes:
-  mysql_data:
+  postgres_data:
 
 networks:
   finance_net:

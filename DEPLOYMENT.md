@@ -6,7 +6,7 @@ This document provides complete, production-grade instructions for deploying the
 
 ## 1. Quick Start with Docker Compose (Recommended for Local / VPS)
 
-The application includes production-ready Dockerfiles for both backend and frontend, and a multi-container `docker-compose.yml` orchestrating MySQL 8.0, Spring Boot 3, and React (Nginx).
+The application includes production-ready Dockerfiles for both backend and frontend, and a multi-container `docker-compose.yml` orchestrating PostgreSQL 16, Spring Boot 3, and React (Nginx).
 
 ### Prerequisites
 - Docker Engine 24+ & Docker Compose v2+
@@ -30,7 +30,7 @@ The application includes production-ready Dockerfiles for both backend and front
    docker compose ps
    ```
    You should see:
-   - `finance_mysql` on port `3306`
+   - `finance_postgres` on port `5432`
    - `finance_backend` on port `8080`
    - `finance_frontend` on port `8081`
 
@@ -53,7 +53,7 @@ The application includes production-ready Dockerfiles for both backend and front
 cd backend
 mvn clean spring-boot:run
 ```
-The API server starts at `http://localhost:8080`. By default, it runs with zero-configuration in-memory H2 database pre-seeded with demo data.
+The API server starts at `http://localhost:8080`. By default, it runs with zero-configuration PostgreSQL database (financedb) pre-seeded with demo data.
 
 ### Frontend (React 18 + Vite)
 ```bash
@@ -97,7 +97,7 @@ The frontend UI will be running at `http://localhost:8081` and proxies `/api` re
 
 3. **Deploy Backend on ECS Fargate:**
    Create an ECS Task Definition with environment variables:
-   - `SPRING_DATASOURCE_URL`: `jdbc:mysql://<rds-endpoint>:3306/financedb?useSSL=true`
+   - `SPRING_DATASOURCE_URL`: `jdbc:mysql://<rds-endpoint>:5432/financedb?useSSL=true`
    - `SPRING_DATASOURCE_USERNAME`: `financeadmin`
    - `SPRING_DATASOURCE_PASSWORD`: `<your-secret>`
    - `APP_JWT_SECRET`: `<256-bit-secret>`

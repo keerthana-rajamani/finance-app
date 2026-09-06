@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .nav-brand {
+    @apply text-xl font-bold text-emerald-600 flex items-center gap-2 hover:text-emerald-700 transition-colors;
+  }
+  .nav-link {
+    @apply px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 transition-all;
+  }
+  .nav-active {
+    @apply text-emerald-700 bg-emerald-100/70 font-semibold shadow-sm;
+  }
+}

@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: finance_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: financedb
+      MYSQL_USER: finance
+      MYSQL_PASSWORD: financepassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - finance_net
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: finance_backend
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/financedb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: finance
+      SPRING_DATASOURCE_PASSWORD: financepassword
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      APP_JWT_SECRET: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+    depends_on:
+      - mysql
+    networks:
+      - finance_net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: finance_frontend
+    restart: always
+    ports:
+      - "8081:8081"
+    depends_on:
+      - backend
+    networks:
+      - finance_net
+
+volumes:
+  mysql_data:
+
+networks:
+  finance_net:
+    driver: bridge

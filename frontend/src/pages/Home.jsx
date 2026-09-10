@@ -7,31 +7,31 @@ import {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-transparent flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#DB5375]/[0.08] via-white to-slate-50 pt-16 pb-20 lg:pt-24 lg:pb-32">
+      <section className="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#DB5375]/15 to-[#B3FFB3]/40 text-slate-900 border border-[#DB5375]/30 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 text-slate-800 border border-white/60 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm backdrop-blur-sm">
               <ShieldCheck className="w-4 h-4 text-[#DB5375]" />
               RBI Account Aggregator & AES-256 Enabled
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Master Your Money with <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DB5375] via-[#e56787] to-[#15803d]">AI-Powered</span> Financial Clarity
+              Master Your Money with <span className="text-[#DB5375]">AI-Powered</span> Financial Clarity
             </h1>
-            <p className="mt-6 text-lg text-slate-600 leading-relaxed">
+            <p className="mt-6 text-lg text-slate-700 leading-relaxed font-medium">
               Consolidate your bank accounts, automate expense categorization, monitor monthly budgets in real-time, track investment portfolios (XIRR), and optimize income tax deductions.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/register"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] text-slate-900 font-bold shadow-lg shadow-[#DB5375]/25 hover:opacity-95 hover:shadow-xl transition-all"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#DB5375] text-white font-semibold shadow-lg shadow-[#DB5375]/30 hover:bg-[#c53e61] hover:shadow-xl transition-all"
               >
                 Get Started Free <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 to="/login"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white border border-slate-300 text-slate-700 font-semibold shadow-sm hover:bg-slate-50 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white/90 border border-white/60 text-slate-800 font-semibold shadow-md hover:bg-white transition-all backdrop-blur-sm"
               >
                 Sign In with Demo Accounts
               </Link>
@@ -41,7 +41,7 @@ export default function Home() {
       </section>
 
       {/* Feature Highlights Grid */}
-      <section className="py-16 bg-white border-y border-slate-200">
+      <section className="py-16 bg-white/90 backdrop-blur-md border-y border-white/50 mx-4 sm:mx-6 lg:mx-8 rounded-3xl shadow-xl mb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
@@ -53,7 +53,7 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
                 <Wallet className="w-6 h-6" />
               </div>
@@ -63,7 +63,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center mb-4">
                 <PieChart className="w-6 h-6" />
               </div>
@@ -73,7 +73,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center mb-4">
                 <Target className="w-6 h-6" />
               </div>
@@ -83,7 +83,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center mb-4">
                 <TrendingUp className="w-6 h-6" />
               </div>
@@ -93,7 +93,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center mb-4">
                 <Cpu className="w-6 h-6" />
               </div>
@@ -103,7 +103,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-4">
                 <Lock className="w-6 h-6" />
               </div>

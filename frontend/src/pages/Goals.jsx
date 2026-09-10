@@ -86,17 +86,17 @@ export default function Goals() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-emerald-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-transparent">
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg">
           <div>
             <h1 className="text-2xl font-bold text-slate-900">Financial Goals & SIP Planning</h1>
             <p className="text-xs text-slate-500 mt-1">
@@ -105,7 +105,7 @@ export default function Goals() {
           </div>
           <button
             onClick={() => setShowModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#DB5375] hover:bg-[#c53e61] text-white text-xs font-semibold rounded-lg shadow-md shadow-[#DB5375]/25 transition-all"
           >
             <PlusCircle className="w-4 h-4" /> Create New Goal
           </button>
@@ -120,7 +120,7 @@ export default function Goals() {
             const strokeDashoffset = circumference - (pct / 100) * circumference;
 
             return (
-              <div key={g.id} className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+              <div key={g.id} className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg flex flex-col justify-between hover:shadow-xl transition-shadow">
                 <div>
                   <div className="flex justify-between items-start mb-4">
                     <div>

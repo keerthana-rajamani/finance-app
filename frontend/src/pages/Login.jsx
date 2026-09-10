@@ -41,8 +41,8 @@ export default function Login() {
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-transparent px-4 py-12">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
-        <div className="h-2 w-full bg-gradient-to-r from-[#DB5375] to-[#B3FFB3]" />
+      <div className="max-w-md w-full bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-white/60 overflow-hidden">
+        <div className="h-1.5 w-full bg-[#DB5375]" />
         <div className="p-8">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-slate-900">Sign in to your account</h2>
@@ -67,7 +67,7 @@ export default function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@example.com"
-                className="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                className="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#DB5375] focus:border-[#DB5375] transition-all"
               />
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function Login() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-9 pr-10 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                className="w-full pl-9 pr-10 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#DB5375] focus:border-[#DB5375] transition-all"
               />
               <button
                 type="button"
@@ -97,11 +97,11 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 px-4 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] hover:brightness-105 text-slate-900 text-sm font-bold rounded-lg shadow-md shadow-[#DB5375]/20 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full py-2.5 px-4 bg-[#DB5375] hover:bg-[#c53e61] text-white text-sm font-bold rounded-lg shadow-md shadow-[#DB5375]/25 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
           >
             {loading ? "Authenticating..." : (
               <>
-                <LogIn className="w-4 h-4 text-slate-900" /> Login
+                <LogIn className="w-4 h-4 text-white" /> Login
               </>
             )}
           </button>
@@ -115,7 +115,7 @@ export default function Login() {
           <div className="grid grid-cols-2 gap-2 text-xs">
             <button
               onClick={() => fillDemo('john@example.com', 'Password@123')}
-              className="p-2 bg-gradient-to-r from-[#DB5375]/10 to-[#B3FFB3]/35 hover:opacity-90 text-slate-900 rounded font-bold text-left border border-[#DB5375]/30"
+              className="p-2 bg-rose-50 hover:bg-rose-100 text-slate-900 rounded font-bold text-left border border-rose-200"
             >
               Primary User
               <span className="block text-[10px] text-[#DB5375] font-semibold">Full Financials</span>

@@ -77,16 +77,16 @@ export default function Register() {
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-transparent px-4 py-12">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
-        <div className="h-2 w-full bg-gradient-to-r from-[#DB5375] to-[#B3FFB3]" />
+      <div className="max-w-md w-full bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-white/60 overflow-hidden">
+        <div className="h-1.5 w-full bg-[#DB5375]" />
         <div className="p-8">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-bold text-slate-900">Create an Account</h2>
             <p className="text-xs text-slate-500 mt-1">Multi-step secure onboarding with banking standards</p>
             <div className="flex justify-center items-center gap-2 mt-4">
-              <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${step >= 1 ? 'bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] text-slate-900 shadow-sm' : 'bg-slate-200 text-slate-600'}`}>1</span>
+              <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${step >= 1 ? 'bg-[#DB5375] text-white shadow-sm' : 'bg-slate-200 text-slate-600'}`}>1</span>
               <span className="w-10 h-0.5 bg-slate-200"></span>
-              <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${step === 2 ? 'bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] text-slate-900 shadow-sm' : 'bg-slate-200 text-slate-600'}`}>2</span>
+              <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${step === 2 ? 'bg-[#DB5375] text-white shadow-sm' : 'bg-slate-200 text-slate-600'}`}>2</span>
             </div>
           </div>
 
@@ -166,7 +166,7 @@ export default function Register() {
 
             <button
               type="submit"
-              className="w-full py-2.5 px-4 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] hover:brightness-105 text-slate-900 text-sm font-bold rounded-lg shadow-md shadow-[#DB5375]/20 transition-all"
+              className="w-full py-2.5 px-4 bg-[#DB5375] hover:bg-[#c53e61] text-white text-sm font-bold rounded-lg shadow-md shadow-[#DB5375]/25 transition-all"
             >
               Continue to Step 2
             </button>
@@ -215,7 +215,7 @@ export default function Register() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-2/3 py-2.5 px-4 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] hover:brightness-105 text-slate-900 text-sm font-bold rounded-lg shadow-md shadow-[#DB5375]/20 transition-all disabled:opacity-50"
+                className="w-2/3 py-2.5 px-4 bg-[#DB5375] hover:bg-[#c53e61] text-white text-sm font-bold rounded-lg shadow-md shadow-[#DB5375]/25 transition-all disabled:opacity-50"
               >
                 {loading ? "Submitting..." : "Submit Register"}
               </button>

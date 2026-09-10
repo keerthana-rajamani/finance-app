@@ -25,7 +25,7 @@ export default function App() {
     <ErrorBoundary>
       <AuthProvider>
         <BrowserRouter>
-          <div className="min-h-screen flex flex-col bg-gradient-to-br from-[#DB5375]/[0.03] via-slate-50 to-[#B3FFB3]/[0.08] text-slate-900 font-sans">
+          <div className="min-h-screen flex flex-col bg-transparent text-slate-900 font-sans">
             <NavBar />
             <main className="flex-1">
               <Routes>

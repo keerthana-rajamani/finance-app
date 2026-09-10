@@ -136,9 +136,9 @@ export default function Accounts() {
             </button>
             <button
               onClick={() => setShowLinkModal(true)}
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#DB5375] hover:bg-[#c53e61] text-white text-xs font-semibold rounded-lg shadow-md shadow-[#DB5375]/25 transition-all"
+              className="inline-flex items-center gap-2 px-4 py-2.5 btn-gradient text-xs font-bold rounded-lg shadow-md transition-all"
             >
-              <PlusCircle className="w-4 h-4" /> Link Bank via AA
+              <PlusCircle className="w-4 h-4 text-slate-900" /> Link Bank via AA
             </button>
           </div>
         </div>
@@ -177,7 +177,7 @@ export default function Accounts() {
                 <span>Synced: {new Date(acc.lastSyncedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                 <button
                   onClick={() => handleSync(acc.id)}
-                  className="text-emerald-600 hover:text-emerald-700 font-bold flex items-center gap-1"
+                  className="text-[#DB5375] hover:text-[#b03050] font-bold flex items-center gap-1"
                 >
                   <RefreshCw className="w-3 h-3" /> Sync
                 </button>
@@ -354,7 +354,7 @@ export default function Accounts() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-xs font-semibold hover:bg-emerald-700"
+                  className="px-4 py-2 btn-gradient rounded-lg text-xs font-bold shadow-md"
                 >
                   Confirm & Link
                 </button>

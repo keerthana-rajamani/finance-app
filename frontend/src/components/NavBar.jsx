@@ -40,13 +40,14 @@ export default function NavBar() {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <header className="bg-white/90 backdrop-blur-md border-b border-white/40 sticky top-0 z-50 shadow-sm">
+    <header className="bg-white/85 backdrop-blur-md border-b border-white/40 sticky top-0 z-50 shadow-sm">
+      <div className="h-1 w-full bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Brand */}
           <div className="flex items-center gap-3">
             <Link to="/" className="nav-brand">
-              <div className="w-10 h-10 rounded-xl bg-[#DB5375] flex items-center justify-center text-white shadow-md">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
                 <Wallet className="w-6 h-6" />
               </div>
               <span className="text-lg font-bold text-slate-900 tracking-tight hidden sm:inline">
@@ -161,7 +162,7 @@ export default function NavBar() {
                 <div className="hidden sm:flex items-center gap-3 border-l border-slate-200/60 pl-3">
                   <div className="text-right">
                     <p className="text-xs font-semibold text-slate-900 leading-tight">{user?.fullName || 'User'}</p>
-                    <span className="inline-block text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-slate-100 text-slate-800 border border-slate-200">
+                    <span className="theme-badge uppercase text-[10px] tracking-wider font-bold">
                       {user?.role || 'USER'}
                     </span>
                   </div>
@@ -178,13 +179,13 @@ export default function NavBar() {
               <div className="flex items-center gap-2">
                 <Link
                   to="/login"
-                  className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-[#DB5375] transition-colors"
+                  className="px-4 py-2 text-xs font-semibold text-slate-700 hover:text-[#DB5375] transition-colors"
                 >
                   Log in
                 </Link>
                 <Link
                   to="/register"
-                  className="px-4 py-2 text-sm font-semibold text-white bg-[#DB5375] hover:bg-[#c53e61] rounded-lg shadow-sm transition-all"
+                  className="btn-gradient text-xs py-2 px-4 shadow-sm"
                 >
                   Get Started
                 </Link>

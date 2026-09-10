@@ -78,9 +78,9 @@ export default function BudgetTracker() {
           </div>
           <button
             onClick={() => setShowModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#DB5375] hover:bg-[#c53e61] text-white text-xs font-semibold rounded-lg shadow-md shadow-[#DB5375]/25 transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2.5 btn-gradient text-xs font-bold rounded-lg shadow-md transition-all"
           >
-            <PlusCircle className="w-4 h-4" /> Add / Edit Category Budget
+            <PlusCircle className="w-4 h-4 text-slate-900" /> Add / Edit Category Budget
           </button>
         </div>
 
@@ -148,7 +148,7 @@ export default function BudgetTracker() {
                   {/* Progress Bar */}
                   <div className="w-full h-3 rounded-full bg-slate-200 overflow-hidden">
                     <div
-                      className={`h-full rounded-full transition-all duration-500 ${isOver ? 'bg-red-500' : (isAlert ? 'bg-amber-500' : 'bg-emerald-500')}`}
+                      className={`h-full rounded-full transition-all duration-500 ${isOver ? 'bg-red-500' : (isAlert ? 'bg-amber-500' : 'bg-gradient-to-r from-[#DB5375] to-[#B3FFB3]')}`}
                       style={{ width: `${Math.min(pct, 100)}%` }}
                     ></div>
                   </div>
@@ -241,7 +241,7 @@ export default function BudgetTracker() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-xs font-semibold hover:bg-emerald-700"
+                  className="px-4 py-2 btn-gradient rounded-lg text-xs font-bold shadow-md"
                 >
                   Save Budget
                 </button>

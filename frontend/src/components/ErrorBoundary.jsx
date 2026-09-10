@@ -24,7 +24,7 @@ export default class ErrorBoundary extends React.Component {
             <p className="text-sm text-slate-600 mb-6">A runtime exception occurred. Please refresh or return to the dashboard.</p>
             <button
               onClick={() => window.location.href = '/dashboard'}
-              className="px-4 py-2 bg-[#DB5375] hover:bg-[#c53e61] text-white rounded-lg text-sm font-medium transition-colors"
+              className="px-5 py-2.5 btn-gradient rounded-lg text-sm font-bold shadow-md transition-all"
             >
               Back to Dashboard
             </button>

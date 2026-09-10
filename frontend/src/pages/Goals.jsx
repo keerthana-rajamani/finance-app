@@ -105,9 +105,9 @@ export default function Goals() {
           </div>
           <button
             onClick={() => setShowModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#DB5375] hover:bg-[#c53e61] text-white text-xs font-semibold rounded-lg shadow-md shadow-[#DB5375]/25 transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2.5 btn-gradient text-xs font-bold rounded-lg shadow-md transition-all"
           >
-            <PlusCircle className="w-4 h-4" /> Create New Goal
+            <PlusCircle className="w-4 h-4 text-slate-900" /> Create New Goal
           </button>
         </div>
 
@@ -126,20 +126,26 @@ export default function Goals() {
                     <div>
                       <h3 className="font-bold text-base text-slate-900">{g.name}</h3>
                       <span className={`inline-block mt-1 text-[10px] uppercase font-extrabold px-2 py-0.5 rounded-full ${
-                        g.priority === 'HIGH' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'
+                        g.priority === 'HIGH' ? 'bg-[#DB5375]/15 text-[#DB5375] border border-[#DB5375]/30' : 'bg-slate-100 text-slate-700 border border-slate-200'
                       }`}>
                         {g.priority} Priority
                       </span>
                     </div>
 
-                    {/* Animated Circular Progress Ring (FR7) */}
+                    {/* Animated Circular Progress Ring (FR7) with Theme Gradient */}
                     <div className="relative w-24 h-24 flex items-center justify-center">
                       <svg className="w-24 h-24 transform -rotate-90">
+                        <defs>
+                          <linearGradient id={`goalGrad-${g.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stopColor="#DB5375" />
+                            <stop offset="100%" stopColor="#B3FFB3" />
+                          </linearGradient>
+                        </defs>
                         <circle
                           cx="48"
                           cy="48"
                           r={radius}
-                          stroke="#e2e8f0"
+                          stroke="#f1f5f9"
                           strokeWidth="8"
                           fill="transparent"
                         />
@@ -147,7 +153,7 @@ export default function Goals() {
                           cx="48"
                           cy="48"
                           r={radius}
-                          stroke={pct >= 100 ? "#10b981" : "#16a34a"}
+                          stroke={`url(#goalGrad-${g.id})`}
                           strokeWidth="8"
                           fill="transparent"
                           strokeDasharray={circumference}
@@ -176,16 +182,16 @@ export default function Goals() {
                       <span>Target Date:</span>
                       <strong className="text-slate-900">{g.targetDate} ({g.monthsRemaining} mos)</strong>
                     </div>
-                    <div className="flex justify-between text-emerald-700 bg-emerald-50 p-2 rounded-lg font-bold">
+                    <div className="flex justify-between text-slate-800 bg-[#B3FFB3]/30 border border-[#B3FFB3]/60 p-2.5 rounded-lg font-bold">
                       <span>Monthly Savings Needed:</span>
-                      <span>₹{Number(g.monthlySavingsNeeded).toLocaleString('en-IN')}/mo</span>
+                      <span className="text-[#a82948]">₹{Number(g.monthlySavingsNeeded).toLocaleString('en-IN')}/mo</span>
                     </div>
                   </div>
 
                   {/* SIP Recommendation (FR7) */}
                   <div className="mt-3 p-2.5 bg-slate-50 rounded-lg text-[11px] text-slate-600 border border-slate-100">
                     <p className="font-semibold text-slate-800 flex items-center gap-1">
-                      <TrendingUp className="w-3 h-3 text-emerald-600" /> Suggested SIP Vehicle:
+                      <TrendingUp className="w-3 h-3 text-[#DB5375]" /> Suggested SIP Vehicle:
                     </p>
                     <p className="mt-0.5 text-slate-600">{g.sipRecommendation}</p>
                   </div>
@@ -286,7 +292,7 @@ export default function Goals() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-xs font-semibold hover:bg-emerald-700"
+                  className="px-4 py-2 btn-gradient rounded-lg text-xs font-bold shadow-md"
                 >
                   Save Goal
                 </button>
@@ -327,7 +333,7 @@ export default function Goals() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-xs font-semibold hover:bg-emerald-700"
+                  className="px-4 py-2 btn-gradient rounded-lg text-xs font-bold shadow-md"
                 >
                   Deposit
                 </button>

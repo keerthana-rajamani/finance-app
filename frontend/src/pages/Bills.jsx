@@ -90,16 +90,16 @@ export default function Bills() {
           </div>
           <button
             onClick={() => setShowModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#DB5375] hover:bg-[#c53e61] text-white text-xs font-semibold rounded-lg shadow-md shadow-[#DB5375]/25 transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2.5 btn-gradient text-xs font-bold rounded-lg shadow-md transition-all"
           >
-            <PlusCircle className="w-4 h-4" /> Add Recurring Bill
+            <PlusCircle className="w-4 h-4 text-slate-900" /> Add Recurring Bill
           </button>
         </div>
 
         {/* 30-Day Monthly Calendar View (FR8) */}
         <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg space-y-4">
           <div className="flex items-center gap-2">
-            <CalendarIcon className="w-4 h-4 text-emerald-600" />
+            <CalendarIcon className="w-4 h-4 text-[#DB5375]" />
             <h2 className="text-base font-bold text-slate-900">30-Day Upcoming Bill Calendar</h2>
           </div>
 
@@ -164,9 +164,9 @@ export default function Bills() {
                     {!isPaid ? (
                       <button
                         onClick={() => handlePayBill(b.id)}
-                        className="w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-sm transition-all flex items-center justify-center gap-1.5"
+                        className="w-full py-2 btn-gradient rounded-lg text-xs font-bold shadow-md transition-all flex items-center justify-center gap-1.5"
                       >
-                        <CheckCircle className="w-4 h-4" /> Mark as Paid (Auto-Debit)
+                        <CheckCircle className="w-4 h-4 text-slate-900" /> Mark as Paid (Auto-Debit)
                       </button>
                     ) : (
                       <span className="block text-center text-xs text-emerald-700 font-semibold py-1">
@@ -252,7 +252,7 @@ export default function Bills() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-xs font-semibold hover:bg-emerald-700"
+                  className="px-4 py-2 btn-gradient rounded-lg text-xs font-bold shadow-md"
                 >
                   Save Bill
                 </button>

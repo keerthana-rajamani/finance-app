@@ -88,9 +88,9 @@ ADVANCE TAX SCHEDULE:
           </div>
           <button
             onClick={downloadTaxReport}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#DB5375] hover:bg-[#c53e61] text-white text-xs font-semibold rounded-lg shadow-md shadow-[#DB5375]/25 transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2.5 btn-gradient text-xs font-bold rounded-lg shadow-md transition-all"
           >
-            <Download className="w-4 h-4" /> Download Tax Report
+            <Download className="w-4 h-4 text-slate-900" /> Download Tax Report
           </button>
         </div>
 
@@ -108,7 +108,7 @@ ADVANCE TAX SCHEDULE:
 
           <div className="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
             <div
-              className="h-full bg-emerald-500 rounded-full transition-all duration-500"
+              className="h-full bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] rounded-full transition-all duration-500"
               style={{ width: `${Math.min((eligible80c / limit80c) * 100, 100)}%` }}
             ></div>
           </div>

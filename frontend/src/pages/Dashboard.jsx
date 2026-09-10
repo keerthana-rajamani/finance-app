@@ -110,7 +110,7 @@ export default function Dashboard() {
               <h1 className="text-2xl font-bold text-slate-900">
                 Welcome back, {user?.fullName || 'User'}!
               </h1>
-              <span className="text-xs uppercase px-2.5 py-0.5 rounded-full font-bold bg-rose-100 text-[#DB5375] border border-rose-200">
+              <span className="theme-badge uppercase text-[10px] tracking-wider font-bold">
                 {role}
               </span>
             </div>
@@ -123,19 +123,19 @@ export default function Dashboard() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setShowAddTxnModal(true)}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#DB5375] hover:bg-[#c53e61] text-white text-xs font-bold rounded-lg shadow-md shadow-[#DB5375]/25 transition-all"
+              className="btn-gradient text-xs py-2 px-3.5 shadow-sm"
             >
-              <PlusCircle className="w-4 h-4 text-white" /> Add Expense
+              <PlusCircle className="w-4 h-4" /> Add Expense
             </button>
             <Link
               to="/budget"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition-all"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-all"
             >
               <PieChart className="w-4 h-4" /> Adjust Budget
             </Link>
             <Link
               to="/accounts"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition-all"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-all"
             >
               <RefreshCw className="w-4 h-4" /> Sync Banks
             </Link>
@@ -174,12 +174,12 @@ export default function Dashboard() {
                     ₹{netWorth ? Number(netWorth.netWorth).toLocaleString('en-IN') : '9,45,200'}
                   </h3>
                 </div>
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                  <TrendingUp className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-slate-900 flex items-center justify-center shadow-sm">
+                  <TrendingUp className="w-5 h-5 text-[#DB5375]" />
                 </div>
               </div>
               <div className="mt-4 pt-3 border-t border-slate-100 flex justify-between text-xs">
-                <span className="text-slate-500">Assets: <strong className="text-emerald-600">₹{netWorth ? Number(netWorth.totalAssets).toLocaleString('en-IN') : '11,20,000'}</strong></span>
+                <span className="text-slate-500">Assets: <strong className="text-emerald-700">₹{netWorth ? Number(netWorth.totalAssets).toLocaleString('en-IN') : '11,20,000'}</strong></span>
                 <span className="text-slate-500">Loans: <strong className="text-red-500">₹{netWorth ? Number(netWorth.totalLiabilities).toLocaleString('en-IN') : '1,74,800'}</strong></span>
               </div>
             </div>
@@ -193,13 +193,13 @@ export default function Dashboard() {
                     ₹{budgetSummary ? Number(budgetSummary.totalSpent).toLocaleString('en-IN') : '32,950'}
                   </h3>
                 </div>
-                <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center">
-                  <PieChart className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-slate-900 flex items-center justify-center shadow-sm">
+                  <PieChart className="w-5 h-5 text-[#DB5375]" />
                 </div>
               </div>
               <div className="mt-4 pt-3 border-t border-slate-100 flex justify-between text-xs">
                 <span className="text-slate-500">Budget Limit: ₹{budgetSummary ? Number(budgetSummary.totalBudget).toLocaleString('en-IN') : '44,000'}</span>
-                <span className="font-semibold text-emerald-600">
+                <span className="font-semibold text-emerald-700">
                   {budgetSummary && budgetSummary.remainingBudget > 0 ? `₹${Number(budgetSummary.remainingBudget).toLocaleString('en-IN')} Left` : 'Over Budget!'}
                 </span>
               </div>
@@ -214,13 +214,13 @@ export default function Dashboard() {
                     <h3 className="text-2xl font-extrabold text-slate-900">
                       {analytics ? analytics.healthScore : 745}
                     </h3>
-                    <span className="text-xs font-bold text-emerald-600 uppercase">
+                    <span className="text-xs font-bold text-emerald-700 uppercase">
                       / 850 ({analytics ? analytics.rating : 'Good'})
                     </span>
                   </div>
                 </div>
-                <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
-                  <Sparkles className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-slate-900 flex items-center justify-center shadow-sm">
+                  <Sparkles className="w-5 h-5 text-[#DB5375]" />
                 </div>
               </div>
               <div className="mt-4 pt-3 border-t border-slate-100 flex justify-between text-xs">
@@ -300,7 +300,7 @@ export default function Dashboard() {
                       </div>
                       <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
                         <div
-                          className={`h-full transition-all rounded-full ${isOver ? 'bg-red-500' : (isAlert ? 'bg-amber-500' : 'bg-emerald-500')}`}
+                          className={`h-full transition-all rounded-full ${isOver ? 'bg-red-500' : (isAlert ? 'bg-amber-500' : 'bg-gradient-to-r from-[#DB5375] to-[#B3FFB3]')}`}
                           style={{ width: `${pct}%` }}
                         ></div>
                       </div>
@@ -317,7 +317,7 @@ export default function Dashboard() {
             <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-base font-bold text-slate-900">Active Goals</h2>
-                <Link to="/goals" className="text-xs font-semibold text-emerald-600 hover:text-emerald-700">
+                <Link to="/goals" className="text-xs font-semibold text-[#DB5375] hover:text-[#b03050]">
                   Manage →
                 </Link>
               </div>
@@ -327,11 +327,11 @@ export default function Dashboard() {
                   <div key={g.id} className="p-3 bg-slate-50 rounded-xl border border-slate-100">
                     <div className="flex justify-between items-start">
                       <p className="text-xs font-bold text-slate-800">{g.name}</p>
-                      <span className="text-xs font-bold text-emerald-600">{g.progressPercent}%</span>
+                      <span className="text-xs font-bold text-[#DB5375]">{g.progressPercent}%</span>
                     </div>
                     <div className="w-full h-1.5 rounded-full bg-slate-200 mt-2">
                       <div
-                        className="h-full bg-emerald-600 rounded-full"
+                        className="h-full bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] rounded-full"
                         style={{ width: `${Math.min(g.progressPercent, 100)}%` }}
                       ></div>
                     </div>
@@ -347,7 +347,7 @@ export default function Dashboard() {
             <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="text-base font-bold text-slate-900">Upcoming Bills (7 Days)</h2>
-                <Link to="/bills" className="text-xs font-semibold text-emerald-600 hover:text-emerald-700">
+                <Link to="/bills" className="text-xs font-semibold text-[#DB5375] hover:text-[#b03050]">
                   Bill Manager →
                 </Link>
               </div>
@@ -370,12 +370,13 @@ export default function Dashboard() {
             </div>
 
             {/* AI Advisor Money Tip Box */}
-            <div className="p-4 bg-slate-900 text-white rounded-2xl shadow-md border border-slate-800">
-              <div className="flex items-center gap-2 mb-2">
-                <Sparkles className="w-4 h-4 text-emerald-300" />
-                <span className="text-xs font-bold uppercase tracking-wider text-emerald-200">Weekly AI Tip</span>
+            <div className="relative overflow-hidden p-4 bg-slate-900 text-white rounded-2xl shadow-md border border-slate-800">
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]"></div>
+              <div className="flex items-center gap-2 mb-2 mt-1">
+                <Sparkles className="w-4 h-4 text-[#B3FFB3]" />
+                <span className="text-xs font-bold uppercase tracking-wider text-[#B3FFB3]">Weekly AI Tip</span>
               </div>
-              <p className="text-xs leading-relaxed text-emerald-50">
+              <p className="text-xs leading-relaxed text-slate-200">
                 {analytics?.tips?.[0] || "Your Food spend reached 82% of its limit. Cooking home meals 2 days/week will save ₹3,800 this month."}
               </p>
             </div>
@@ -468,7 +469,7 @@ export default function Dashboard() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-xs font-semibold hover:bg-emerald-700"
+                  className="px-4 py-2 btn-gradient rounded-lg text-xs font-bold shadow-md"
                 >
                   Save Transaction
                 </button>

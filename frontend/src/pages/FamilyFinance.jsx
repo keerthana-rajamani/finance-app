@@ -90,9 +90,9 @@ export default function FamilyFinance() {
           </div>
           <button
             onClick={() => setShowModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#DB5375] hover:bg-[#c53e61] text-white text-xs font-semibold rounded-lg shadow-md shadow-[#DB5375]/25 transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2.5 btn-gradient text-xs font-bold rounded-lg shadow-md transition-all"
           >
-            <UserPlus className="w-4 h-4" /> Invite Family Member
+            <UserPlus className="w-4 h-4 text-slate-900" /> Invite Family Member
           </button>
         </div>
 
@@ -168,7 +168,7 @@ export default function FamilyFinance() {
 
             <button
               type="submit"
-              className="py-2.5 px-4 bg-[#DB5375] hover:bg-[#c53e61] text-white rounded-lg font-semibold text-xs shadow-md shadow-[#DB5375]/25 transition-all"
+              className="py-2.5 px-4 btn-gradient rounded-lg font-bold text-xs shadow-md transition-all"
             >
               Compute Equitable Share
             </button>
@@ -250,7 +250,7 @@ export default function FamilyFinance() {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-emerald-600 text-white rounded-lg text-xs font-semibold hover:bg-emerald-700"
+                  className="px-4 py-2 btn-gradient rounded-lg text-xs font-bold shadow-md"
                 >
                   Send Invite
                 </button>

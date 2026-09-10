@@ -12,12 +12,12 @@ export default function Home() {
       <section className="relative overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 text-slate-800 border border-white/60 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm backdrop-blur-sm">
+            <div className="theme-badge mb-6 py-1.5 px-4 backdrop-blur-sm shadow-sm font-bold uppercase tracking-wider text-xs gap-2">
               <ShieldCheck className="w-4 h-4 text-[#DB5375]" />
               RBI Account Aggregator & AES-256 Enabled
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Master Your Money with <span className="text-[#DB5375]">AI-Powered</span> Financial Clarity
+              Master Your Money with <span className="bg-gradient-to-r from-[#DB5375] via-[#a32d4b] to-[#14532d] bg-clip-text text-transparent">AI-Powered</span> Financial Clarity
             </h1>
             <p className="mt-6 text-lg text-slate-700 leading-relaxed font-medium">
               Consolidate your bank accounts, automate expense categorization, monitor monthly budgets in real-time, track investment portfolios (XIRR), and optimize income tax deductions.
@@ -25,13 +25,13 @@ export default function Home() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/register"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#DB5375] text-white font-semibold shadow-lg shadow-[#DB5375]/30 hover:bg-[#c53e61] hover:shadow-xl transition-all"
+                className="btn-gradient px-7 py-3.5 text-base shadow-lg shadow-[#DB5375]/30 hover:scale-[1.02]"
               >
                 Get Started Free <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 to="/login"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-xl bg-white/90 border border-white/60 text-slate-800 font-semibold shadow-md hover:bg-white transition-all backdrop-blur-sm"
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-white/90 border border-white/60 text-slate-800 font-bold shadow-md hover:bg-white transition-all backdrop-blur-sm"
               >
                 Sign In with Demo Accounts
               </Link>
@@ -53,8 +53,8 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
+            <div className="theme-card p-6">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#DB5375] flex items-center justify-center mb-4 shadow-sm">
                 <Wallet className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">Account Aggregation</h3>
@@ -63,8 +63,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center mb-4">
+            <div className="theme-card p-6">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#DB5375] flex items-center justify-center mb-4 shadow-sm">
                 <PieChart className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">Real-Time Budgets</h3>
@@ -73,8 +73,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-cyan-100 text-cyan-700 flex items-center justify-center mb-4">
+            <div className="theme-card p-6">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#DB5375] flex items-center justify-center mb-4 shadow-sm">
                 <Target className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">Financial Goals & SIPs</h3>
@@ -83,8 +83,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center mb-4">
+            <div className="theme-card p-6">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#DB5375] flex items-center justify-center mb-4 shadow-sm">
                 <TrendingUp className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">Portfolio & Net Worth</h3>
@@ -93,8 +93,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center mb-4">
+            <div className="theme-card p-6">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#DB5375] flex items-center justify-center mb-4 shadow-sm">
                 <Cpu className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">AI Financial Advisor</h3>
@@ -103,8 +103,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-white/60 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center mb-4">
+            <div className="theme-card p-6">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#DB5375] flex items-center justify-center mb-4 shadow-sm">
                 <Lock className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">Tax Filing Assistance</h3>

@@ -29,9 +29,18 @@ body {
     @apply text-xl font-bold text-slate-900 flex items-center gap-2 hover:opacity-90 transition-opacity;
   }
   .nav-link {
-    @apply px-3 py-2 rounded-lg text-sm font-medium text-slate-700 hover:text-[#DB5375] hover:bg-white/60 transition-all;
+    @apply px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-800 hover:text-slate-950 hover:bg-white/70 transition-all;
   }
   .nav-active {
-    @apply text-[#DB5375] bg-white font-bold shadow-sm border border-slate-200;
+    @apply text-slate-950 bg-gradient-to-r from-[#DB5375]/25 to-[#B3FFB3]/60 font-bold shadow-sm border border-[#DB5375]/35;
+  }
+  .btn-gradient {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] hover:brightness-105 active:scale-[0.98] text-slate-900 font-bold rounded-xl shadow-md shadow-[#DB5375]/25 transition-all;
+  }
+  .theme-card {
+    @apply bg-white/85 backdrop-blur-md rounded-2xl border border-white/60 shadow-xl hover:shadow-2xl transition-all;
+  }
+  .theme-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-gradient-to-r from-[#DB5375]/15 to-[#B3FFB3]/40 text-slate-900 border border-[#DB5375]/30;
   }
 }

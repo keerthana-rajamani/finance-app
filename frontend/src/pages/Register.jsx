@@ -76,17 +76,19 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-slate-50 px-4 py-12">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-slate-200 p-8">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-slate-900">Create an Account</h2>
-          <p className="text-xs text-slate-500 mt-1">Multi-step secure onboarding with banking standards</p>
-          <div className="flex justify-center items-center gap-2 mt-4">
-            <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${step >= 1 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600'}`}>1</span>
-            <span className="w-10 h-0.5 bg-slate-200"></span>
-            <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${step === 2 ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-600'}`}>2</span>
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-transparent px-4 py-12">
+      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+        <div className="h-2 w-full bg-gradient-to-r from-[#DB5375] to-[#B3FFB3]" />
+        <div className="p-8">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl font-bold text-slate-900">Create an Account</h2>
+            <p className="text-xs text-slate-500 mt-1">Multi-step secure onboarding with banking standards</p>
+            <div className="flex justify-center items-center gap-2 mt-4">
+              <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${step >= 1 ? 'bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] text-slate-900 shadow-sm' : 'bg-slate-200 text-slate-600'}`}>1</span>
+              <span className="w-10 h-0.5 bg-slate-200"></span>
+              <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${step === 2 ? 'bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] text-slate-900 shadow-sm' : 'bg-slate-200 text-slate-600'}`}>2</span>
+            </div>
           </div>
-        </div>
 
         {error && (
           <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-700 text-xs font-medium">
@@ -164,7 +166,7 @@ export default function Register() {
 
             <button
               type="submit"
-              className="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg shadow-md transition-all"
+              className="w-full py-2.5 px-4 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] hover:brightness-105 text-slate-900 text-sm font-bold rounded-lg shadow-md shadow-[#DB5375]/20 transition-all"
             >
               Continue to Step 2
             </button>
@@ -181,7 +183,7 @@ export default function Register() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Min 8 chars, Uppercase, Digit & Symbol"
-                  className="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all"
+                  className="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#DB5375] focus:border-[#DB5375] transition-all"
                 />
               </div>
             </div>
@@ -196,7 +198,7 @@ export default function Register() {
                   onChange={(e) => setPanNumber(e.target.value)}
                   placeholder="ABCDE1234F"
                   maxLength={10}
-                  className="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all uppercase"
+                  className="w-full pl-9 pr-3 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#DB5375] focus:border-[#DB5375] transition-all uppercase"
                 />
               </div>
               <p className="text-[10px] text-slate-500 mt-1">Stored as a one-way SHA-256 hash according to data protection rules.</p>
@@ -213,7 +215,7 @@ export default function Register() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-2/3 py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg shadow-md transition-all disabled:opacity-50"
+                className="w-2/3 py-2.5 px-4 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] hover:brightness-105 text-slate-900 text-sm font-bold rounded-lg shadow-md shadow-[#DB5375]/20 transition-all disabled:opacity-50"
               >
                 {loading ? "Submitting..." : "Submit Register"}
               </button>
@@ -223,11 +225,12 @@ export default function Register() {
 
         <div className="mt-6 text-center text-xs text-slate-500">
           Already registered?{' '}
-          <Link to="/login" className="text-emerald-600 hover:text-emerald-700 font-semibold">
+          <Link to="/login" className="text-[#DB5375] hover:text-[#aa2f4e] font-semibold">
             Log in
           </Link>
         </div>
       </div>
     </div>
+  </div>
   );
 }

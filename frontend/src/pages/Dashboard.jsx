@@ -110,7 +110,7 @@ export default function Dashboard() {
               <h1 className="text-2xl font-bold text-slate-900">
                 Welcome back, {user?.fullName || 'User'}!
               </h1>
-              <span className="text-xs uppercase px-2.5 py-0.5 rounded-full font-bold bg-emerald-100 text-emerald-800">
+              <span className="text-xs uppercase px-2.5 py-0.5 rounded-full font-bold bg-gradient-to-r from-[#DB5375]/15 to-[#B3FFB3]/40 text-slate-900 border border-[#DB5375]/30">
                 {role}
               </span>
             </div>
@@ -123,9 +123,9 @@ export default function Dashboard() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setShowAddTxnModal(true)}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow-sm transition-all"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] hover:brightness-105 text-slate-900 text-xs font-bold rounded-lg shadow-sm shadow-[#DB5375]/25 transition-all"
             >
-              <PlusCircle className="w-4 h-4" /> Add Expense
+              <PlusCircle className="w-4 h-4 text-slate-900" /> Add Expense
             </button>
             <Link
               to="/budget"

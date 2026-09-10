@@ -9,15 +9,15 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-emerald-50/50 via-white to-slate-50 pt-16 pb-20 lg:pt-24 lg:pb-32">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#DB5375]/[0.08] via-white to-slate-50 pt-16 pb-20 lg:pt-24 lg:pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-100/80 text-emerald-800 text-xs font-semibold uppercase tracking-wider mb-6">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-gradient-to-r from-[#DB5375]/15 to-[#B3FFB3]/40 text-slate-900 border border-[#DB5375]/30 text-xs font-semibold uppercase tracking-wider mb-6 shadow-sm">
+              <ShieldCheck className="w-4 h-4 text-[#DB5375]" />
               RBI Account Aggregator & AES-256 Enabled
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Master Your Money with <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600">AI-Powered</span> Financial Clarity
+              Master Your Money with <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#DB5375] via-[#e56787] to-[#15803d]">AI-Powered</span> Financial Clarity
             </h1>
             <p className="mt-6 text-lg text-slate-600 leading-relaxed">
               Consolidate your bank accounts, automate expense categorization, monitor monthly budgets in real-time, track investment portfolios (XIRR), and optimize income tax deductions.
@@ -25,7 +25,7 @@ export default function Home() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/register"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-emerald-600 text-white font-semibold shadow-lg shadow-emerald-200 hover:bg-emerald-700 hover:shadow-xl transition-all"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] text-slate-900 font-bold shadow-lg shadow-[#DB5375]/25 hover:opacity-95 hover:shadow-xl transition-all"
               >
                 Get Started Free <ArrowRight className="w-5 h-5" />
               </Link>

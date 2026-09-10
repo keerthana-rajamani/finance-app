@@ -2,14 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --theme-rose: #DB5375;
+  --theme-mint: #B3FFB3;
+  --theme-gradient: linear-gradient(135deg, #DB5375 0%, #B3FFB3 100%);
+}
+
 @layer components {
   .nav-brand {
-    @apply text-xl font-bold text-emerald-600 flex items-center gap-2 hover:text-emerald-700 transition-colors;
+    @apply text-xl font-bold text-slate-900 flex items-center gap-2 hover:opacity-90 transition-opacity;
   }
   .nav-link {
-    @apply px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-emerald-600 hover:bg-emerald-50 transition-all;
+    @apply px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-[#DB5375] hover:bg-[#DB5375]/10 transition-all;
   }
   .nav-active {
-    @apply text-emerald-700 bg-emerald-100/70 font-semibold shadow-sm;
+    @apply text-slate-900 font-bold shadow-sm;
+    background: linear-gradient(135deg, rgba(219, 83, 117, 0.22) 0%, rgba(179, 255, 179, 0.45) 100%);
+    border: 1px solid rgba(219, 83, 117, 0.35);
+  }
+
+  .btn-theme-gradient {
+    @apply text-slate-900 font-bold px-4 py-2 rounded-xl shadow-md transition-all flex items-center justify-center gap-2;
+    background: linear-gradient(135deg, #DB5375 0%, #B3FFB3 100%);
+  }
+  .btn-theme-gradient:hover {
+    @apply opacity-95 shadow-lg brightness-105;
+  }
+
+  .bg-theme-gradient {
+    background: linear-gradient(135deg, #DB5375 0%, #B3FFB3 100%);
+  }
+
+  .bg-theme-gradient-r {
+    background: linear-gradient(90deg, #DB5375 0%, #B3FFB3 100%);
+  }
+
+  .bg-theme-soft {
+    background: linear-gradient(135deg, rgba(219, 83, 117, 0.08) 0%, rgba(179, 255, 179, 0.16) 100%);
+  }
+
+  .border-theme-gradient {
+    border-image: linear-gradient(135deg, #DB5375, #B3FFB3) 1;
   }
 }

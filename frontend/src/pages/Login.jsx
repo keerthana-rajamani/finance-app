@@ -40,12 +40,14 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-slate-50 px-4 py-12">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-slate-200 p-8">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-slate-900">Sign in to your account</h2>
-          <p className="text-xs text-slate-500 mt-1">Access your consolidated financial dashboard</p>
-        </div>
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-transparent px-4 py-12">
+      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl border border-slate-200 overflow-hidden">
+        <div className="h-2 w-full bg-gradient-to-r from-[#DB5375] to-[#B3FFB3]" />
+        <div className="p-8">
+          <div className="text-center mb-6">
+            <h2 className="text-2xl font-bold text-slate-900">Sign in to your account</h2>
+            <p className="text-xs text-slate-500 mt-1">Access your consolidated financial dashboard</p>
+          </div>
 
         {error && (
           <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-2 text-red-700 text-xs font-medium">
@@ -95,11 +97,11 @@ export default function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg shadow-md transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full py-2.5 px-4 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] hover:brightness-105 text-slate-900 text-sm font-bold rounded-lg shadow-md shadow-[#DB5375]/20 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
           >
             {loading ? "Authenticating..." : (
               <>
-                <LogIn className="w-4 h-4" /> Login
+                <LogIn className="w-4 h-4 text-slate-900" /> Login
               </>
             )}
           </button>
@@ -113,10 +115,10 @@ export default function Login() {
           <div className="grid grid-cols-2 gap-2 text-xs">
             <button
               onClick={() => fillDemo('john@example.com', 'Password@123')}
-              className="p-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 rounded font-medium text-left border border-emerald-200"
+              className="p-2 bg-gradient-to-r from-[#DB5375]/10 to-[#B3FFB3]/35 hover:opacity-90 text-slate-900 rounded font-bold text-left border border-[#DB5375]/30"
             >
               Primary User
-              <span className="block text-[10px] text-emerald-600 font-normal">Full Financials</span>
+              <span className="block text-[10px] text-[#DB5375] font-semibold">Full Financials</span>
             </button>
             <button
               onClick={() => fillDemo('advisor@example.com', 'Password@123')}
@@ -144,11 +146,12 @@ export default function Login() {
 
         <div className="mt-6 text-center text-xs text-slate-500">
           Don't have an account?{' '}
-          <Link to="/register" className="text-emerald-600 hover:text-emerald-700 font-semibold">
+          <Link to="/register" className="text-[#DB5375] hover:text-[#aa2f4e] font-semibold">
             Register now
           </Link>
         </div>
       </div>
     </div>
+  </div>
   );
 }

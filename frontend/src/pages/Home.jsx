@@ -31,7 +31,7 @@ export default function Home() {
               </Link>
               <Link
                 to="/login"
-                className="inline-flex items-center justify-center px-7 py-3.5 rounded-xl bg-white/90 border border-white/60 text-slate-800 font-bold shadow-md hover:bg-white transition-all backdrop-blur-sm"
+                className="btn-gradient-outline px-7 py-3.5 text-base hover:scale-[1.02]"
               >
                 Sign In with Demo Accounts
               </Link>
@@ -41,7 +41,7 @@ export default function Home() {
       </section>
 
       {/* Feature Highlights Grid */}
-      <section className="py-16 bg-white/90 backdrop-blur-md border-y border-white/50 mx-4 sm:mx-6 lg:mx-8 rounded-3xl shadow-xl mb-12">
+      <section className="py-16 bg-white/90 backdrop-blur-md border-2 border-[#DB5375]/25 mx-4 sm:mx-6 lg:mx-8 rounded-3xl shadow-xl mb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">

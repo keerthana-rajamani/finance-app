@@ -59,16 +59,20 @@ public class BillService {
 
     public List<Bill> getUpcomingBills() {
         User user = authService.getCurrentUser();
-        LocalDate today = LocalDate.now();
-        LocalDate in7Days = today.plusDays(7);
+        List<Bill> list = ("FAMILY_MEMBER".equalsIgnoreCase(user.getRole()) || "ADMIN".equalsIgnoreCase(user.getRole()))
+                ? billRepository.findAll()
+                : billRepository.findByUserIdOrderByDueDayAsc(user.getId());
 
-        return billRepository.findByUserIdOrderByDueDayAsc(user.getId()).stream()
+        return list.stream()
                 .filter(b -> !"PAID".equalsIgnoreCase(b.getStatus()))
                 .collect(Collectors.toList());
     }
 
     public List<Bill> getAllBills() {
         User user = authService.getCurrentUser();
+        if ("FAMILY_MEMBER".equalsIgnoreCase(user.getRole()) || "ADMIN".equalsIgnoreCase(user.getRole())) {
+            return billRepository.findAll();
+        }
         return billRepository.findByUserIdOrderByDueDayAsc(user.getId());
     }
 

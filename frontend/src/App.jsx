@@ -34,7 +34,7 @@ export default function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
 
-                {/* Protected Routes (Appendix I) */}
+                {/* Protected Routes (Appendix I & FR1 - FR3) */}
                 <Route
                   path="/dashboard"
                   element={
@@ -46,7 +46,7 @@ export default function App() {
                 <Route
                   path="/budget"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute allowedRoles={['USER', 'FAMILY_MEMBER', 'ADMIN']}>
                       <BudgetTracker />
                     </ProtectedRoute>
                   }
@@ -54,7 +54,7 @@ export default function App() {
                 <Route
                   path="/goals"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute allowedRoles={['USER', 'FINANCIAL_ADVISOR', 'ADMIN']}>
                       <Goals />
                     </ProtectedRoute>
                   }
@@ -62,7 +62,7 @@ export default function App() {
                 <Route
                   path="/accounts"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute allowedRoles={['USER', 'SUPPORT', 'ADMIN']}>
                       <Accounts />
                     </ProtectedRoute>
                   }
@@ -70,7 +70,7 @@ export default function App() {
                 <Route
                   path="/bills"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute allowedRoles={['USER', 'FAMILY_MEMBER', 'ADMIN']}>
                       <Bills />
                     </ProtectedRoute>
                   }
@@ -78,7 +78,7 @@ export default function App() {
                 <Route
                   path="/investments"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute allowedRoles={['USER', 'FINANCIAL_ADVISOR', 'ADMIN']}>
                       <Investments />
                     </ProtectedRoute>
                   }
@@ -86,7 +86,7 @@ export default function App() {
                 <Route
                   path="/tax"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute allowedRoles={['USER', 'ADMIN']}>
                       <TaxSummary />
                     </ProtectedRoute>
                   }
@@ -94,7 +94,7 @@ export default function App() {
                 <Route
                   path="/advisor"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute allowedRoles={['USER', 'FINANCIAL_ADVISOR', 'ADMIN']}>
                       <AIAdvisor />
                     </ProtectedRoute>
                   }
@@ -102,7 +102,7 @@ export default function App() {
                 <Route
                   path="/family"
                   element={
-                    <ProtectedRoute>
+                    <ProtectedRoute allowedRoles={['USER', 'FAMILY_MEMBER', 'ADMIN']}>
                       <FamilyFinance />
                     </ProtectedRoute>
                   }

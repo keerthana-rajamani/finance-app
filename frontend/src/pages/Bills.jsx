@@ -81,26 +81,26 @@ export default function Bills() {
     <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg">
+        <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Recurring Bill Manager & Calendar</h1>
-            <p className="text-xs text-slate-500 mt-1">
+            <h1 className="text-2xl font-extrabold text-slate-900">Recurring Bill Manager & Calendar</h1>
+            <p className="text-xs text-slate-600 mt-1 font-medium">
               Automated 3-day and 1-day reminders with 1-tap payment settlement and credit score impact tracking
             </p>
           </div>
           <button
             onClick={() => setShowModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 btn-gradient text-xs font-bold rounded-lg shadow-md transition-all"
+            className="btn-gradient text-xs py-2.5 px-4 shadow-md"
           >
             <PlusCircle className="w-4 h-4 text-slate-900" /> Add Recurring Bill
           </button>
         </div>
 
         {/* 30-Day Monthly Calendar View (FR8) */}
-        <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg space-y-4">
+        <div className="theme-card p-6 space-y-4">
           <div className="flex items-center gap-2">
             <CalendarIcon className="w-4 h-4 text-[#DB5375]" />
-            <h2 className="text-base font-bold text-slate-900">30-Day Upcoming Bill Calendar</h2>
+            <h2 className="text-base font-extrabold text-slate-900">30-Day Upcoming Bill Calendar</h2>
           </div>
 
           <div className="grid grid-cols-5 sm:grid-cols-7 lg:grid-cols-10 gap-2">
@@ -114,15 +114,15 @@ export default function Bills() {
                   className={`p-2 rounded-xl border text-center transition-all ${
                     dayBills.length > 0
                       ? hasPending
-                        ? 'bg-amber-50 border-amber-300 font-bold text-amber-900 shadow-sm'
-                        : 'bg-emerald-50 border-emerald-300 text-emerald-900'
-                      : 'bg-slate-50 border-slate-100 text-slate-400'
+                        ? 'bg-gradient-to-br from-[#DB5375]/25 to-[#DB5375]/35 border-2 border-[#DB5375] font-black text-[#89233c] shadow-sm'
+                        : 'bg-[#B3FFB3]/60 border-2 border-[#B3FFB3] text-slate-900 font-extrabold'
+                      : 'bg-white/80 border border-[#DB5375]/20 text-slate-600'
                   }`}
                 >
-                  <span className="text-xs block">{day}</span>
+                  <span className="text-xs block font-bold">{day}</span>
                   {dayBills.length > 0 && (
                     <div className="mt-1">
-                      <span className="inline-block w-2 h-2 rounded-full bg-amber-500"></span>
+                      <span className={`inline-block w-2 h-2 rounded-full ${hasPending ? 'bg-[#DB5375]' : 'bg-emerald-600'}`}></span>
                     </div>
                   )}
                 </div>
@@ -132,35 +132,35 @@ export default function Bills() {
         </div>
 
         {/* Bills List */}
-        <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg space-y-4">
-          <h2 className="text-base font-bold text-slate-900">All Configured Recurring Bills</h2>
+        <div className="theme-card p-6 space-y-4">
+          <h2 className="text-base font-extrabold text-slate-900">All Configured Recurring Bills</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {bills.map((b) => {
               const isPaid = b.status === 'PAID';
 
               return (
-                <div key={b.id} className="p-5 rounded-xl border border-slate-200 bg-slate-50/50 flex flex-col justify-between">
+                <div key={b.id} className="p-5 rounded-2xl border-2 border-[#DB5375]/25 bg-gradient-to-br from-white/95 to-[#B3FFB3]/20 flex flex-col justify-between shadow-md">
                   <div>
                     <div className="flex justify-between items-start">
-                      <h3 className="font-bold text-sm text-slate-900">{b.name}</h3>
-                      <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                        isPaid ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
+                      <h3 className="font-extrabold text-sm text-slate-900">{b.name}</h3>
+                      <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold ${
+                        isPaid ? 'theme-badge-mint' : 'theme-badge-rose'
                       }`}>
                         {b.status}
                       </span>
                     </div>
 
-                    <div className="mt-3 space-y-1 text-xs text-slate-600">
-                      <p>Category: <strong className="text-slate-800">{b.category}</strong></p>
-                      <p>Due Day: <strong className="text-slate-800">{b.dueDay}th of month</strong> ({b.recurrence})</p>
-                      <p className="text-lg font-extrabold text-slate-900 mt-2">
+                    <div className="mt-3 space-y-1 text-xs text-slate-700">
+                      <p>Category: <strong className="text-slate-900">{b.category}</strong></p>
+                      <p>Due Day: <strong className="text-slate-900">{b.dueDay}th of month</strong> ({b.recurrence})</p>
+                      <p className="text-lg font-black text-slate-900 mt-2">
                         ₹{Number(b.amount).toLocaleString('en-IN')}
                       </p>
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-slate-200">
+                  <div className="mt-4 pt-3 border-t border-[#DB5375]/20">
                     {!isPaid ? (
                       <button
                         onClick={() => handlePayBill(b.id)}
@@ -169,7 +169,7 @@ export default function Bills() {
                         <CheckCircle className="w-4 h-4 text-slate-900" /> Mark as Paid (Auto-Debit)
                       </button>
                     ) : (
-                      <span className="block text-center text-xs text-emerald-700 font-semibold py-1">
+                      <span className="block text-center text-xs text-[#065f46] font-bold py-1 bg-[#B3FFB3]/40 rounded-lg border border-[#B3FFB3]">
                         ✓ Paid for this cycle
                       </span>
                     )}
@@ -183,25 +183,26 @@ export default function Bills() {
 
       {/* ADD BILL MODAL */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
-            <h3 className="text-lg font-bold text-slate-900 mb-4">Add Recurring Bill</h3>
-            {error && <p className="text-xs text-red-600 bg-red-50 p-2 rounded mb-3">{error}</p>}
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-[#DB5375]/35 relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]"></div>
+            <h3 className="text-lg font-extrabold text-slate-900 mb-4 mt-1">Add Recurring Bill</h3>
+            {error && <p className="text-xs text-red-600 bg-red-50 p-2 rounded mb-3 border border-red-200">{error}</p>}
             <form onSubmit={handleAddBill} className="space-y-3">
               <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Bill Name</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Bill Name</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Bescom Electricity, Airtel Fiber, Gym"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Amount (₹)</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Amount (₹)</label>
                 <input
                   type="number"
                   step="0.01"
@@ -209,17 +210,17 @@ export default function Bills() {
                   placeholder="1450.00"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Category</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Category</label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs"
+                    className="w-full px-3 py-2 border-2 border-[#DB5375]/30 rounded-xl text-xs bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
                   >
                     <option value="Utilities">Utilities</option>
                     <option value="Subscription">Subscription</option>
@@ -230,14 +231,14 @@ export default function Bills() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Due Day (1-31)</label>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">Due Day (1-31)</label>
                   <input
                     type="number"
                     min="1"
                     max="31"
                     value={dueDay}
                     onChange={(e) => setDueDay(e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                    className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
                   />
                 </div>
               </div>
@@ -246,13 +247,13 @@ export default function Bills() {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-xs font-semibold"
+                  className="btn-gradient-outline px-4 py-2 text-xs"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 btn-gradient rounded-lg text-xs font-bold shadow-md"
+                  className="btn-gradient px-4 py-2 text-xs font-bold shadow-md"
                 >
                   Save Bill
                 </button>

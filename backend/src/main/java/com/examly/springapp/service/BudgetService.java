@@ -49,7 +49,12 @@ public class BudgetService {
     public Map<String, Object> getBudgetSummary() {
         User user = authService.getCurrentUser();
         LocalDate currentMonth = LocalDate.now().withDayOfMonth(1);
-        List<Budget> budgets = budgetRepository.findByUserIdAndMonth(user.getId(), currentMonth);
+        List<Budget> budgets;
+        if ("FAMILY_MEMBER".equalsIgnoreCase(user.getRole()) || "ADMIN".equalsIgnoreCase(user.getRole())) {
+            budgets = budgetRepository.findAll();
+        } else {
+            budgets = budgetRepository.findByUserIdAndMonth(user.getId(), currentMonth);
+        }
 
         BigDecimal totalBudget = BigDecimal.ZERO;
         BigDecimal totalSpent = BigDecimal.ZERO;
@@ -92,6 +97,9 @@ public class BudgetService {
 
     public List<Budget> getAllBudgets() {
         User user = authService.getCurrentUser();
+        if ("FAMILY_MEMBER".equalsIgnoreCase(user.getRole()) || "ADMIN".equalsIgnoreCase(user.getRole())) {
+            return budgetRepository.findAll();
+        }
         return budgetRepository.findByUserId(user.getId());
     }
 }

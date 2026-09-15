@@ -69,16 +69,16 @@ export default function BudgetTracker() {
     <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg">
+        <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Category Budget Tracker</h1>
-            <p className="text-xs text-slate-500 mt-1">
+            <h1 className="text-2xl font-extrabold text-slate-900">Category Budget Tracker</h1>
+            <p className="text-xs text-slate-600 mt-1 font-medium">
               Real-time spend monitoring with automated 80% and 100% threshold alerts
             </p>
           </div>
           <button
             onClick={() => setShowModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 btn-gradient text-xs font-bold rounded-lg shadow-md transition-all"
+            className="btn-gradient text-xs py-2.5 px-4 shadow-md"
           >
             <PlusCircle className="w-4 h-4 text-slate-900" /> Add / Edit Category Budget
           </button>
@@ -86,36 +86,36 @@ export default function BudgetTracker() {
 
         {/* Budget Overview Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg">
+          <div className="theme-card p-6">
             <span className="text-xs font-semibold text-slate-500 uppercase">Total Budget Cap</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 mt-2">
+            <h2 className="text-3xl font-black text-slate-900 mt-2">
               ₹{summary ? Number(summary.totalBudget).toLocaleString('en-IN') : 0}
             </h2>
-            <p className="text-xs text-slate-500 mt-2">Allocated across {summary?.categories?.length || 0} active categories</p>
+            <p className="text-xs text-slate-600 mt-2 font-medium">Allocated across {summary?.categories?.length || 0} active categories</p>
           </div>
 
-          <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg">
+          <div className="theme-card p-6">
             <span className="text-xs font-semibold text-slate-500 uppercase">Total Recorded Spend</span>
-            <h2 className="text-3xl font-extrabold text-slate-900 mt-2">
+            <h2 className="text-3xl font-black text-slate-900 mt-2">
               ₹{summary ? Number(summary.totalSpent).toLocaleString('en-IN') : 0}
             </h2>
-            <p className="text-xs text-slate-500 mt-2">Updated live with every debit transaction</p>
+            <p className="text-xs text-slate-600 mt-2 font-medium">Updated live with every debit transaction</p>
           </div>
 
-          <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg">
+          <div className="theme-card p-6">
             <span className="text-xs font-semibold text-slate-500 uppercase">Remaining Balance</span>
-            <h2 className={`text-3xl font-extrabold mt-2 ${summary && summary.remainingBudget < 0 ? 'text-red-600' : 'text-emerald-600'}`}>
+            <h2 className={`text-3xl font-black mt-2 ${summary && summary.remainingBudget < 0 ? 'text-red-600' : 'text-[#a82948]'}`}>
               ₹{summary ? Number(summary.remainingBudget).toLocaleString('en-IN') : 0}
             </h2>
-            <p className="text-xs text-slate-500 mt-2">
+            <p className="text-xs text-slate-600 mt-2 font-medium">
               {summary && summary.remainingBudget < 0 ? 'Monthly limit exceeded' : 'Available for current month'}
             </p>
           </div>
         </div>
 
         {/* Category Budget Detail Grid */}
-        <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg">
-          <h2 className="text-base font-bold text-slate-900 mb-6">Category Spend Progress & Variance</h2>
+        <div className="theme-card p-6">
+          <h2 className="text-base font-extrabold text-slate-900 mb-6">Category Spend Progress & Variance</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {summary?.categories?.map((c) => {
@@ -124,7 +124,7 @@ export default function BudgetTracker() {
               const isAlert = c.isAlert && !isOver;
 
               return (
-                <div key={c.id} className="p-5 rounded-xl border border-slate-200/90 bg-slate-50/50 space-y-3">
+                <div key={c.id} className="p-5 rounded-2xl border-2 border-[#DB5375]/25 bg-gradient-to-br from-white/95 to-[#B3FFB3]/20 space-y-3 shadow-md">
                   <div className="flex justify-between items-start">
                     <div>
                       <h3 className="font-bold text-slate-900 text-sm">{c.category}</h3>
@@ -170,17 +170,18 @@ export default function BudgetTracker() {
 
       {/* MODAL */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
-            <h3 className="text-lg font-bold text-slate-900 mb-4">Configure Category Budget</h3>
-            {error && <p className="text-xs text-red-600 bg-red-50 p-2 rounded mb-3">{error}</p>}
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-[#DB5375]/35 relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]"></div>
+            <h3 className="text-lg font-extrabold text-slate-900 mb-4 mt-1">Configure Category Budget</h3>
+            {error && <p className="text-xs text-red-600 bg-red-50 p-2 rounded mb-3 border border-red-200">{error}</p>}
             <form onSubmit={handleSaveBudget} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Expense Category</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Expense Category</label>
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs"
+                  className="w-full px-3 py-2 border-2 border-[#DB5375]/30 rounded-xl text-xs bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
                 >
                   <option value="Food">Food</option>
                   <option value="Transport">Transport</option>
@@ -194,7 +195,7 @@ export default function BudgetTracker() {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Monthly Budget (₹)</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Monthly Budget (₹)</label>
                 <input
                   type="number"
                   step="0.01"
@@ -202,17 +203,17 @@ export default function BudgetTracker() {
                   placeholder="12000.00"
                   value={budgetAmount}
                   onChange={(e) => setBudgetAmount(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Alert Threshold (%)</label>
+                <label className="block text-xs font-bold text-slate-700 mb-1">Alert Threshold (%)</label>
                 <input
                   type="number"
                   value={alertAtPercent}
                   onChange={(e) => setAlertAtPercent(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
                   min="50"
                   max="100"
                 />
@@ -224,9 +225,9 @@ export default function BudgetTracker() {
                   id="carryForward"
                   checked={carryForward}
                   onChange={(e) => setCarryForward(e.target.checked)}
-                  className="rounded text-emerald-600 focus:ring-emerald-500"
+                  className="rounded text-[#DB5375] focus:ring-[#DB5375]"
                 />
-                <label htmlFor="carryForward" className="text-xs text-slate-700 font-medium">
+                <label htmlFor="carryForward" className="text-xs text-slate-800 font-bold">
                   Carry forward unused budget to next month
                 </label>
               </div>
@@ -235,13 +236,13 @@ export default function BudgetTracker() {
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-xs font-semibold"
+                  className="btn-gradient-outline px-4 py-2 text-xs"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 btn-gradient rounded-lg text-xs font-bold shadow-md"
+                  className="btn-gradient px-4 py-2 text-xs font-bold shadow-md"
                 >
                   Save Budget
                 </button>

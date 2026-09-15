@@ -37,12 +37,20 @@ public class InvestmentService {
 
     public List<Investment> getInvestments() {
         User user = authService.getCurrentUser();
+        if ("FINANCIAL_ADVISOR".equalsIgnoreCase(user.getRole()) || "ADMIN".equalsIgnoreCase(user.getRole())) {
+            return investmentRepository.findAll();
+        }
         return investmentRepository.findByUserId(user.getId());
     }
 
     public Map<String, Object> getAssetAllocation() {
         User user = authService.getCurrentUser();
-        List<Investment> list = investmentRepository.findByUserId(user.getId());
+        List<Investment> list;
+        if ("FINANCIAL_ADVISOR".equalsIgnoreCase(user.getRole()) || "ADMIN".equalsIgnoreCase(user.getRole())) {
+            list = investmentRepository.findAll();
+        } else {
+            list = investmentRepository.findByUserId(user.getId());
+        }
 
         BigDecimal total = BigDecimal.ZERO;
         Map<String, BigDecimal> breakdown = new HashMap<>();

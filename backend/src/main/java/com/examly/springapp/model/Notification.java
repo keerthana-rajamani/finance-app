@@ -1,5 +1,6 @@
 package com.examly.springapp.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -23,6 +24,7 @@ public class Notification {
     @Column(length = 40)
     private String type; // BUDGET_ALERT, BILL_DUE, GOAL_MILESTONE, SYNC_ALERT
 
+    @JsonProperty("isRead")
     private Boolean isRead = false;
 
     private LocalDateTime createdAt = LocalDateTime.now();
@@ -51,8 +53,14 @@ public class Notification {
     public String getType() { return type; }
     public void setType(String type) { this.type = type; }
 
-    public Boolean getIsRead() { return isRead; }
+    @JsonProperty("isRead")
+    public Boolean getIsRead() { return isRead != null && isRead; }
+
+    @JsonProperty("isRead")
     public void setIsRead(Boolean isRead) { this.isRead = isRead; }
+
+    @JsonProperty("read")
+    public Boolean isRead() { return isRead != null && isRead; }
 
     public LocalDateTime getCreatedAt() { return createdAt; }
     public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }

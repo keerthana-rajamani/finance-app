@@ -29,8 +29,15 @@ public class NetWorthService {
     public Map<String, Object> getNetWorthSummary() {
         User user = authService.getCurrentUser();
 
-        List<Account> accounts = accountRepository.findByUserIdAndIsActiveTrue(user.getId());
-        List<Investment> investments = investmentRepository.findByUserId(user.getId());
+        List<Account> accounts;
+        List<Investment> investments;
+        if ("FINANCIAL_ADVISOR".equalsIgnoreCase(user.getRole()) || "ADMIN".equalsIgnoreCase(user.getRole())) {
+            accounts = accountRepository.findAll();
+            investments = investmentRepository.findAll();
+        } else {
+            accounts = accountRepository.findByUserIdAndIsActiveTrue(user.getId());
+            investments = investmentRepository.findByUserId(user.getId());
+        }
 
         BigDecimal liquidCash = BigDecimal.ZERO;
         BigDecimal liabilities = BigDecimal.ZERO;

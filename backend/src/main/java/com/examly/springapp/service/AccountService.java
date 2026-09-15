@@ -56,7 +56,7 @@ public class AccountService {
     public List<Account> getAccounts() {
         User user = authService.getCurrentUser();
         List<Account> accounts;
-        if ("ADMIN".equalsIgnoreCase(user.getRole())) {
+        if ("ADMIN".equalsIgnoreCase(user.getRole()) || "SUPPORT".equalsIgnoreCase(user.getRole())) {
             accounts = accountRepository.findAll();
         } else {
             accounts = accountRepository.findByUserIdAndIsActiveTrue(user.getId());

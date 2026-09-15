@@ -74,39 +74,39 @@ ADVANCE TAX SCHEDULE:
     <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg">
+        <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold text-slate-900">Income Tax & Capital Gains Summary</h1>
-              <span className="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-0.5 rounded-full">
+              <h1 className="text-2xl font-extrabold text-slate-900">Income Tax & Capital Gains Summary</h1>
+              <span className="theme-badge font-black text-xs">
                 {tax?.financialYear}
               </span>
             </div>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-slate-600 mt-1 font-medium">
               Automated capital gains calculation (LTCG/STCG), 80C deductions tracker, and advance tax calendar
             </p>
           </div>
           <button
             onClick={downloadTaxReport}
-            className="inline-flex items-center gap-2 px-4 py-2.5 btn-gradient text-xs font-bold rounded-lg shadow-md transition-all"
+            className="btn-gradient text-xs py-2.5 px-4 shadow-md"
           >
             <Download className="w-4 h-4 text-slate-900" /> Download Tax Report
           </button>
         </div>
 
         {/* Section 80C Deduction Tracker Card (FR11) */}
-        <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg space-y-4">
+        <div className="theme-card p-6 space-y-4">
           <div className="flex justify-between items-center">
             <div>
-              <h2 className="text-base font-bold text-slate-900">Section 80C Deductions Headroom</h2>
-              <p className="text-xs text-slate-500">ELSS Mutual Funds, PPF, EPF, Life Insurance Premium, Home Loan Principal</p>
+              <h2 className="text-base font-extrabold text-slate-900">Section 80C Deductions Headroom</h2>
+              <p className="text-xs text-slate-600 font-medium">ELSS Mutual Funds, PPF, EPF, Life Insurance Premium, Home Loan Principal</p>
             </div>
-            <span className="text-sm font-bold text-slate-800">
+            <span className="text-sm font-black text-slate-900">
               ₹{eligible80c.toLocaleString('en-IN')} / ₹{limit80c.toLocaleString('en-IN')}
             </span>
           </div>
 
-          <div className="w-full h-3 rounded-full bg-slate-100 overflow-hidden">
+          <div className="w-full h-3 rounded-full bg-slate-100 overflow-hidden border border-[#DB5375]/20">
             <div
               className="h-full bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] rounded-full transition-all duration-500"
               style={{ width: `${Math.min((eligible80c / limit80c) * 100, 100)}%` }}
@@ -114,15 +114,15 @@ ADVANCE TAX SCHEDULE:
           </div>
 
           {headroom80c > 0 ? (
-            <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl flex items-center gap-2 text-amber-800 text-xs">
-              <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+            <div className="p-3 bg-gradient-to-r from-[#DB5375]/15 to-[#B3FFB3]/25 border border-[#DB5375]/30 rounded-xl flex items-center gap-2 text-slate-900 text-xs">
+              <AlertTriangle className="w-4 h-4 flex-shrink-0 text-[#DB5375]" />
               <span>
                 <strong>Tax Opportunity:</strong> You still have <strong>₹{headroom80c.toLocaleString('en-IN')}</strong> in unused 80C headroom. Investing in ELSS before March 31 can save up to ₹{(headroom80c * 0.3).toFixed(0)} in taxes.
               </span>
             </div>
           ) : (
-            <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2 text-emerald-800 text-xs">
-              <CheckCircle className="w-4 h-4 flex-shrink-0" />
+            <div className="p-3 bg-[#B3FFB3]/50 border border-[#B3FFB3] rounded-xl flex items-center gap-2 text-slate-900 text-xs font-semibold">
+              <CheckCircle className="w-4 h-4 flex-shrink-0 text-[#065f46]" />
               <span>Section 80C limit of ₹1,50,000 is fully exhausted! Maximum tax benefit achieved.</span>
             </div>
           )}
@@ -130,68 +130,68 @@ ADVANCE TAX SCHEDULE:
 
         {/* Income Breakdown & Computation Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg space-y-3 text-xs">
-            <h2 className="text-base font-bold text-slate-900 mb-2">Gross Income Breakdown</h2>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600">Estimated Annual Salary</span>
+          <div className="theme-card p-6 space-y-3 text-xs">
+            <h2 className="text-base font-extrabold text-slate-900 mb-2">Gross Income Breakdown</h2>
+            <div className="flex justify-between py-2 border-b border-[#DB5375]/15">
+              <span className="text-slate-600 font-medium">Estimated Annual Salary</span>
               <strong className="text-slate-900">₹{Number(tax?.grossIncome).toLocaleString('en-IN')}</strong>
             </div>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600">Savings & Deposit Interest (Schedule OS)</span>
+            <div className="flex justify-between py-2 border-b border-[#DB5375]/15">
+              <span className="text-slate-600 font-medium">Savings & Deposit Interest (Schedule OS)</span>
               <strong className="text-slate-900">₹{Number(tax?.interestIncome).toLocaleString('en-IN')}</strong>
             </div>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600">Short-Term Capital Gains (STCG @ 20%)</span>
+            <div className="flex justify-between py-2 border-b border-[#DB5375]/15">
+              <span className="text-slate-600 font-medium">Short-Term Capital Gains (STCG @ 20%)</span>
               <strong className="text-slate-900">₹{Number(tax?.stcg).toLocaleString('en-IN')}</strong>
             </div>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600">Long-Term Capital Gains (LTCG @ 12.5%)</span>
+            <div className="flex justify-between py-2 border-b border-[#DB5375]/15">
+              <span className="text-slate-600 font-medium">Long-Term Capital Gains (LTCG @ 12.5%)</span>
               <strong className="text-slate-900">₹{Number(tax?.ltcg).toLocaleString('en-IN')}</strong>
             </div>
-            <div className="flex justify-between py-2 text-emerald-700 font-bold">
+            <div className="flex justify-between py-2 text-[#a82948] font-black">
               <span>Standard Deduction</span>
               <span>-₹{Number(tax?.standardDeduction).toLocaleString('en-IN')}</span>
             </div>
           </div>
 
-          <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg space-y-3 text-xs">
-            <h2 className="text-base font-bold text-slate-900 mb-2">Net Tax Liability Summary</h2>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600">Net Taxable Income</span>
-              <strong className="text-slate-900 text-sm">₹{Number(tax?.taxableIncome).toLocaleString('en-IN')}</strong>
+          <div className="theme-card p-6 space-y-3 text-xs">
+            <h2 className="text-base font-extrabold text-slate-900 mb-2">Net Tax Liability Summary</h2>
+            <div className="flex justify-between py-2 border-b border-[#DB5375]/15">
+              <span className="text-slate-600 font-medium">Net Taxable Income</span>
+              <strong className="text-slate-900 text-sm font-black">₹{Number(tax?.taxableIncome).toLocaleString('en-IN')}</strong>
             </div>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600">Calculated Annual Tax</span>
-              <strong className="text-slate-900 text-sm">₹{Number(tax?.estimatedTaxLiability).toLocaleString('en-IN')}</strong>
+            <div className="flex justify-between py-2 border-b border-[#DB5375]/15">
+              <span className="text-slate-600 font-medium">Calculated Annual Tax</span>
+              <strong className="text-[#a82948] text-sm font-black">₹{Number(tax?.estimatedTaxLiability).toLocaleString('en-IN')}</strong>
             </div>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600">Effective Tax Rate</span>
-              <strong className="text-emerald-700">14.2%</strong>
+            <div className="flex justify-between py-2 border-b border-[#DB5375]/15">
+              <span className="text-slate-600 font-medium">Effective Tax Rate</span>
+              <strong className="text-[#065f46] font-extrabold">14.2%</strong>
             </div>
-            <div className="p-3 bg-slate-50 rounded-xl mt-2 text-[11px] text-slate-500">
+            <div className="p-3 bg-gradient-to-r from-white/90 to-[#B3FFB3]/20 border border-[#DB5375]/20 rounded-xl mt-2 text-[11px] text-slate-600 font-medium">
               TDS reconciliation and Form 26AS data validation are performed per RBI/ITD standards.
             </div>
           </div>
         </div>
 
         {/* Advance Tax Schedule (FR11) */}
-        <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg space-y-4">
+        <div className="theme-card p-6 space-y-4">
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-emerald-600" />
-            <h2 className="text-base font-bold text-slate-900">Mandatory Advance Tax Instalment Schedule</h2>
+            <Calendar className="w-4 h-4 text-[#DB5375]" />
+            <h2 className="text-base font-extrabold text-slate-900">Mandatory Advance Tax Instalment Schedule</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {tax?.advanceTaxSchedule?.map((s, idx) => (
-              <div key={idx} className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 space-y-2">
+              <div key={idx} className="p-4 rounded-2xl border-2 border-[#DB5375]/25 bg-gradient-to-br from-white/95 to-[#B3FFB3]/20 space-y-2 shadow-sm">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="font-bold text-slate-800">{s.installment}</span>
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${s.status === 'PAID' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'}`}>
+                  <span className="font-extrabold text-slate-900">{s.installment}</span>
+                  <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold ${s.status === 'PAID' ? 'theme-badge-mint' : 'theme-badge-rose'}`}>
                     {s.status}
                   </span>
                 </div>
-                <p className="text-xs text-slate-500">Due: <strong className="text-slate-700">{s.dueDate}</strong> ({s.percentage}%)</p>
-                <p className="text-base font-extrabold text-slate-900">₹{Number(s.amount).toLocaleString('en-IN')}</p>
+                <p className="text-xs text-slate-600 font-medium">Due: <strong className="text-slate-900">{s.dueDate}</strong> ({s.percentage}%)</p>
+                <p className="text-base font-black text-slate-900">₹{Number(s.amount).toLocaleString('en-IN')}</p>
               </div>
             ))}
           </div>

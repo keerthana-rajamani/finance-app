@@ -26,21 +26,66 @@ body {
 
 @layer components {
   .nav-brand {
-    @apply text-xl font-bold text-slate-900 flex items-center gap-2 hover:opacity-90 transition-opacity;
+    @apply text-xl font-extrabold text-slate-900 flex items-center gap-2 hover:opacity-90 transition-opacity;
   }
   .nav-link {
-    @apply px-3 py-1.5 rounded-xl text-xs font-semibold text-slate-800 hover:text-slate-950 hover:bg-white/70 transition-all;
+    @apply px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-800 hover:text-slate-950 hover:bg-gradient-to-r hover:from-[#DB5375]/15 hover:to-[#B3FFB3]/30 transition-all border border-transparent hover:border-[#DB5375]/25;
   }
   .nav-active {
-    @apply text-slate-950 bg-gradient-to-r from-[#DB5375]/25 to-[#B3FFB3]/60 font-bold shadow-sm border border-[#DB5375]/35;
+    @apply text-slate-950 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] font-black shadow-md border border-white/60 !important;
   }
   .btn-gradient {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] hover:brightness-105 active:scale-[0.98] text-slate-900 font-bold rounded-xl shadow-md shadow-[#DB5375]/25 transition-all;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] hover:brightness-105 active:scale-[0.98] text-slate-900 font-extrabold rounded-xl shadow-lg shadow-[#DB5375]/25 border border-white/40 transition-all cursor-pointer;
+  }
+  .btn-gradient-outline {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white/90 hover:bg-gradient-to-r hover:from-[#DB5375]/15 hover:to-[#B3FFB3]/25 active:scale-[0.98] text-[#a72f4e] font-extrabold rounded-xl border-2 border-[#DB5375] shadow-sm transition-all cursor-pointer;
   }
   .theme-card {
-    @apply bg-white/85 backdrop-blur-md rounded-2xl border border-white/60 shadow-xl hover:shadow-2xl transition-all;
+    @apply bg-white/90 backdrop-blur-md rounded-2xl border-2 border-[#DB5375]/25 shadow-xl hover:shadow-2xl hover:border-[#DB5375]/40 transition-all;
   }
   .theme-badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-gradient-to-r from-[#DB5375]/15 to-[#B3FFB3]/40 text-slate-900 border border-[#DB5375]/30;
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-gradient-to-r from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#89233c] border border-[#DB5375]/35 shadow-sm;
   }
+  .theme-badge-mint {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-[#B3FFB3]/60 text-slate-900 border border-[#B3FFB3] shadow-sm;
+  }
+  .theme-badge-rose {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-[#DB5375] text-white border border-[#DB5375] shadow-sm;
+  }
+  .theme-input {
+    @apply w-full px-3.5 py-2.5 bg-white/95 border-2 border-[#DB5375]/30 rounded-xl text-xs sm:text-sm text-slate-900 font-medium placeholder:text-slate-400 focus:outline-none focus:border-[#DB5375] focus:ring-2 focus:ring-[#DB5375]/30 transition-all;
+  }
+  .theme-table-header {
+    @apply bg-gradient-to-r from-[#DB5375]/20 to-[#B3FFB3]/35 text-slate-900 font-extrabold border-b-2 border-[#DB5375]/30;
+  }
+  .theme-chip {
+    @apply px-3 py-1.5 rounded-full bg-gradient-to-r from-[#DB5375]/10 to-[#B3FFB3]/25 text-slate-800 font-semibold border border-[#DB5375]/30 hover:from-[#DB5375]/25 hover:to-[#B3FFB3]/45 transition-all text-[11px] shadow-sm;
+  }
+}
+
+/* Global scrollbar in theme colors */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(179, 255, 179, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: #DB5375;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a72f4e;
+}
+
+/* Form controls default theme accents */
+input:focus, select:focus, textarea:focus {
+  border-color: #DB5375 !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(219, 83, 117, 0.3) !important;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  accent-color: #DB5375;
 }

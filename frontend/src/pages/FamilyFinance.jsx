@@ -81,52 +81,50 @@ export default function FamilyFinance() {
     <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg">
+        <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900">Family Finance & Shared Budgets</h1>
-            <p className="text-xs text-slate-500 mt-1">
+            <h1 className="text-2xl font-extrabold text-slate-900">Family Finance & Shared Budgets</h1>
+            <p className="text-xs text-slate-600 font-medium mt-1">
               Household multi-user collaboration (up to 5 family members) with granular role-based permissions
             </p>
           </div>
           <button
             onClick={() => setShowModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 btn-gradient text-xs font-bold rounded-lg shadow-md transition-all"
+            className="btn-gradient text-xs font-extrabold"
           >
             <UserPlus className="w-4 h-4 text-slate-900" /> Invite Family Member
           </button>
         </div>
 
         {/* Family Members Grid */}
-        <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg space-y-4">
-          <h2 className="text-base font-bold text-slate-900">Active Family Member Access</h2>
+        <div className="theme-card p-6 space-y-4">
+          <h2 className="text-base font-extrabold text-slate-900">Active Family Member Access</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {members.map((m) => (
-              <div key={m.id} className="p-5 rounded-xl border border-slate-200 bg-slate-50/50 flex flex-col justify-between">
+              <div key={m.id} className="p-5 rounded-2xl border-2 border-[#DB5375]/25 bg-gradient-to-br from-white/95 to-[#B3FFB3]/20 shadow-sm flex flex-col justify-between hover:border-[#DB5375]/40 transition-all">
                 <div>
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="font-bold text-sm text-slate-900">{m.memberName}</h3>
-                      <p className="text-xs text-slate-500">{m.memberEmail}</p>
+                      <h3 className="font-extrabold text-sm text-slate-900">{m.memberName}</h3>
+                      <p className="text-xs text-slate-600">{m.memberEmail}</p>
                     </div>
-                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                      m.status === 'ACTIVE' ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'
-                    }`}>
+                    <span className={m.status === 'ACTIVE' ? 'theme-badge-mint' : 'theme-badge-rose'}>
                       {m.status}
                     </span>
                   </div>
 
-                  <div className="mt-3 space-y-1 text-xs text-slate-600">
-                    <p>Relationship: <strong className="text-slate-800">{m.relationship}</strong></p>
-                    <p>Permission Scope: <strong className="text-emerald-700">{m.accessScope}</strong></p>
+                  <div className="mt-3 space-y-1.5 text-xs text-slate-700 font-medium">
+                    <p>Relationship: <strong className="text-slate-900 font-bold">{m.relationship}</strong></p>
+                    <p>Permission Scope: <strong className="text-[#a82948] font-bold">{m.accessScope}</strong></p>
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-200">
+                <div className="mt-4 pt-3 border-t border-[#DB5375]/20">
                   {m.status === 'ACTIVE' && (
                     <button
                       onClick={() => handleRevoke(m.id)}
-                      className="w-full py-1.5 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg text-xs font-semibold transition-colors flex items-center justify-center gap-1"
+                      className="w-full py-2 bg-rose-50 hover:bg-rose-100 text-[#a82948] rounded-xl text-xs font-bold border border-[#DB5375]/30 transition-colors flex items-center justify-center gap-1.5"
                     >
                       <Trash2 className="w-3.5 h-3.5" /> Revoke Immediate Access
                     </button>
@@ -138,11 +136,11 @@ export default function FamilyFinance() {
         </div>
 
         {/* Expense Split Calculator (FR12) */}
-        <div className="bg-white/95 backdrop-blur-md p-6 rounded-2xl border border-white/60 shadow-lg space-y-4">
-          <h2 className="text-base font-bold text-slate-900">Family Expense Split Calculator</h2>
+        <div className="theme-card p-6 space-y-4">
+          <h2 className="text-base font-extrabold text-slate-900">Family Expense Split Calculator</h2>
           <form onSubmit={calculateSplit} className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs items-end">
             <div>
-              <label className="block text-xs font-medium text-slate-700 mb-1">Total Expense Amount (₹)</label>
+              <label className="block text-xs font-bold text-slate-800 mb-1">Total Expense Amount (₹)</label>
               <input
                 type="number"
                 step="0.01"
@@ -150,33 +148,34 @@ export default function FamilyFinance() {
                 placeholder="4500.00"
                 value={splitAmount}
                 onChange={(e) => setSplitAmount(e.target.value)}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                className="theme-input"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-medium text-slate-700 mb-1">Number of People</label>
+              <label className="block text-xs font-bold text-slate-800 mb-1">Number of People</label>
               <input
                 type="number"
                 min="2"
                 max="10"
                 value={splitCount}
                 onChange={(e) => setSplitCount(parseInt(e.target.value, 10))}
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                className="theme-input"
               />
             </div>
 
             <button
               type="submit"
-              className="py-2.5 px-4 btn-gradient rounded-lg font-bold text-xs shadow-md transition-all"
+              className="btn-gradient w-full h-[42px] text-xs font-extrabold"
             >
               Compute Equitable Share
             </button>
           </form>
 
           {splitResult && (
-            <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800">
-              Each member's equal share is: <strong className="text-base text-emerald-900">₹{splitResult}</strong>
+            <div className="p-4 bg-gradient-to-r from-[#DB5375]/15 to-[#B3FFB3]/35 border-2 border-[#DB5375]/30 rounded-2xl text-xs text-slate-900 font-semibold flex items-center justify-between">
+              <span>Each member's equitable share:</span>
+              <strong className="text-base font-black text-[#89233c]">₹{splitResult}</strong>
             </div>
           )}
         </div>
@@ -184,41 +183,42 @@ export default function FamilyFinance() {
 
       {/* INVITE MODAL */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
-            <h3 className="text-lg font-bold text-slate-900 mb-4">Invite Family Member</h3>
-            <form onSubmit={handleInvite} className="space-y-3">
+        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="relative bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border-2 border-[#DB5375]/30 overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]" />
+            <h3 className="text-xl font-extrabold text-slate-900 mb-4">Invite Family Member</h3>
+            <form onSubmit={handleInvite} className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Full Name</label>
+                <label className="block text-xs font-bold text-slate-800 mb-1">Full Name</label>
                 <input
                   type="text"
                   required
                   placeholder="Sarah Doe"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                  className="theme-input"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Email Address</label>
+                <label className="block text-xs font-bold text-slate-800 mb-1">Email Address</label>
                 <input
                   type="email"
                   required
                   placeholder="sarah@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm"
+                  className="theme-input"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Relationship</label>
+                  <label className="block text-xs font-bold text-slate-800 mb-1">Relationship</label>
                   <select
                     value={relationship}
                     onChange={(e) => setRelationship(e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs"
+                    className="theme-input"
                   >
                     <option value="SPOUSE">Spouse</option>
                     <option value="CHILD">Child / Dependent</option>
@@ -227,11 +227,11 @@ export default function FamilyFinance() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Access Scope</label>
+                  <label className="block text-xs font-bold text-slate-800 mb-1">Access Scope</label>
                   <select
                     value={accessScope}
                     onChange={(e) => setAccessScope(e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg text-xs"
+                    className="theme-input"
                   >
                     <option value="SHARED_BUDGET">Shared Budget Only</option>
                     <option value="VIEW_ONLY">View-Only All Accounts</option>
@@ -240,17 +240,17 @@ export default function FamilyFinance() {
                 </div>
               </div>
 
-              <div className="flex justify-end gap-2 pt-4">
+              <div className="flex justify-end gap-3 pt-4">
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-xs font-semibold"
+                  className="btn-gradient-outline text-xs px-4 py-2"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 btn-gradient rounded-lg text-xs font-bold shadow-md"
+                  className="btn-gradient text-xs px-5 py-2 font-extrabold"
                 >
                   Send Invite
                 </button>

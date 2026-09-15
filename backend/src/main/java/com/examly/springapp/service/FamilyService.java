@@ -26,6 +26,9 @@ public class FamilyService {
 
     public List<FamilyMember> getFamilyMembers() {
         User user = authService.getCurrentUser();
+        if ("FAMILY_MEMBER".equalsIgnoreCase(user.getRole()) || "ADMIN".equalsIgnoreCase(user.getRole())) {
+            return familyMemberRepository.findAll();
+        }
         return familyMemberRepository.findByPrimaryUserId(user.getId());
     }
 

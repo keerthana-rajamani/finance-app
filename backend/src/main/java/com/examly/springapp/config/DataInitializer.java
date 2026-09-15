@@ -43,12 +43,43 @@ public class DataInitializer {
     private NotificationRepository notificationRepository;
 
     @Autowired
+    private com.examly.springapp.repository.AuditLogRepository auditLogRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Bean
     public CommandLineRunner initData() {
         return args -> {
             if (userRepository.count() > 0) {
+                // Ensure all roles have their notifications seeded
+                userRepository.findByEmail("sarah@example.com").ifPresent(f -> {
+                    if (notificationRepository.findByUserIdOrderByCreatedAtDesc(f.getId()).isEmpty()) {
+                        notificationRepository.save(new Notification(f.getId(), "Shared Household Budget", "John Doe updated the household Groceries & Utilities budget to ₹25,000", "BUDGET_ALERT"));
+                        notificationRepository.save(new Notification(f.getId(), "Expense Split Pending", "Airtel Fiber & Electricity bill split of ₹1,125 is pending settlement", "BILL_DUE"));
+                        notificationRepository.save(new Notification(f.getId(), "Family Access Active", "You have Shared Budget collaborator access to the Doe Family Account", "FAMILY_ACCESS"));
+                    }
+                });
+                userRepository.findByEmail("advisor@example.com").ifPresent(adv -> {
+                    if (notificationRepository.findByUserIdOrderByCreatedAtDesc(adv.getId()).isEmpty()) {
+                        notificationRepository.save(new Notification(adv.getId(), "Portfolio Alert (+3.4%)", "John Doe's equity & mutual fund holdings gained +3.4% this week", "PORTFOLIO_ALERT"));
+                        notificationRepository.save(new Notification(adv.getId(), "Asset Allocation Rebalance", "Client debt allocation is at 12% vs recommended 20% target mix", "ADVISORY_ALERT"));
+                        notificationRepository.save(new Notification(adv.getId(), "SIP Goal Shortfall", "Retirement 2045 milestone requires an additional ₹3,500/mo SIP increase", "GOAL_MILESTONE"));
+                    }
+                });
+                userRepository.findByEmail("support@example.com").ifPresent(sup -> {
+                    if (notificationRepository.findByUserIdOrderByCreatedAtDesc(sup.getId()).isEmpty()) {
+                        notificationRepository.save(new Notification(sup.getId(), "AA Gateway Latency Normal", "RBI Account Aggregator latency within SLA (<45ms) across 4 linked banks", "SYNC_ALERT"));
+                        notificationRepository.save(new Notification(sup.getId(), "Daily Security Audit", "Zero plaintext PII detected. AES-256 at rest and SHA-256 PAN hashing verified", "SECURITY_ALERT"));
+                        notificationRepository.save(new Notification(sup.getId(), "Account Sync Completed", "Scheduled 6-hour polling cycle executed successfully for all active accounts", "SYNC_ALERT"));
+                    }
+                });
+                if (auditLogRepository.count() == 0) {
+                    userRepository.findByEmail("john@example.com").ifPresent(u -> {
+                        auditLogRepository.save(new AuditLog(u.getId(), u.getEmail(), "USER", "USER_LOGIN", "AUTH", "192.168.1.101"));
+                        auditLogRepository.save(new AuditLog(u.getId(), u.getEmail(), "USER", "ACCOUNT_SYNC", "HDFC_BANK_4521", "192.168.1.101"));
+                    });
+                }
                 return;
             }
 
@@ -201,10 +232,33 @@ public class DataInitializer {
             fm.setStatus("ACTIVE");
             familyMemberRepository.save(fm);
 
-            // 9. Seed Notifications
+            // 9. Seed Role-Specific Notifications (FR1 - FR3 & FR16)
+            // Primary User (USER)
             notificationRepository.save(new Notification(user.getId(), "Budget Alert (Shopping)", "You have exceeded your monthly Shopping budget of ₹10,000 (Current spend: ₹10,200)", "BUDGET_ALERT"));
             notificationRepository.save(new Notification(user.getId(), "Bill Due in 3 Days", "Bescom Electricity Bill of ₹1,650 is due on " + LocalDate.now().plusDays(3), "BILL_DUE"));
             notificationRepository.save(new Notification(user.getId(), "Goal Milestone", "You have reached 70% of your Emergency Fund goal!", "GOAL_MILESTONE"));
+
+            // Family Member (FAMILY_MEMBER)
+            notificationRepository.save(new Notification(family.getId(), "Shared Household Budget", "John Doe updated the household Groceries & Utilities budget to ₹25,000", "BUDGET_ALERT"));
+            notificationRepository.save(new Notification(family.getId(), "Expense Split Pending", "Airtel Fiber & Electricity bill split of ₹1,125 is pending settlement", "BILL_DUE"));
+            notificationRepository.save(new Notification(family.getId(), "Family Access Active", "You have Shared Budget collaborator access to the Doe Family Account", "FAMILY_ACCESS"));
+
+            // Financial Advisor (FINANCIAL_ADVISOR)
+            notificationRepository.save(new Notification(advisor.getId(), "Portfolio Alert (+3.4%)", "John Doe's equity & mutual fund holdings gained +3.4% this week", "PORTFOLIO_ALERT"));
+            notificationRepository.save(new Notification(advisor.getId(), "Asset Allocation Rebalance", "Client debt allocation is at 12% vs recommended 20% target mix", "ADVISORY_ALERT"));
+            notificationRepository.save(new Notification(advisor.getId(), "SIP Goal Shortfall", "Retirement 2045 milestone requires an additional ₹3,500/mo SIP increase", "GOAL_MILESTONE"));
+
+            // Support Agent (SUPPORT)
+            notificationRepository.save(new Notification(support.getId(), "AA Gateway Latency Normal", "RBI Account Aggregator latency within SLA (<45ms) across 4 linked banks", "SYNC_ALERT"));
+            notificationRepository.save(new Notification(support.getId(), "Daily Security Audit", "Zero plaintext PII detected. AES-256 at rest and SHA-256 PAN hashing verified", "SECURITY_ALERT"));
+            notificationRepository.save(new Notification(support.getId(), "Account Sync Completed", "Scheduled 6-hour polling cycle executed successfully for all active accounts", "SYNC_ALERT"));
+
+            // 10. Seed Initial System Audit Logs
+            auditLogRepository.save(new AuditLog(user.getId(), user.getEmail(), "USER", "USER_LOGIN", "AUTH", "192.168.1.101"));
+            auditLogRepository.save(new AuditLog(user.getId(), user.getEmail(), "USER", "ACCOUNT_SYNC", "HDFC_BANK_4521", "192.168.1.101"));
+            auditLogRepository.save(new AuditLog(family.getId(), family.getEmail(), "FAMILY_MEMBER", "USER_LOGIN", "AUTH", "192.168.1.104"));
+            auditLogRepository.save(new AuditLog(advisor.getId(), advisor.getEmail(), "FINANCIAL_ADVISOR", "PORTFOLIO_REVIEW", "INVESTMENTS", "10.0.4.22"));
+            auditLogRepository.save(new AuditLog(support.getId(), support.getEmail(), "SUPPORT", "SYSTEM_HEALTH_CHECK", "GATEWAY_AA", "127.0.0.1"));
         };
     }
 

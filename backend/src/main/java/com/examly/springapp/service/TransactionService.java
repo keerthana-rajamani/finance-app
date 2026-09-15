@@ -44,7 +44,9 @@ public class TransactionService {
 
     public List<Transaction> getTransactions(String category, String merchant, String type) {
         User user = authService.getCurrentUser();
-        List<Transaction> list = transactionRepository.findByUserIdOrderByTxnDateDesc(user.getId());
+        List<Transaction> list = ("FAMILY_MEMBER".equalsIgnoreCase(user.getRole()) || "ADMIN".equalsIgnoreCase(user.getRole()))
+                ? transactionRepository.findAll()
+                : transactionRepository.findByUserIdOrderByTxnDateDesc(user.getId());
 
         return list.stream()
                 .filter(t -> category == null || category.isBlank() || t.getCategory().equalsIgnoreCase(category))

@@ -104,7 +104,16 @@ export const analyticsApi = {
 
 export const notificationApi = {
   getNotifications: () => api.get('/notifications'),
-  markAsRead: (id) => api.put(`/notifications/${id}/read`)
+  markAsRead: (id) => api.put(`/notifications/${id}/read`),
+  markAllAsRead: () => api.put('/notifications/read-all'),
+  deleteNotification: (id) => api.delete(`/notifications/${id}`),
+  clearAll: () => api.delete('/notifications')
+};
+
+export const supportApi = {
+  getSystemStatus: () => api.get('/support/system-status'),
+  getAuditLogs: () => api.get('/support/audit-logs'),
+  resyncAccount: (accountId) => api.post(`/support/resync/${accountId}`)
 };
 
 export default api;

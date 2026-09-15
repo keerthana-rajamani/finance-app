@@ -23,9 +23,36 @@ public class NotificationService {
     }
 
     public void markAsRead(Long id) {
+        User user = authService.getCurrentUser();
         notificationRepository.findById(id).ifPresent(n -> {
-            n.setIsRead(true);
-            notificationRepository.save(n);
+            if (n.getUserId().equals(user.getId())) {
+                n.setIsRead(true);
+                notificationRepository.save(n);
+            }
         });
+    }
+
+    public void markAllAsRead() {
+        User user = authService.getCurrentUser();
+        List<Notification> list = notificationRepository.findByUserIdOrderByCreatedAtDesc(user.getId());
+        for (Notification n : list) {
+            n.setIsRead(true);
+        }
+        notificationRepository.saveAll(list);
+    }
+
+    public void deleteNotification(Long id) {
+        User user = authService.getCurrentUser();
+        notificationRepository.findById(id).ifPresent(n -> {
+            if (n.getUserId().equals(user.getId())) {
+                notificationRepository.delete(n);
+            }
+        });
+    }
+
+    public void clearAll() {
+        User user = authService.getCurrentUser();
+        List<Notification> list = notificationRepository.findByUserIdOrderByCreatedAtDesc(user.getId());
+        notificationRepository.deleteAll(list);
     }
 }

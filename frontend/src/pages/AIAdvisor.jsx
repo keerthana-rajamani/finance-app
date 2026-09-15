@@ -85,7 +85,7 @@ export default function AIAdvisor() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-transparent">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#0E7490]"></div>
       </div>
     );
   }
@@ -97,17 +97,17 @@ export default function AIAdvisor() {
     <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
-        <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 floating-card">
           <div>
             <div className="flex items-center gap-2">
-              <Sparkles className="w-6 h-6 text-[#DB5375]" />
-              <h1 className="text-2xl font-extrabold text-slate-900">AI Financial Advisor & Intelligence</h1>
+              <Sparkles className="w-6 h-6 text-[#0E7490]" />
+              <h1 className="text-2xl font-extrabold text-[#082F49]">AI Financial Advisor & Intelligence</h1>
               <span className="theme-badge font-extrabold text-xs">
-                <span className="w-2 h-2 rounded-full bg-[#DB5375] animate-pulse mr-1"></span>
+                <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse mr-1"></span>
                 Active
               </span>
             </div>
-            <p className="text-xs text-slate-600 mt-1 font-medium">
+            <p className="text-xs text-[#082F49]/70 mt-1 font-medium">
               Personalized health scoring (0–850), 50-30-20 budget models, debt avalanche optimizer, and conversational NLP
             </p>
           </div>
@@ -117,28 +117,28 @@ export default function AIAdvisor() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Health Score Card (FR15) */}
           <div className="theme-card p-6 space-y-4 floating-card">
-            <h2 className="text-base font-extrabold text-slate-900">Financial Health Score</h2>
+            <h2 className="text-base font-extrabold text-[#082F49]">Financial Health Score</h2>
             <div className="flex items-center gap-6">
-              <div className="w-32 h-32 rounded-full border-8 border-[#DB5375] flex flex-col items-center justify-center shadow-lg bg-white">
-                <span className="text-3xl font-black text-slate-900">{score}</span>
-                <span className="text-[10px] uppercase font-black text-[#DB5375] tracking-wider">/ 850</span>
+              <div className="w-32 h-32 rounded-full border-8 border-[#0E7490] flex flex-col items-center justify-center shadow-lg bg-[#F0FDFF]">
+                <span className="text-3xl font-black text-[#082F49]">{score}</span>
+                <span className="text-[10px] uppercase font-black text-[#0E7490] tracking-wider">/ 850</span>
               </div>
-              <div className="space-y-1.5 text-xs text-slate-700">
-                <p>Rating: <strong className="text-[#065f46] font-black">{insights?.rating}</strong></p>
-                <p>Savings Rate: <strong className="text-slate-900 font-bold">{insights?.savingsRate}%</strong></p>
-                <p>Emergency Fund: <strong className="text-slate-900 font-bold">3.5 months covered</strong></p>
-                <p className="text-[11px] text-slate-600 mt-2 font-medium">
+              <div className="space-y-1.5 text-xs text-[#082F49]">
+                <p>Rating: <strong className="text-[#22C55E] font-black">{insights?.rating}</strong></p>
+                <p>Savings Rate: <strong className="text-[#082F49] font-bold">{insights?.savingsRate}%</strong></p>
+                <p>Emergency Fund: <strong className="text-[#082F49] font-bold">3.5 months covered</strong></p>
+                <p className="text-[11px] text-[#082F49]/70 mt-2 font-medium">
                   Scores 750+ unlock lower loan interest rates and enhanced credit card pre-approvals.
                 </p>
               </div>
             </div>
 
             {/* Tips */}
-            <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1 text-xs">
-              <p className="font-extrabold text-slate-900 flex items-center gap-1">
-                <Lightbulb className="w-3.5 h-3.5 text-[#DB5375]" /> Personalized Money Tip:
+            <div className="p-3.5 bg-[#BAE6FD]/30 border border-[#BAE6FD] rounded-xl space-y-1 text-xs">
+              <p className="font-extrabold text-[#082F49] flex items-center gap-1">
+                <Lightbulb className="w-3.5 h-3.5 text-[#0E7490]" /> Personalized Money Tip:
               </p>
-              <p className="text-slate-700 leading-relaxed font-medium">
+              <p className="text-[#082F49]/80 leading-relaxed font-medium">
                 {insights?.tips?.[0] || "Maintain at least 3 months of essential fixed expenses in an instant-access liquid fund."}
               </p>
             </div>
@@ -146,39 +146,39 @@ export default function AIAdvisor() {
 
           {/* 50-30-20 Rule Breakdown (FR15) */}
           <div className="theme-card p-6 space-y-4 text-xs floating-card">
-            <h2 className="text-base font-extrabold text-slate-900">50-30-20 Budget Optimization</h2>
-            <p className="text-slate-600 text-xs font-medium">
+            <h2 className="text-base font-extrabold text-[#082F49]">50-30-20 Budget Optimization</h2>
+            <p className="text-[#082F49]/70 text-xs font-medium">
               Based on monthly recorded income of ₹{Number(insights?.totalIncome || 125000).toLocaleString('en-IN')}:
             </p>
 
             <div className="space-y-3">
               <div>
-                <div className="flex justify-between font-bold mb-1 text-slate-800">
+                <div className="flex justify-between font-bold mb-1 text-[#082F49]">
                   <span>50% Needs (Rent, Utilities, Groceries)</span>
                   <span>Target: ₹{Number(rule?.needsTarget || 62500).toLocaleString('en-IN')}</span>
                 </div>
-                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden border border-slate-200">
-                  <div className="h-full bg-[#DB5375] rounded-full" style={{ width: '50%' }}></div>
+                <div className="w-full h-2 rounded-full bg-[#BAE6FD]/30 overflow-hidden border border-[#BAE6FD]">
+                  <div className="h-full bg-[#0E7490] rounded-full" style={{ width: '50%' }}></div>
                 </div>
               </div>
 
               <div>
-                <div className="flex justify-between font-bold mb-1 text-slate-800">
+                <div className="flex justify-between font-bold mb-1 text-[#082F49]">
                   <span>30% Wants (Dining, Shopping, Movies)</span>
                   <span>Target: ₹{Number(rule?.wantsTarget || 37500).toLocaleString('en-IN')}</span>
                 </div>
-                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden border border-slate-200">
-                  <div className="h-full bg-amber-400 rounded-full" style={{ width: '30%' }}></div>
+                <div className="w-full h-2 rounded-full bg-[#BAE6FD]/30 overflow-hidden border border-[#BAE6FD]">
+                  <div className="h-full bg-[#082F49] rounded-full" style={{ width: '30%' }}></div>
                 </div>
               </div>
 
               <div>
-                <div className="flex justify-between font-bold mb-1 text-slate-800">
+                <div className="flex justify-between font-bold mb-1 text-[#082F49]">
                   <span>20% Savings & Debt Repayment</span>
                   <span>Target: ₹{Number(rule?.savingsTarget || 25000).toLocaleString('en-IN')}</span>
                 </div>
-                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden border border-slate-200">
-                  <div className="h-full bg-[#4ade80] rounded-full" style={{ width: '20%' }}></div>
+                <div className="w-full h-2 rounded-full bg-[#BAE6FD]/30 overflow-hidden border border-[#BAE6FD]">
+                  <div className="h-full bg-[#22C55E] rounded-full" style={{ width: '20%' }}></div>
                 </div>
               </div>
             </div>
@@ -187,24 +187,24 @@ export default function AIAdvisor() {
 
         {/* Debt Avalanche vs Snowball Comparison Box (FR15) */}
         <div className="theme-card p-6 space-y-4 floating-card">
-          <h2 className="text-base font-extrabold text-slate-900">Debt Pay-off Optimizer</h2>
+          <h2 className="text-base font-extrabold text-[#082F49]">Debt Pay-off Optimizer</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-            <div className="p-4 bg-white/95 rounded-2xl border border-slate-200 space-y-2 shadow-sm hover:-translate-y-1 transition-all">
-              <h3 className="font-extrabold text-sm text-slate-900">Debt Avalanche Strategy (Recommended)</h3>
-              <p className="text-slate-600 font-medium">
+            <div className="p-4 bg-[#F0FDFF]/90 rounded-2xl border border-[#BAE6FD] space-y-2 shadow-sm hover:-translate-y-1 transition-all">
+              <h3 className="font-extrabold text-sm text-[#082F49]">Debt Avalanche Strategy (Recommended)</h3>
+              <p className="text-[#082F49]/70 font-medium">
                 Prioritize paying off liabilities with the highest interest rates first (e.g. Axis Credit Card @ 42% APR).
               </p>
-              <div className="p-2 bg-emerald-50 text-emerald-800 font-extrabold rounded-lg border border-emerald-200">
+              <div className="p-2 bg-[#22C55E]/15 text-[#15803d] font-extrabold rounded-lg border border-[#22C55E]/30">
                 Saves: ₹14,800 in total interest over 12 months
               </div>
             </div>
 
-            <div className="p-4 bg-white/95 rounded-2xl border border-slate-200 space-y-2 shadow-sm hover:-translate-y-1 transition-all">
-              <h3 className="font-extrabold text-sm text-slate-900">Debt Snowball Strategy</h3>
-              <p className="text-slate-600 font-medium">
+            <div className="p-4 bg-[#F0FDFF]/90 rounded-2xl border border-[#BAE6FD] space-y-2 shadow-sm hover:-translate-y-1 transition-all">
+              <h3 className="font-extrabold text-sm text-[#082F49]">Debt Snowball Strategy</h3>
+              <p className="text-[#082F49]/70 font-medium">
                 Prioritize paying off the smallest balance first for psychological momentum (e.g. Personal Microloan @ ₹12,000).
               </p>
-              <div className="p-2 bg-rose-50 text-[#DB5375] font-extrabold rounded-lg border border-rose-200">
+              <div className="p-2 bg-[#BAE6FD]/40 text-[#0E7490] font-extrabold rounded-lg border border-[#BAE6FD]">
                 Achieves: First debt cleared in 2.5 months
               </div>
             </div>
@@ -215,12 +215,12 @@ export default function AIAdvisor() {
         <div className="theme-card p-6 space-y-4 floating-card">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
-              <Bot className="w-5 h-5 text-[#DB5375]" />
-              <h2 className="text-base font-extrabold text-slate-900">Interactive AI Financial Assistant</h2>
+              <Bot className="w-5 h-5 text-[#0E7490]" />
+              <h2 className="text-base font-extrabold text-[#082F49]">Interactive AI Financial Assistant</h2>
             </div>
             <button
               onClick={clearChat}
-              className="text-xs text-slate-600 hover:text-[#DB5375] font-semibold flex items-center gap-1 transition-colors"
+              className="text-xs text-[#082F49]/60 hover:text-[#0E7490] font-semibold flex items-center gap-1 transition-colors"
               title="Reset Chat"
             >
               <RotateCcw className="w-3.5 h-3.5" /> Clear History
@@ -228,36 +228,36 @@ export default function AIAdvisor() {
           </div>
 
           {/* Chat transcript */}
-          <div className="bg-slate-50/90 rounded-2xl p-4 h-80 overflow-y-auto space-y-3 border border-slate-200 shadow-inner">
+          <div className="bg-[#F0FDFF]/60 rounded-2xl p-4 h-80 overflow-y-auto space-y-3 border border-[#BAE6FD] shadow-inner">
             {messages.map((m, idx) => (
               <div
                 key={idx}
                 className={`flex gap-2.5 ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {m.sender === 'bot' && (
-                  <div className="w-7 h-7 rounded-full bg-rose-50 text-[#DB5375] flex items-center justify-center flex-shrink-0 text-xs shadow-sm border border-rose-200">
+                  <div className="w-7 h-7 rounded-full bg-[#BAE6FD]/40 text-[#0E7490] flex items-center justify-center flex-shrink-0 text-xs shadow-sm border border-[#BAE6FD]">
                     <Bot className="w-4 h-4" />
                   </div>
                 )}
                 <div
                   className={`p-3 rounded-2xl max-w-xl text-xs leading-relaxed whitespace-pre-line ${
                     m.sender === 'user'
-                      ? 'bg-[#DB5375] text-white rounded-br-none shadow-md font-semibold'
-                      : 'bg-white text-slate-800 border border-slate-200 shadow-md rounded-bl-none font-medium'
+                      ? 'bg-[#0E7490] text-white rounded-br-none shadow-md font-semibold'
+                      : 'bg-white text-[#082F49] border border-[#BAE6FD] shadow-sm rounded-bl-none font-medium'
                   }`}
                 >
                   {m.text}
                 </div>
                 {m.sender === 'user' && (
-                  <div className="w-7 h-7 rounded-full bg-[#DB5375] text-white flex items-center justify-center flex-shrink-0 text-xs shadow-sm">
+                  <div className="w-7 h-7 rounded-full bg-[#082F49] text-white flex items-center justify-center flex-shrink-0 text-xs shadow-sm">
                     <User className="w-4 h-4" />
                   </div>
                 )}
               </div>
             ))}
             {chatLoading && (
-              <div className="flex gap-2 items-center text-xs text-[#a82948] font-bold bg-[#DB5375]/10 p-2.5 rounded-xl border border-[#DB5375]/30 w-fit">
-                <Bot className="w-4 h-4 animate-spin text-[#DB5375]" /> Analyzing your financial data...
+              <div className="flex gap-2 items-center text-xs text-[#0E7490] font-bold bg-[#BAE6FD]/30 p-2.5 rounded-xl border border-[#BAE6FD] w-fit">
+                <Bot className="w-4 h-4 animate-spin text-[#0E7490]" /> Analyzing your financial data...
               </div>
             )}
             <div ref={chatBottomRef} />
@@ -265,7 +265,7 @@ export default function AIAdvisor() {
 
           {/* Quick-Prompt Chips */}
           <div>
-            <p className="text-[11px] font-extrabold text-[#89233c] uppercase tracking-wider mb-2">
+            <p className="text-[11px] font-extrabold text-[#082F49] uppercase tracking-wider mb-2">
               Suggested Financial Queries (Click to Ask):
             </p>
             <div className="flex flex-wrap gap-2 text-xs">
@@ -333,9 +333,9 @@ export default function AIAdvisor() {
             <button
               type="submit"
               disabled={chatLoading || !inputQuery.trim()}
-              className="btn-gradient px-5 py-2.5 text-xs"
+              className="btn-gradient px-5 py-2.5 text-xs text-white"
             >
-              <Send className="w-3.5 h-3.5 text-slate-900" /> Send
+              <Send className="w-3.5 h-3.5 text-white" /> Send
             </button>
           </form>
         </div>

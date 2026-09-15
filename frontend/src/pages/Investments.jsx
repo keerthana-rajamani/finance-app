@@ -62,7 +62,7 @@ export default function Investments() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-transparent">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#0E7490]"></div>
       </div>
     );
   }
@@ -74,10 +74,10 @@ export default function Investments() {
     <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
-        <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 floating-card">
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">Investment Portfolio & Asset Allocation</h1>
-            <p className="text-xs text-slate-600 mt-1 font-medium">
+            <h1 className="text-2xl font-extrabold text-[#082F49]">Investment Portfolio & Asset Allocation</h1>
+            <p className="text-xs text-[#082F49]/70 mt-1 font-medium">
               DEMAT equity and mutual fund integration via CDSL/NSDL & CAMS statements with XIRR analytics
             </p>
           </div>
@@ -85,74 +85,74 @@ export default function Investments() {
             onClick={() => setShowModal(true)}
             className="btn-gradient text-xs py-2.5 px-4 shadow-md"
           >
-            <PlusCircle className="w-4 h-4 text-slate-900" /> Add Asset / Holding
+            <PlusCircle className="w-4 h-4 text-white" /> Add Asset / Holding
           </button>
         </div>
 
         {/* Portfolio Summary KPI Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="theme-card p-6">
-            <span className="text-xs font-semibold text-slate-500 uppercase">Total Portfolio Valuation</span>
-            <h2 className="text-3xl font-black text-slate-900 mt-2">
+          <div className="theme-card p-6 floating-card hover:-translate-y-1 transition-all">
+            <span className="text-xs font-semibold text-[#082F49]/60 uppercase">Total Portfolio Valuation</span>
+            <h2 className="text-3xl font-black text-[#082F49] mt-2">
               ₹{Number(allocation?.totalInvestmentValue || 0).toLocaleString('en-IN')}
             </h2>
-            <p className="text-xs text-slate-600 mt-2 font-medium">Across {investments.length} active holdings</p>
+            <p className="text-xs text-[#082F49]/70 mt-2 font-medium">Across {investments.length} active holdings</p>
           </div>
 
-          <div className="theme-card p-6">
-            <span className="text-xs font-semibold text-slate-500 uppercase">Consolidated XIRR</span>
-            <h2 className="text-3xl font-black text-[#a82948] mt-2">
+          <div className="theme-card p-6 floating-card hover:-translate-y-1 transition-all">
+            <span className="text-xs font-semibold text-[#082F49]/60 uppercase">Consolidated XIRR</span>
+            <h2 className="text-3xl font-black text-[#0E7490] mt-2">
               {allocation?.overallXIRR || '13.8%'}
             </h2>
-            <p className="text-xs text-slate-600 mt-2 font-medium">Outperforming Nifty 50 benchmark (11.4%)</p>
+            <p className="text-xs text-[#082F49]/70 mt-2 font-medium">Outperforming Nifty 50 benchmark (11.4%)</p>
           </div>
 
-          <div className="theme-card p-6">
-            <span className="text-xs font-semibold text-slate-500 uppercase">Total Consolidated Net Worth</span>
-            <h2 className="text-3xl font-black text-slate-900 mt-2">
+          <div className="theme-card p-6 floating-card hover:-translate-y-1 transition-all">
+            <span className="text-xs font-semibold text-[#082F49]/60 uppercase">Total Consolidated Net Worth</span>
+            <h2 className="text-3xl font-black text-[#082F49] mt-2">
               ₹{netWorth ? Number(netWorth.netWorth).toLocaleString('en-IN') : '9,45,200'}
             </h2>
-            <p className="text-xs text-slate-600 mt-2 font-medium">Assets: ₹{Number(netWorth?.totalAssets || 0).toLocaleString('en-IN')} • Loans: ₹{Number(netWorth?.totalLiabilities || 0).toLocaleString('en-IN')}</p>
+            <p className="text-xs text-[#082F49]/70 mt-2 font-medium">Assets: ₹{Number(netWorth?.totalAssets || 0).toLocaleString('en-IN')} • Loans: ₹{Number(netWorth?.totalLiabilities || 0).toLocaleString('en-IN')}</p>
           </div>
         </div>
 
         {/* Asset Allocation Breakdown Bar (FR9) */}
-        <div className="theme-card p-6 space-y-4">
-          <h2 className="text-base font-extrabold text-slate-900">Asset Class Allocation</h2>
+        <div className="theme-card p-6 space-y-4 floating-card">
+          <h2 className="text-base font-extrabold text-[#082F49]">Asset Class Allocation</h2>
 
-          <div className="w-full h-4 rounded-full bg-slate-100 flex overflow-hidden border border-[#DB5375]/20">
-            <div style={{ width: `${Math.round(((breakdown.EQUITY || 0) / totalInv) * 100)}%` }} className="bg-[#DB5375] h-full" title="Equity"></div>
-            <div style={{ width: `${Math.round(((breakdown.MUTUAL_FUND || 0) / totalInv) * 100)}%` }} className="bg-[#4ade80] h-full" title="Mutual Funds"></div>
-            <div style={{ width: `${Math.round(((breakdown.GOLD || 0) / totalInv) * 100)}%` }} className="bg-amber-400 h-full" title="Gold"></div>
-            <div style={{ width: `${Math.round(((breakdown.DEBT || 0) / totalInv) * 100)}%` }} className="bg-[#a855f7] h-full" title="Debt"></div>
+          <div className="w-full h-4 rounded-full bg-[#BAE6FD]/30 flex overflow-hidden border border-[#BAE6FD]">
+            <div style={{ width: `${Math.round(((breakdown.EQUITY || 0) / totalInv) * 100)}%` }} className="bg-[#0E7490] h-full" title="Equity"></div>
+            <div style={{ width: `${Math.round(((breakdown.MUTUAL_FUND || 0) / totalInv) * 100)}%` }} className="bg-[#22C55E] h-full" title="Mutual Funds"></div>
+            <div style={{ width: `${Math.round(((breakdown.GOLD || 0) / totalInv) * 100)}%` }} className="bg-[#BAE6FD] h-full" title="Gold"></div>
+            <div style={{ width: `${Math.round(((breakdown.DEBT || 0) / totalInv) * 100)}%` }} className="bg-[#082F49] h-full" title="Debt"></div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs pt-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs pt-2 text-[#082F49]">
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-[#DB5375]"></span>
+              <span className="w-3 h-3 rounded-full bg-[#0E7490]"></span>
               <span>Equity: <strong>₹{Number(breakdown.EQUITY || 0).toLocaleString('en-IN')}</strong></span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-[#4ade80]"></span>
+              <span className="w-3 h-3 rounded-full bg-[#22C55E]"></span>
               <span>Mutual Funds: <strong>₹{Number(breakdown.MUTUAL_FUND || 0).toLocaleString('en-IN')}</strong></span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-amber-400"></span>
+              <span className="w-3 h-3 rounded-full bg-[#BAE6FD] border border-[#0E7490]/40"></span>
               <span>Gold (SGB): <strong>₹{Number(breakdown.GOLD || 0).toLocaleString('en-IN')}</strong></span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-3 h-3 rounded-full bg-[#a855f7]"></span>
+              <span className="w-3 h-3 rounded-full bg-[#082F49]"></span>
               <span>Debt / FD: <strong>₹{Number(breakdown.DEBT || 0).toLocaleString('en-IN')}</strong></span>
             </div>
           </div>
         </div>
 
         {/* Holdings Table */}
-        <div className="theme-card p-6 space-y-4">
-          <h2 className="text-base font-extrabold text-slate-900">Portfolio Holdings & Real-Time NAV</h2>
+        <div className="theme-card p-6 space-y-4 floating-card">
+          <h2 className="text-base font-extrabold text-[#082F49]">Portfolio Holdings & Real-Time NAV</h2>
 
-          <div className="overflow-x-auto rounded-xl border border-[#DB5375]/25">
-            <table className="w-full text-left text-xs text-slate-700">
+          <div className="overflow-x-auto rounded-xl border border-[#BAE6FD]">
+            <table className="w-full text-left text-xs text-[#082F49]">
               <thead className="theme-table-header">
                 <tr>
                   <th className="py-3 px-4">Asset Name</th>
@@ -164,20 +164,20 @@ export default function Investments() {
                   <th className="py-3 px-4 text-right">XIRR (%)</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 bg-white/70">
+              <tbody className="divide-y divide-[#BAE6FD]/40 bg-[#F0FDFF]/50">
                 {investments.map((inv) => (
-                  <tr key={inv.id} className="hover:bg-slate-50/80 transition-colors">
-                    <td className="py-3 px-4 font-extrabold text-slate-900">{inv.assetName}</td>
+                  <tr key={inv.id} className="hover:bg-[#BAE6FD]/20 transition-colors">
+                    <td className="py-3 px-4 font-extrabold text-[#082F49]">{inv.assetName}</td>
                     <td className="py-3 px-4">
                       <span className="theme-badge text-[10px]">
                         {inv.assetType}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-right font-mono font-bold text-slate-800">{Number(inv.units).toFixed(2)}</td>
-                    <td className="py-3 px-4 text-right font-mono font-semibold text-slate-700">₹{Number(inv.buyPrice).toLocaleString('en-IN')}</td>
-                    <td className="py-3 px-4 text-right font-mono font-bold text-slate-900">₹{Number(inv.currentNav).toLocaleString('en-IN')}</td>
-                    <td className="py-3 px-4 text-right font-mono font-black text-[#a82948]">₹{Number(inv.totalValue).toLocaleString('en-IN')}</td>
-                    <td className="py-3 px-4 text-right font-mono font-black text-[#065f46]">+{inv.xirr}%</td>
+                    <td className="py-3 px-4 text-right font-mono font-bold text-[#082F49]/80">{Number(inv.units).toFixed(2)}</td>
+                    <td className="py-3 px-4 text-right font-mono font-semibold text-[#082F49]/70">₹{Number(inv.buyPrice).toLocaleString('en-IN')}</td>
+                    <td className="py-3 px-4 text-right font-mono font-bold text-[#082F49]">₹{Number(inv.currentNav).toLocaleString('en-IN')}</td>
+                    <td className="py-3 px-4 text-right font-mono font-black text-[#082F49]">₹{Number(inv.totalValue).toLocaleString('en-IN')}</td>
+                    <td className="py-3 px-4 text-right font-mono font-black text-[#22C55E]">+{inv.xirr}%</td>
                   </tr>
                 ))}
               </tbody>
@@ -188,17 +188,17 @@ export default function Investments() {
 
       {/* ADD INVESTMENT MODAL */}
       {showModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-white/80 relative overflow-hidden fade-in floating-card">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]"></div>
-            <h3 className="text-lg font-extrabold text-slate-900 mb-4 mt-1">Add Portfolio Asset</h3>
+        <div className="fixed inset-0 bg-[#082F49]/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-[#F0FDFF] rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border-2 border-[#BAE6FD] relative overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#0E7490]"></div>
+            <h3 className="text-lg font-extrabold text-[#082F49] mb-4 mt-1">Add Portfolio Asset</h3>
             <form onSubmit={handleAddInvestment} className="space-y-3">
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Asset Class</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Asset Class</label>
                 <select
                   value={assetType}
                   onChange={(e) => setAssetType(e.target.value)}
-                  className="w-full px-3 py-2 border-2 border-[#DB5375]/30 rounded-xl text-xs bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="theme-input text-xs"
                 >
                   <option value="EQUITY">DEMAT Equity (Stock)</option>
                   <option value="MUTUAL_FUND">Mutual Fund Unit</option>
@@ -208,20 +208,20 @@ export default function Investments() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Asset / Scheme Name</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Asset / Scheme Name</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. HDFC Top 100, Infosys Ltd"
                   value={assetName}
                   onChange={(e) => setAssetName(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="theme-input text-xs"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Units / Quantity</label>
+                  <label className="block text-xs font-bold text-[#082F49] mb-1">Units / Quantity</label>
                   <input
                     type="number"
                     step="0.001"
@@ -229,12 +229,12 @@ export default function Investments() {
                     placeholder="10"
                     value={units}
                     onChange={(e) => setUnits(e.target.value)}
-                    className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                    className="theme-input text-xs"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Buy Price per Unit (₹)</label>
+                  <label className="block text-xs font-bold text-[#082F49] mb-1">Buy Price per Unit (₹)</label>
                   <input
                     type="number"
                     step="0.01"
@@ -242,20 +242,20 @@ export default function Investments() {
                     placeholder="1500.00"
                     value={buyPrice}
                     onChange={(e) => setBuyPrice(e.target.value)}
-                    className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                    className="theme-input text-xs"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Current NAV / Market Price (₹)</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Current NAV / Market Price (₹)</label>
                 <input
                   type="number"
                   step="0.01"
                   placeholder="1750.00"
                   value={currentNav}
                   onChange={(e) => setCurrentNav(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="theme-input text-xs"
                 />
               </div>
 

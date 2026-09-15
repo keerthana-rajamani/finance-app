@@ -87,7 +87,7 @@ export default function Goals() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-transparent">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#0E7490]"></div>
       </div>
     );
   }
@@ -98,8 +98,8 @@ export default function Goals() {
         {/* Header */}
         <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">Financial Goals & SIP Planning</h1>
-            <p className="text-xs text-slate-600 mt-1 font-medium">
+            <h1 className="text-2xl font-extrabold text-[#082F49]">Financial Goals & SIP Planning</h1>
+            <p className="text-xs text-[#082F49]/70 mt-1 font-medium">
               Circular progress rings, monthly savings needed calculator, and mutual fund SIP recommendations
             </p>
           </div>
@@ -107,7 +107,7 @@ export default function Goals() {
             onClick={() => setShowModal(true)}
             className="btn-gradient text-xs py-2.5 px-4 shadow-md"
           >
-            <PlusCircle className="w-4 h-4 text-slate-900" /> Create New Goal
+            <PlusCircle className="w-4 h-4 text-white" /> Create New Goal
           </button>
         </div>
 
@@ -124,9 +124,9 @@ export default function Goals() {
                 <div>
                   <div className="flex justify-between items-start mb-4">
                     <div>
-                      <h3 className="font-extrabold text-base text-slate-900">{g.name}</h3>
+                      <h3 className="font-extrabold text-base text-[#082F49]">{g.name}</h3>
                       <span className={`inline-block mt-1 text-[10px] uppercase font-extrabold px-2.5 py-0.5 rounded-full ${
-                        g.priority === 'HIGH' ? 'bg-[#DB5375]/20 text-[#89233c] border border-[#DB5375]/35' : 'bg-[#B3FFB3]/50 text-slate-900 border border-[#B3FFB3]'
+                        g.priority === 'HIGH' ? 'theme-badge-rose' : 'theme-badge-mint'
                       }`}>
                         {g.priority} Priority
                       </span>
@@ -139,7 +139,7 @@ export default function Goals() {
                           cx="48"
                           cy="48"
                           r={radius}
-                          stroke="#f1f5f9"
+                          stroke="#BAE6FD"
                           strokeWidth="8"
                           fill="transparent"
                         />
@@ -147,7 +147,7 @@ export default function Goals() {
                           cx="48"
                           cy="48"
                           r={radius}
-                          stroke="#DB5375"
+                          stroke="#0E7490"
                           strokeWidth="8"
                           fill="transparent"
                           strokeDasharray={circumference}
@@ -157,47 +157,47 @@ export default function Goals() {
                         />
                       </svg>
                       <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <span className="text-sm font-black text-slate-800">{pct}%</span>
+                        <span className="text-sm font-black text-[#082F49]">{pct}%</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Financial Stats */}
-                  <div className="space-y-2 py-3 border-y border-slate-100 text-xs">
-                    <div className="flex justify-between text-slate-600">
+                  <div className="space-y-2 py-3 border-y border-[#BAE6FD]/40 text-xs">
+                    <div className="flex justify-between text-[#082F49]/70">
                       <span>Saved so far:</span>
-                      <strong className="text-slate-900">₹{Number(g.currentAmount).toLocaleString('en-IN')}</strong>
+                      <strong className="text-[#082F49]">₹{Number(g.currentAmount).toLocaleString('en-IN')}</strong>
                     </div>
-                    <div className="flex justify-between text-slate-600">
+                    <div className="flex justify-between text-[#082F49]/70">
                       <span>Target Amount:</span>
-                      <strong className="text-slate-900">₹{Number(g.targetAmount).toLocaleString('en-IN')}</strong>
+                      <strong className="text-[#082F49]">₹{Number(g.targetAmount).toLocaleString('en-IN')}</strong>
                     </div>
-                    <div className="flex justify-between text-slate-600">
+                    <div className="flex justify-between text-[#082F49]/70">
                       <span>Target Date:</span>
-                      <strong className="text-slate-900">{g.targetDate} ({g.monthsRemaining} mos)</strong>
+                      <strong className="text-[#082F49]">{g.targetDate} ({g.monthsRemaining} mos)</strong>
                     </div>
-                    <div className="flex justify-between text-slate-800 bg-rose-50 border border-rose-100 p-2.5 rounded-lg font-bold">
+                    <div className="flex justify-between text-[#082F49] bg-[#BAE6FD]/30 border border-[#BAE6FD] p-2.5 rounded-lg font-bold">
                       <span>Monthly Savings Needed:</span>
-                      <span className="text-[#DB5375]">₹{Number(g.monthlySavingsNeeded).toLocaleString('en-IN')}/mo</span>
+                      <span className="text-[#0E7490]">₹{Number(g.monthlySavingsNeeded).toLocaleString('en-IN')}/mo</span>
                     </div>
                   </div>
 
                   {/* SIP Recommendation (FR7) */}
-                  <div className="mt-3 p-2.5 bg-slate-50 rounded-lg text-[11px] text-slate-600 border border-slate-100">
-                    <p className="font-semibold text-slate-800 flex items-center gap-1">
-                      <TrendingUp className="w-3 text-[#DB5375]" /> Suggested SIP Vehicle:
+                  <div className="mt-3 p-2.5 bg-[#F0FDFF] rounded-lg text-[11px] text-[#082F49]/80 border border-[#BAE6FD]/60">
+                    <p className="font-semibold text-[#082F49] flex items-center gap-1">
+                      <TrendingUp className="w-3 text-[#0E7490]" /> Suggested SIP Vehicle:
                     </p>
-                    <p className="mt-0.5 text-slate-600">{g.sipRecommendation}</p>
+                    <p className="mt-0.5 text-[#082F49]/70">{g.sipRecommendation}</p>
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-100">
+                <div className="mt-4 pt-3 border-t border-[#BAE6FD]/40">
                   <button
                     onClick={() => {
                       setSelectedGoal(g);
                       setShowFundsModal(true);
                     }}
-                    className="w-full py-2 btn-gradient-outline text-xs font-bold transition-all flex items-center justify-center gap-1.5"
+                    className="w-full py-2 btn-gradient-outline text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <PlusCircle className="w-4 h-4" /> Add Savings to Goal
                   </button>
@@ -211,25 +211,25 @@ export default function Goals() {
       {/* CREATE GOAL MODAL */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-white/80 relative overflow-hidden fade-in floating-card">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]"></div>
-            <h3 className="text-lg font-extrabold text-slate-900 mb-4 mt-1">Create Financial Goal</h3>
+          <div className="bg-[#F0FDFF] rounded-2xl max-w-md w-full p-6 shadow-2xl border border-[#BAE6FD] relative overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#0E7490]"></div>
+            <h3 className="text-lg font-extrabold text-[#082F49] mb-4 mt-1">Create Financial Goal</h3>
             {error && <p className="text-xs text-red-600 bg-red-50 p-2 rounded mb-3 border border-red-200">{error}</p>}
             <form onSubmit={handleCreateGoal} className="space-y-3">
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Goal Name</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Goal Name</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Dream House, Higher Education, Tesla"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="w-full px-3.5 py-2 border border-[#BAE6FD] rounded-xl text-sm bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Target Amount (₹)</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Target Amount (₹)</label>
                 <input
                   type="number"
                   step="0.01"
@@ -237,39 +237,39 @@ export default function Goals() {
                   placeholder="500000.00"
                   value={targetAmount}
                   onChange={(e) => setTargetAmount(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="w-full px-3.5 py-2 border border-[#BAE6FD] rounded-xl text-sm bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Current Savings (₹)</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Current Savings (₹)</label>
                 <input
                   type="number"
                   step="0.01"
                   placeholder="50000.00"
                   value={currentAmount}
                   onChange={(e) => setCurrentAmount(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="w-full px-3.5 py-2 border border-[#BAE6FD] rounded-xl text-sm bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Target Date</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Target Date</label>
                 <input
                   type="date"
                   required
                   value={targetDate}
                   onChange={(e) => setTargetDate(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="w-full px-3.5 py-2 border border-[#BAE6FD] rounded-xl text-sm bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Priority</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Priority</label>
                 <select
                   value={priority}
                   onChange={(e) => setPriority(e.target.value)}
-                  className="w-full px-3 py-2 border-2 border-[#DB5375]/30 rounded-xl text-xs bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="w-full px-3 py-2 border border-[#BAE6FD] rounded-xl text-xs bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                 >
                   <option value="HIGH">High Priority</option>
                   <option value="MEDIUM">Medium Priority</option>
@@ -300,15 +300,15 @@ export default function Goals() {
       {/* ADD FUNDS MODAL */}
       {showFundsModal && selectedGoal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-sm w-full p-6 shadow-2xl border-2 border-white/80 relative overflow-hidden fade-in floating-card">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]"></div>
-            <h3 className="text-base font-extrabold text-slate-900 mb-2 mt-1">Contribute to {selectedGoal.name}</h3>
-            <p className="text-xs text-slate-600 mb-4 font-medium">
+          <div className="bg-[#F0FDFF] rounded-2xl max-w-sm w-full p-6 shadow-2xl border border-[#BAE6FD] relative overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#0E7490]"></div>
+            <h3 className="text-base font-extrabold text-[#082F49] mb-2 mt-1">Contribute to {selectedGoal.name}</h3>
+            <p className="text-xs text-[#082F49]/70 mb-4 font-medium">
               Current: ₹{Number(selectedGoal.currentAmount).toLocaleString('en-IN')} / ₹{Number(selectedGoal.targetAmount).toLocaleString('en-IN')}
             </p>
             <form onSubmit={handleAddFunds} className="space-y-3">
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Contribution Amount (₹)</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Contribution Amount (₹)</label>
                 <input
                   type="number"
                   step="0.01"
@@ -316,7 +316,7 @@ export default function Goals() {
                   placeholder="10000.00"
                   value={addFundsAmount}
                   onChange={(e) => setAddFundsAmount(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="w-full px-3.5 py-2 border border-[#BAE6FD] rounded-xl text-sm bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                 />
               </div>
               <div className="flex justify-end gap-2 pt-2">

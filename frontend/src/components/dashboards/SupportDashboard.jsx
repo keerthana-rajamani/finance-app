@@ -69,12 +69,12 @@ export default function SupportDashboard({ user }) {
       <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl font-extrabold text-slate-900">Support & Compliance Console</h1>
+            <h1 className="text-2xl font-extrabold text-[#082F49]">Support & Compliance Console</h1>
             <span className="theme-badge text-[10px] font-extrabold uppercase px-2.5 py-1">
               Customer Support
             </span>
           </div>
-          <p className="text-xs text-slate-600 font-medium mt-1">
+          <p className="text-xs text-[#082F49]/70 font-medium mt-1">
             RBI Account Aggregator diagnostics • Masked account resolution • DPDP Act 2023 Compliance
           </p>
         </div>
@@ -91,8 +91,8 @@ export default function SupportDashboard({ user }) {
       </div>
 
       {actionSuccess && (
-        <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold flex items-center gap-2 shadow-xs">
-          <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+        <div className="p-4 rounded-xl bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#15803d] text-xs font-bold flex items-center gap-2 shadow-xs">
+          <CheckCircle className="w-4 h-4 text-[#22C55E] flex-shrink-0" />
           <span>{actionSuccess}</span>
         </div>
       )}
@@ -102,49 +102,49 @@ export default function SupportDashboard({ user }) {
         <div className="theme-card p-5">
           <div className="flex justify-between items-start">
             <div>
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">AA Gateway Health</p>
-              <h3 className="text-2xl font-black text-emerald-700 mt-1">
+              <p className="text-xs font-bold text-[#082F49]/70 uppercase tracking-wider">AA Gateway Health</p>
+              <h3 className="text-2xl font-black text-[#22C55E] mt-1">
                 {systemStatus?.gatewayStatus || 'OPERATIONAL'}
               </h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-[#BAE6FD]/40 border border-[#BAE6FD] flex items-center justify-center text-[#0E7490] shadow-xs">
               <Activity className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100 flex justify-between">
+          <div className="mt-3 text-xs text-[#082F49]/70 font-medium pt-2 border-t border-[#BAE6FD]/50 flex justify-between">
             <span>Latency: <strong>{systemStatus?.gatewayLatencyMs || 42}ms</strong></span>
-            <span className="text-emerald-700 font-bold">99.98% Uptime</span>
+            <span className="text-[#22C55E] font-bold">99.98% Uptime</span>
           </div>
         </div>
 
         <div className="theme-card p-5">
           <div className="flex justify-between items-start">
             <div>
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">PII Encryption</p>
-              <h3 className="text-2xl font-black text-slate-900 mt-1">AES-256 GCM</h3>
+              <p className="text-xs font-bold text-[#082F49]/70 uppercase tracking-wider">PII Encryption</p>
+              <h3 className="text-2xl font-black text-[#082F49] mt-1">AES-256 GCM</h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-[#BAE6FD]/40 border border-[#BAE6FD] flex items-center justify-center text-[#0E7490] shadow-xs">
               <Lock className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
-            <span className="text-emerald-700 font-bold">Zero Plaintext Storage</span>
+          <div className="mt-3 text-xs text-[#082F49]/70 font-medium pt-2 border-t border-[#BAE6FD]/50">
+            <span className="text-[#22C55E] font-bold">Zero Plaintext Storage</span>
           </div>
         </div>
 
         <div className="theme-card p-5">
           <div className="flex justify-between items-start">
             <div>
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Active Consents</p>
-              <h3 className="text-2xl font-black text-slate-900 mt-1">
+              <p className="text-xs font-bold text-[#082F49]/70 uppercase tracking-wider">Active Consents</p>
+              <h3 className="text-2xl font-black text-[#082F49] mt-1">
                 {systemStatus?.activeConsents || accounts.length} Granted
               </h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-[#BAE6FD]/40 border border-[#BAE6FD] flex items-center justify-center text-[#0E7490] shadow-xs">
               <ShieldCheck className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
+          <div className="mt-3 text-xs text-[#082F49]/70 font-medium pt-2 border-t border-[#BAE6FD]/50">
             RBI AA 12-Month Revocable Token
           </div>
         </div>
@@ -152,14 +152,14 @@ export default function SupportDashboard({ user }) {
         <div className="theme-card p-5">
           <div className="flex justify-between items-start">
             <div>
-              <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Masked Accounts</p>
-              <h3 className="text-2xl font-black text-slate-900 mt-1">{accounts.length} Accounts</h3>
+              <p className="text-xs font-bold text-[#082F49]/70 uppercase tracking-wider">Masked Accounts</p>
+              <h3 className="text-2xl font-black text-[#082F49] mt-1">{accounts.length} Accounts</h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
+            <div className="w-10 h-10 rounded-xl bg-[#BAE6FD]/40 border border-[#BAE6FD] flex items-center justify-center text-[#0E7490] shadow-xs">
               <Database className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
+          <div className="mt-3 text-xs text-[#082F49]/70 font-medium pt-2 border-t border-[#BAE6FD]/50">
             Compliant with RBI FR3 & Appendix A
           </div>
         </div>
@@ -172,17 +172,17 @@ export default function SupportDashboard({ user }) {
           <div className="theme-card p-6 space-y-4">
             <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-3">
               <div>
-                <h2 className="text-base font-extrabold text-slate-900">Masked Account Diagnostics</h2>
-                <p className="text-xs text-slate-500 font-medium">Verify connection integrity and trigger real-time AA re-sync</p>
+                <h2 className="text-base font-extrabold text-[#082F49]">Masked Account Diagnostics</h2>
+                <p className="text-xs text-[#082F49]/70 font-medium">Verify connection integrity and trigger real-time AA re-sync</p>
               </div>
               <div className="relative">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                <Search className="w-4 h-4 text-[#082F49]/50 absolute left-3 top-2.5" />
                 <input
                   type="text"
                   placeholder="Search bank, account type..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-9 pr-3 py-1.5 text-xs rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:border-[#DB5375] focus:ring-2 focus:ring-[#DB5375]/20 shadow-xs"
+                  className="pl-9 pr-3 py-1.5 text-xs rounded-xl border border-[#BAE6FD] bg-[#F0FDFF] text-[#082F49] focus:outline-none focus:border-[#0E7490] focus:ring-2 focus:ring-[#0E7490]/20 shadow-xs"
                 />
               </div>
             </div>
@@ -198,28 +198,28 @@ export default function SupportDashboard({ user }) {
                     <th className="p-3 rounded-r-xl text-right">Diagnostic Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 font-medium">
+                <tbody className="divide-y divide-[#BAE6FD]/40 font-medium">
                   {filteredAccounts.length === 0 ? (
                     <tr>
-                      <td colSpan="5" className="p-4 text-center text-slate-500">
+                      <td colSpan="5" className="p-4 text-center text-[#082F49]/70">
                         {loading ? "Loading account records..." : "No linked accounts found matching query"}
                       </td>
                     </tr>
                   ) : (
                     filteredAccounts.map((acc) => (
-                      <tr key={acc.id} className="hover:bg-slate-50 transition-colors">
-                        <td className="p-3 font-extrabold text-slate-900">
+                      <tr key={acc.id} className="hover:bg-[#BAE6FD]/15 transition-colors">
+                        <td className="p-3 font-extrabold text-[#082F49]">
                           {acc.bankName}
                         </td>
-                        <td className="p-3 font-mono font-bold text-slate-700">
+                        <td className="p-3 font-mono font-bold text-[#082F49]/80">
                           {acc.maskedNumber || '••••4521'}
                         </td>
                         <td className="p-3">
                           <span className="theme-badge text-[9px] font-bold">{acc.accountType}</span>
                         </td>
                         <td className="p-3">
-                          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-100 text-emerald-800">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Active
+                          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-[#22C55E]/15 text-[#15803d]">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></span> Active
                           </span>
                         </td>
                         <td className="p-3 text-right">
@@ -244,8 +244,8 @@ export default function SupportDashboard({ user }) {
           <div className="theme-card p-6 space-y-4">
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
-                <Terminal className="w-5 h-5 text-[#DB5375]" />
-                <h2 className="text-base font-extrabold text-slate-900">Security & Authentication Audit Trail</h2>
+                <Terminal className="w-5 h-5 text-[#0E7490]" />
+                <h2 className="text-base font-extrabold text-[#082F49]">Security & Authentication Audit Trail</h2>
               </div>
               <span className="theme-badge text-[10px] font-extrabold">DPDP ACT §12 LOGS</span>
             </div>
@@ -261,31 +261,31 @@ export default function SupportDashboard({ user }) {
                     <th className="p-2.5 rounded-r-xl">Client IP</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 font-mono text-[11px]">
+                <tbody className="divide-y divide-[#BAE6FD]/40 font-mono text-[11px]">
                   {auditLogs.length === 0 ? (
                     <tr>
-                      <td colSpan="5" className="p-4 text-center text-slate-500 font-sans">
+                      <td colSpan="5" className="p-4 text-center text-[#082F49]/70 font-sans">
                         No audit logs captured
                       </td>
                     </tr>
                   ) : (
                     auditLogs.slice(0, 8).map((log) => (
-                      <tr key={log.id} className="hover:bg-slate-50 transition-colors">
-                        <td className="p-2.5 text-slate-600">
+                      <tr key={log.id} className="hover:bg-[#BAE6FD]/15 transition-colors">
+                        <td className="p-2.5 text-[#082F49]/70">
                           {log.timestamp ? new Date(log.timestamp).toLocaleTimeString() : 'Just now'}
                         </td>
                         <td className="p-2.5">
                           <span className={`px-2 py-0.5 rounded text-[9px] font-bold ${
-                            log.role === 'SUPPORT' ? 'bg-rose-50 text-[#a82948] border border-rose-200' :
-                            log.role === 'FINANCIAL_ADVISOR' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' :
-                            'bg-slate-100 text-slate-800'
+                            log.role === 'SUPPORT' ? 'bg-[#BAE6FD]/40 text-[#0E7490] border border-[#BAE6FD]' :
+                            log.role === 'FINANCIAL_ADVISOR' ? 'bg-[#22C55E]/15 text-[#15803d] border border-[#22C55E]/30' :
+                            'bg-[#F0FDFF] text-[#082F49]'
                           }`}>
                             {log.role || 'USER'}
                           </span>
                         </td>
-                        <td className="p-2.5 font-bold text-slate-900">{log.action}</td>
-                        <td className="p-2.5 text-slate-600">{log.resource}</td>
-                        <td className="p-2.5 text-slate-500">{log.ipAddress || '127.0.0.1'}</td>
+                        <td className="p-2.5 font-bold text-[#082F49]">{log.action}</td>
+                        <td className="p-2.5 text-[#082F49]/70">{log.resource}</td>
+                        <td className="p-2.5 text-[#082F49]/60">{log.ipAddress || '127.0.0.1'}</td>
                       </tr>
                     ))
                   )}
@@ -298,31 +298,31 @@ export default function SupportDashboard({ user }) {
         {/* Right 1 Col: Compliance & Diagnostic Info */}
         <div className="space-y-6">
           <div className="theme-card p-6 space-y-4">
-            <h3 className="text-base font-extrabold text-slate-900">Compliance & Safeguards</h3>
+            <h3 className="text-base font-extrabold text-[#082F49]">Compliance & Safeguards</h3>
             <div className="space-y-3 text-xs">
-              <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1 shadow-xs hover:-translate-y-0.5 transition-all">
-                <p className="font-extrabold text-slate-900 flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600" /> Masking Standard
+              <div className="p-3 rounded-xl bg-[#F0FDFF]/80 border border-[#BAE6FD]/70 space-y-1 shadow-xs hover:-translate-y-0.5 transition-all">
+                <p className="font-extrabold text-[#082F49] flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-[#22C55E]" /> Masking Standard
                 </p>
-                <p className="text-slate-600 text-[11px] leading-relaxed">
+                <p className="text-[#082F49]/80 text-[11px] leading-relaxed">
                   Support staff cannot view full account numbers or PAN. Account numbers are permanently masked to the last 4 digits per RBI FR3 & Appendix A.
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1 shadow-xs hover:-translate-y-0.5 transition-all">
-                <p className="font-extrabold text-slate-900 flex items-center gap-1.5">
-                  <Lock className="w-4 h-4 text-[#DB5375]" /> Revocation Control
+              <div className="p-3 rounded-xl bg-[#F0FDFF]/80 border border-[#BAE6FD]/70 space-y-1 shadow-xs hover:-translate-y-0.5 transition-all">
+                <p className="font-extrabold text-[#082F49] flex items-center gap-1.5">
+                  <Lock className="w-4 h-4 text-[#0E7490]" /> Revocation Control
                 </p>
-                <p className="text-slate-600 text-[11px] leading-relaxed">
+                <p className="text-[#082F49]/80 text-[11px] leading-relaxed">
                   Users maintain continuous control to revoke Account Aggregator consent at any time from their security dashboard.
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1 shadow-xs hover:-translate-y-0.5 transition-all">
-                <p className="font-extrabold text-slate-900 flex items-center gap-1.5">
-                  <FileText className="w-4 h-4 text-amber-600" /> Immutable Audit Trail
+              <div className="p-3 rounded-xl bg-[#F0FDFF]/80 border border-[#BAE6FD]/70 space-y-1 shadow-xs hover:-translate-y-0.5 transition-all">
+                <p className="font-extrabold text-[#082F49] flex items-center gap-1.5">
+                  <FileText className="w-4 h-4 text-[#0E7490]" /> Immutable Audit Trail
                 </p>
-                <p className="text-slate-600 text-[11px] leading-relaxed">
+                <p className="text-[#082F49]/80 text-[11px] leading-relaxed">
                   Every support action, diagnostic resync, and query is permanently recorded in the immutable audit log table with user identity and timestamp.
                 </p>
               </div>
@@ -331,7 +331,7 @@ export default function SupportDashboard({ user }) {
 
           {/* Quick Support Actions */}
           <div className="theme-card p-6 space-y-3">
-            <h3 className="text-sm font-extrabold text-slate-900">Support Operations</h3>
+            <h3 className="text-sm font-extrabold text-[#082F49]">Support Operations</h3>
             <button 
               onClick={() => alert("Gateway latency check passed: 42ms response to Setu AA Sandbox")}
               className="btn-gradient w-full text-xs py-2.5 font-extrabold shadow-sm cursor-pointer"

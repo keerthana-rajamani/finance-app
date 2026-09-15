@@ -69,7 +69,7 @@ export default function Bills() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-transparent">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#0E7490]"></div>
       </div>
     );
   }
@@ -83,8 +83,8 @@ export default function Bills() {
         {/* Header */}
         <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">Recurring Bill Manager & Calendar</h1>
-            <p className="text-xs text-slate-600 mt-1 font-medium">
+            <h1 className="text-2xl font-extrabold text-[#082F49]">Recurring Bill Manager & Calendar</h1>
+            <p className="text-xs text-[#082F49]/70 mt-1 font-medium">
               Automated 3-day and 1-day reminders with 1-tap payment settlement and credit score impact tracking
             </p>
           </div>
@@ -92,15 +92,15 @@ export default function Bills() {
             onClick={() => setShowModal(true)}
             className="btn-gradient text-xs py-2.5 px-4 shadow-md"
           >
-            <PlusCircle className="w-4 h-4 text-slate-900" /> Add Recurring Bill
+            <PlusCircle className="w-4 h-4 text-white" /> Add Recurring Bill
           </button>
         </div>
 
         {/* 30-Day Monthly Calendar View (FR8) */}
         <div className="theme-card p-6 space-y-4">
           <div className="flex items-center gap-2">
-            <CalendarIcon className="w-4 h-4 text-[#DB5375]" />
-            <h2 className="text-base font-extrabold text-slate-900">30-Day Upcoming Bill Calendar</h2>
+            <CalendarIcon className="w-4 h-4 text-[#0E7490]" />
+            <h2 className="text-base font-extrabold text-[#082F49]">30-Day Upcoming Bill Calendar</h2>
           </div>
 
           <div className="grid grid-cols-5 sm:grid-cols-7 lg:grid-cols-10 gap-2">
@@ -114,15 +114,15 @@ export default function Bills() {
                   className={`p-2 rounded-xl border text-center transition-all ${
                     dayBills.length > 0
                       ? hasPending
-                        ? 'bg-rose-50 border-2 border-[#DB5375] font-black text-[#DB5375] shadow-xs'
-                        : 'bg-emerald-50 border border-emerald-200 text-emerald-800 font-extrabold'
-                      : 'bg-white border border-slate-200 text-slate-600'
+                        ? 'bg-[#BAE6FD]/40 border-2 border-[#0E7490] font-black text-[#0E7490] shadow-xs'
+                        : 'bg-[#22C55E]/15 border border-[#22C55E]/30 text-[#15803d] font-extrabold'
+                      : 'bg-[#F0FDFF] border border-[#BAE6FD]/70 text-[#082F49]/70'
                   }`}
                 >
                   <span className="text-xs block font-bold">{day}</span>
                   {dayBills.length > 0 && (
                     <div className="mt-1">
-                      <span className={`inline-block w-2 h-2 rounded-full ${hasPending ? 'bg-[#DB5375]' : 'bg-emerald-600'}`}></span>
+                      <span className={`inline-block w-2 h-2 rounded-full ${hasPending ? 'bg-[#0E7490]' : 'bg-[#22C55E]'}`}></span>
                     </div>
                   )}
                 </div>
@@ -133,7 +133,7 @@ export default function Bills() {
 
         {/* Bills List */}
         <div className="theme-card p-6 space-y-4">
-          <h2 className="text-base font-extrabold text-slate-900">All Configured Recurring Bills</h2>
+          <h2 className="text-base font-extrabold text-[#082F49]">All Configured Recurring Bills</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {bills.map((b) => {
@@ -143,7 +143,7 @@ export default function Bills() {
                 <div key={b.id} className="theme-card p-5 flex flex-col justify-between shadow-md floating-card hover:-translate-y-1 transition-all">
                   <div>
                     <div className="flex justify-between items-start">
-                      <h3 className="font-extrabold text-sm text-slate-900">{b.name}</h3>
+                      <h3 className="font-extrabold text-sm text-[#082F49]">{b.name}</h3>
                       <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold ${
                         isPaid ? 'theme-badge-mint' : 'theme-badge-rose'
                       }`}>
@@ -151,25 +151,25 @@ export default function Bills() {
                       </span>
                     </div>
 
-                    <div className="mt-3 space-y-1 text-xs text-slate-700">
-                      <p>Category: <strong className="text-slate-900">{b.category}</strong></p>
-                      <p>Due Day: <strong className="text-slate-900">{b.dueDay}th of month</strong> ({b.recurrence})</p>
-                      <p className="text-lg font-black text-slate-900 mt-2">
+                    <div className="mt-3 space-y-1 text-xs text-[#082F49]/80">
+                      <p>Category: <strong className="text-[#082F49]">{b.category}</strong></p>
+                      <p>Due Day: <strong className="text-[#082F49]">{b.dueDay}th of month</strong> ({b.recurrence})</p>
+                      <p className="text-lg font-black text-[#082F49] mt-2">
                         ₹{Number(b.amount).toLocaleString('en-IN')}
                       </p>
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-slate-100">
+                  <div className="mt-4 pt-3 border-t border-[#BAE6FD]/40">
                     {!isPaid ? (
                       <button
                         onClick={() => handlePayBill(b.id)}
-                        className="w-full py-2 btn-gradient rounded-lg text-xs font-bold shadow-md transition-all flex items-center justify-center gap-1.5"
+                        className="w-full py-2 btn-gradient rounded-lg text-xs font-bold shadow-md transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                       >
                         <CheckCircle className="w-4 h-4 text-white" /> Mark as Paid (Auto-Debit)
                       </button>
                     ) : (
-                      <span className="block text-center text-xs text-[#065f46] font-bold py-1 bg-emerald-50 rounded-lg border border-emerald-200">
+                      <span className="block text-center text-xs text-[#15803d] font-bold py-1 bg-[#22C55E]/15 rounded-lg border border-[#22C55E]/30">
                         ✓ Paid for this cycle
                       </span>
                     )}
@@ -184,25 +184,25 @@ export default function Bills() {
       {/* ADD BILL MODAL */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-white/80 relative overflow-hidden fade-in floating-card">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]"></div>
-            <h3 className="text-lg font-extrabold text-slate-900 mb-4 mt-1">Add Recurring Bill</h3>
+          <div className="bg-[#F0FDFF] rounded-2xl max-w-md w-full p-6 shadow-2xl border border-[#BAE6FD] relative overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#0E7490]"></div>
+            <h3 className="text-lg font-extrabold text-[#082F49] mb-4 mt-1">Add Recurring Bill</h3>
             {error && <p className="text-xs text-red-600 bg-red-50 p-2 rounded mb-3 border border-red-200">{error}</p>}
             <form onSubmit={handleAddBill} className="space-y-3">
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Bill Name</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Bill Name</label>
                 <input
                   type="text"
                   required
                   placeholder="e.g. Bescom Electricity, Airtel Fiber, Gym"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="w-full px-3.5 py-2 border border-[#BAE6FD] rounded-xl text-sm bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Amount (₹)</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Amount (₹)</label>
                 <input
                   type="number"
                   step="0.01"
@@ -210,17 +210,17 @@ export default function Bills() {
                   placeholder="1450.00"
                   value={amount}
                   onChange={(e) => setAmount(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="w-full px-3.5 py-2 border border-[#BAE6FD] rounded-xl text-sm bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Category</label>
+                  <label className="block text-xs font-bold text-[#082F49] mb-1">Category</label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full px-3 py-2 border-2 border-[#DB5375]/30 rounded-xl text-xs bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                    className="w-full px-3 py-2 border border-[#BAE6FD] rounded-xl text-xs bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                   >
                     <option value="Utilities">Utilities</option>
                     <option value="Subscription">Subscription</option>
@@ -231,14 +231,14 @@ export default function Bills() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">Due Day (1-31)</label>
+                  <label className="block text-xs font-bold text-[#082F49] mb-1">Due Day (1-31)</label>
                   <input
                     type="number"
                     min="1"
                     max="31"
                     value={dueDay}
                     onChange={(e) => setDueDay(e.target.value)}
-                    className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                    className="w-full px-3.5 py-2 border border-[#BAE6FD] rounded-xl text-sm bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                   />
                 </div>
               </div>

@@ -78,15 +78,15 @@ export default function Register() {
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-transparent px-4 py-12">
       <div className="theme-card max-w-md w-full overflow-hidden fade-in floating-card">
-        <div className="h-1.5 w-full bg-[#DB5375]" />
+        <div className="h-1.5 w-full bg-[#0E7490]" />
         <div className="p-8">
           <div className="text-center mb-6">
-            <h2 className="text-2xl font-extrabold text-slate-900">Create an Account</h2>
-            <p className="text-xs text-slate-600 font-medium mt-1">Multi-step secure onboarding with banking standards</p>
+            <h2 className="text-2xl font-extrabold text-[#082F49]">Create an Account</h2>
+            <p className="text-xs text-[#082F49]/70 font-medium mt-1">Multi-step secure onboarding with banking standards</p>
             <div className="flex justify-center items-center gap-2 mt-4">
-              <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black ${step >= 1 ? 'bg-[#DB5375] text-white shadow-sm' : 'bg-slate-200 text-slate-600'}`}>1</span>
-              <span className="w-10 h-0.5 bg-slate-200"></span>
-              <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black ${step === 2 ? 'bg-[#DB5375] text-white shadow-sm' : 'bg-slate-200 text-slate-600'}`}>2</span>
+              <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black ${step >= 1 ? 'bg-[#0E7490] text-white shadow-sm' : 'bg-[#BAE6FD]/40 text-[#082F49]'}`}>1</span>
+              <span className="w-10 h-0.5 bg-[#BAE6FD]/60"></span>
+              <span className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black ${step === 2 ? 'bg-[#0E7490] text-white shadow-sm' : 'bg-[#BAE6FD]/40 text-[#082F49]'}`}>2</span>
             </div>
           </div>
 
@@ -98,8 +98,8 @@ export default function Register() {
         )}
 
         {success && (
-          <div className="mb-4 p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2 text-emerald-800 text-xs font-bold">
-            <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-[#DB5375]" />
+          <div className="mb-4 p-3 bg-[#22C55E]/15 border border-[#22C55E]/30 rounded-xl flex items-center gap-2 text-[#15803d] text-xs font-bold">
+            <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-[#22C55E]" />
             <span>{success}</span>
           </div>
         )}
@@ -107,9 +107,9 @@ export default function Register() {
         {step === 1 ? (
           <form onSubmit={handleNext} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">Full Name (Alphabetic only)</label>
+              <label className="block text-xs font-bold text-[#082F49] mb-1">Full Name (Alphabetic only)</label>
               <div className="relative">
-                <User className="w-4 h-4 text-[#DB5375] absolute left-3 top-3" />
+                <User className="w-4 h-4 text-[#0E7490] absolute left-3 top-3" />
                 <input
                   type="text"
                   required
@@ -122,9 +122,9 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">Email Address</label>
+              <label className="block text-xs font-bold text-[#082F49] mb-1">Email Address</label>
               <div className="relative">
-                <Mail className="w-4 h-4 text-[#DB5375] absolute left-3 top-3" />
+                <Mail className="w-4 h-4 text-[#0E7490] absolute left-3 top-3" />
                 <input
                   type="email"
                   required
@@ -137,9 +137,9 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">Phone Number (10 digits)</label>
+              <label className="block text-xs font-bold text-[#082F49] mb-1">Phone Number (10 digits)</label>
               <div className="relative">
-                <Phone className="w-4 h-4 text-[#DB5375] absolute left-3 top-3" />
+                <Phone className="w-4 h-4 text-[#0E7490] absolute left-3 top-3" />
                 <input
                   type="tel"
                   required
@@ -152,7 +152,7 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">Account Role</label>
+              <label className="block text-xs font-bold text-[#082F49] mb-1">Account Role</label>
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
@@ -174,9 +174,9 @@ export default function Register() {
         ) : (
           <form onSubmit={handleRegister} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">Password</label>
+              <label className="block text-xs font-bold text-[#082F49] mb-1">Password</label>
               <div className="relative">
-                <Lock className="w-4 h-4 text-[#DB5375] absolute left-3 top-3" />
+                <Lock className="w-4 h-4 text-[#0E7490] absolute left-3 top-3" />
                 <input
                   type="password"
                   required
@@ -189,9 +189,9 @@ export default function Register() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">PAN Number (Optional for Tax Features)</label>
+              <label className="block text-xs font-bold text-[#082F49] mb-1">PAN Number (Optional for Tax Features)</label>
               <div className="relative">
-                <FileText className="w-4 h-4 text-[#DB5375] absolute left-3 top-3" />
+                <FileText className="w-4 h-4 text-[#0E7490] absolute left-3 top-3" />
                 <input
                   type="text"
                   value={panNumber}
@@ -201,7 +201,7 @@ export default function Register() {
                   className="theme-input pl-9 uppercase"
                 />
               </div>
-              <p className="text-[10px] text-slate-500 mt-1">Stored as a one-way SHA-256 hash according to data protection rules.</p>
+              <p className="text-[10px] text-[#082F49]/60 mt-1">Stored as a one-way SHA-256 hash according to data protection rules.</p>
             </div>
 
             <div className="flex gap-3">
@@ -223,9 +223,9 @@ export default function Register() {
           </form>
         )}
 
-        <div className="mt-6 text-center text-xs text-slate-600 font-medium">
+        <div className="mt-6 text-center text-xs text-[#082F49]/70 font-medium">
           Already registered?{' '}
-          <Link to="/login" className="text-[#a82948] hover:text-[#DB5375] font-extrabold underline">
+          <Link to="/login" className="text-[#0E7490] hover:text-[#082F49] font-extrabold underline">
             Log in
           </Link>
         </div>

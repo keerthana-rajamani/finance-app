@@ -42,11 +42,11 @@ export default function Login() {
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-transparent px-4 py-12">
       <div className="theme-card max-w-md w-full overflow-hidden fade-in floating-card">
-        <div className="h-1.5 w-full bg-[#DB5375]" />
+        <div className="h-1.5 w-full bg-[#0E7490]" />
         <div className="p-8">
           <div className="text-center mb-6">
-            <h2 className="text-2xl font-extrabold text-slate-900">Sign in to your account</h2>
-            <p className="text-xs text-slate-600 font-medium mt-1">Access your consolidated financial dashboard</p>
+            <h2 className="text-2xl font-extrabold text-[#082F49]">Sign in to your account</h2>
+            <p className="text-xs text-[#082F49]/70 font-medium mt-1">Access your consolidated financial dashboard</p>
           </div>
 
         {error && (
@@ -58,9 +58,9 @@ export default function Login() {
 
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="block text-xs font-bold text-slate-800 mb-1">Email / Username</label>
+            <label className="block text-xs font-bold text-[#082F49] mb-1">Email / Username</label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-[#DB5375] absolute left-3 top-3" />
+              <Mail className="w-4 h-4 text-[#0E7490] absolute left-3 top-3" />
               <input
                 type="email"
                 required
@@ -73,9 +73,9 @@ export default function Login() {
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-800 mb-1">Password</label>
+            <label className="block text-xs font-bold text-[#082F49] mb-1">Password</label>
             <div className="relative">
-              <Lock className="w-4 h-4 text-[#DB5375] absolute left-3 top-3" />
+              <Lock className="w-4 h-4 text-[#0E7490] absolute left-3 top-3" />
               <input
                 type={showPassword ? "text" : "password"}
                 required
@@ -87,7 +87,7 @@ export default function Login() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-3 text-slate-400 hover:text-slate-600 focus:outline-none"
+                className="absolute right-3 top-3 text-[#082F49]/40 hover:text-[#082F49] focus:outline-none"
               >
                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
@@ -108,45 +108,45 @@ export default function Login() {
         </form>
 
         {/* Demo Role Switcher */}
-        <div className="mt-6 pt-6 border-t border-slate-100">
-          <p className="text-xs font-extrabold text-[#DB5375] uppercase tracking-wider text-center mb-3">
+        <div className="mt-6 pt-6 border-t border-[#BAE6FD]/50">
+          <p className="text-xs font-extrabold text-[#082F49] uppercase tracking-wider text-center mb-3">
             Quick Demo Accounts (Click to Fill)
           </p>
           <div className="grid grid-cols-2 gap-2 text-xs">
             <button
               onClick={() => fillDemo('john@example.com', 'Password@123')}
-              className="p-2.5 bg-white/95 hover:bg-rose-50 text-slate-900 rounded-xl font-bold text-left border border-slate-200 hover:border-[#DB5375]/40 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all"
+              className="p-2.5 bg-[#F0FDFF]/92 hover:bg-[#BAE6FD]/30 text-[#082F49] rounded-xl font-bold text-left border border-[#BAE6FD]/70 hover:border-[#0E7490] shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
               Primary User
-              <span className="block text-[10px] text-[#DB5375] font-semibold">Full Financials</span>
+              <span className="block text-[10px] text-[#0E7490] font-semibold">Full Financials</span>
             </button>
             <button
               onClick={() => fillDemo('advisor@example.com', 'Password@123')}
-              className="p-2.5 bg-white/95 hover:bg-rose-50 text-slate-900 rounded-xl font-bold text-left border border-slate-200 hover:border-[#DB5375]/40 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all"
+              className="p-2.5 bg-[#F0FDFF]/92 hover:bg-[#BAE6FD]/30 text-[#082F49] rounded-xl font-bold text-left border border-[#BAE6FD]/70 hover:border-[#0E7490] shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
               Financial Advisor
-              <span className="block text-[10px] text-[#DB5375] font-semibold">Read-only Portfolio</span>
+              <span className="block text-[10px] text-[#0E7490] font-semibold">Read-only Portfolio</span>
             </button>
             <button
               onClick={() => fillDemo('support@example.com', 'Password@123')}
-              className="p-2.5 bg-white/95 hover:bg-rose-50 text-slate-900 rounded-xl font-bold text-left border border-slate-200 hover:border-[#DB5375]/40 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all"
+              className="p-2.5 bg-[#F0FDFF]/92 hover:bg-[#BAE6FD]/30 text-[#082F49] rounded-xl font-bold text-left border border-[#BAE6FD]/70 hover:border-[#0E7490] shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
               Support Agent
-              <span className="block text-[10px] text-[#DB5375] font-semibold">Masked Data Access</span>
+              <span className="block text-[10px] text-[#0E7490] font-semibold">Masked Data Access</span>
             </button>
             <button
               onClick={() => fillDemo('sarah@example.com', 'Password@123')}
-              className="p-2.5 bg-white/95 hover:bg-rose-50 text-slate-900 rounded-xl font-bold text-left border border-slate-200 hover:border-[#DB5375]/40 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all"
+              className="p-2.5 bg-[#F0FDFF]/92 hover:bg-[#BAE6FD]/30 text-[#082F49] rounded-xl font-bold text-left border border-[#BAE6FD]/70 hover:border-[#0E7490] shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
               Family Member
-              <span className="block text-[10px] text-[#DB5375] font-semibold">Shared Budget Access</span>
+              <span className="block text-[10px] text-[#0E7490] font-semibold">Shared Budget Access</span>
             </button>
           </div>
         </div>
 
-        <div className="mt-6 text-center text-xs text-slate-600 font-medium">
+        <div className="mt-6 text-center text-xs text-[#082F49]/70 font-medium">
           Don't have an account?{' '}
-          <Link to="/register" className="text-[#a82948] hover:text-[#DB5375] font-extrabold underline">
+          <Link to="/register" className="text-[#0E7490] hover:text-[#082F49] font-extrabold underline">
             Register now
           </Link>
         </div>

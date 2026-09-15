@@ -111,7 +111,7 @@ export default function Accounts() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-transparent">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#0E7490]"></div>
       </div>
     );
   }
@@ -122,8 +122,8 @@ export default function Accounts() {
         {/* Header */}
         <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">Linked Accounts & Aggregation</h1>
-            <p className="text-xs text-slate-600 mt-1 font-medium">
+            <h1 className="text-2xl font-extrabold text-[#082F49]">Linked Accounts & Aggregation</h1>
+            <p className="text-xs text-[#082F49]/70 mt-1 font-medium">
               Multi-bank sync via RBI Account Aggregator framework with 6-hour automated polling
             </p>
           </div>
@@ -138,7 +138,7 @@ export default function Accounts() {
               onClick={() => setShowLinkModal(true)}
               className="btn-gradient text-xs py-2.5 px-4 shadow-md"
             >
-              <PlusCircle className="w-4 h-4 text-slate-900" /> Link Bank via AA
+              <PlusCircle className="w-4 h-4 text-white" /> Link Bank via AA
             </button>
           </div>
         </div>
@@ -153,31 +153,31 @@ export default function Accounts() {
                     <span className="theme-badge text-[10px] font-extrabold">
                       {acc.accountType}
                     </span>
-                    <h3 className="font-extrabold text-slate-900 mt-2 text-sm">{acc.bankName}</h3>
-                    <p className="text-xs font-mono text-slate-600 mt-0.5 font-semibold">{acc.maskedNumber}</p>
+                    <h3 className="font-extrabold text-[#082F49] mt-2 text-sm">{acc.bankName}</h3>
+                    <p className="text-xs font-mono text-[#082F49]/70 mt-0.5 font-semibold">{acc.maskedNumber}</p>
                   </div>
                   <button
                     onClick={() => handleUnlink(acc.id)}
-                    className="text-slate-400 hover:text-red-600 transition-colors p-1"
+                    className="text-[#082F49]/40 hover:text-red-600 transition-colors p-1"
                     title="Unlink Account"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-[#DB5375]/20">
-                  <span className="text-[11px] text-slate-500 uppercase font-bold">Available Balance</span>
-                  <p className="text-xl font-black text-slate-900 mt-0.5">
+                <div className="mt-4 pt-3 border-t border-[#BAE6FD]/60">
+                  <span className="text-[11px] text-[#082F49]/70 uppercase font-bold">Available Balance</span>
+                  <p className="text-xl font-black text-[#082F49] mt-0.5">
                     ₹{Number(acc.balance).toLocaleString('en-IN')}
                   </p>
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-[#DB5375]/20 flex justify-between items-center text-[10px] text-slate-600 font-medium">
+              <div className="mt-4 pt-3 border-t border-[#BAE6FD]/60 flex justify-between items-center text-[10px] text-[#082F49]/70 font-medium">
                 <span>Synced: {new Date(acc.lastSyncedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                 <button
                   onClick={() => handleSync(acc.id)}
-                  className="text-[#DB5375] hover:text-[#a72f4e] font-extrabold flex items-center gap-1"
+                  className="text-[#0E7490] hover:text-[#082F49] font-extrabold flex items-center gap-1"
                 >
                   <RefreshCw className="w-3 h-3" /> Sync
                 </button>
@@ -189,23 +189,23 @@ export default function Accounts() {
         {/* Consolidated Transaction Ledger (Appendix I) */}
         <div className="theme-card p-6 space-y-4">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-            <h2 className="text-base font-extrabold text-slate-900">Aggregated Transactions & ML Predictions</h2>
+            <h2 className="text-base font-extrabold text-[#082F49]">Aggregated Transactions & ML Predictions</h2>
             {/* Search and Category Filter */}
             <div className="flex flex-wrap gap-2 w-full sm:w-auto">
               <div className="relative flex-1 sm:flex-none">
-                <Search className="w-3.5 h-3.5 text-[#DB5375] absolute left-3 top-3" />
+                <Search className="w-3.5 h-3.5 text-[#0E7490] absolute left-3 top-3" />
                 <input
                   type="text"
                   placeholder="Filter merchant..."
                   value={searchMerchant}
                   onChange={(e) => setSearchMerchant(e.target.value)}
-                  className="pl-8 pr-3 py-1.5 border-2 border-[#DB5375]/30 rounded-xl text-xs w-full sm:w-44 focus:outline-none focus:border-[#DB5375] bg-white text-slate-900 font-medium"
+                  className="pl-8 pr-3 py-1.5 border border-[#BAE6FD] rounded-xl text-xs w-full sm:w-44 focus:outline-none focus:border-[#0E7490] bg-[#F0FDFF] text-[#082F49] font-medium"
                 />
               </div>
               <select
                 value={searchCategory}
                 onChange={(e) => setSearchCategory(e.target.value)}
-                className="px-3 py-1.5 border-2 border-[#DB5375]/30 rounded-xl text-xs bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                className="px-3 py-1.5 border border-[#BAE6FD] rounded-xl text-xs bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
               >
                 <option value="">All Categories</option>
                 <option value="Food">Food</option>
@@ -220,8 +220,8 @@ export default function Accounts() {
             </div>
           </div>
 
-          <div className="overflow-x-auto rounded-xl border border-[#DB5375]/25">
-            <table className="w-full text-left text-xs text-slate-700">
+          <div className="overflow-x-auto rounded-xl border border-[#BAE6FD]/70">
+            <table className="w-full text-left text-xs text-[#082F49]">
               <thead className="theme-table-header">
                 <tr>
                   <th className="py-3 px-4">Date</th>
@@ -232,11 +232,11 @@ export default function Accounts() {
                   <th className="py-3 px-4 text-right">Amount</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 bg-white/70">
+              <tbody className="divide-y divide-[#BAE6FD]/40 bg-[#F0FDFF]/50">
                 {filteredTxns.map((t) => (
-                  <tr key={t.id} className="hover:bg-slate-50/80 transition-colors">
+                  <tr key={t.id} className="hover:bg-[#BAE6FD]/15 transition-colors">
                     <td className="py-3 px-4 font-medium">{new Date(t.txnDate).toLocaleDateString()}</td>
-                    <td className="py-3 px-4 font-bold text-slate-900">{t.merchant}</td>
+                    <td className="py-3 px-4 font-bold text-[#082F49]">{t.merchant}</td>
                     <td className="py-3 px-4">
                       <span className="theme-badge text-[10px]">
                         {t.category}
@@ -244,13 +244,13 @@ export default function Accounts() {
                     </td>
                     <td className="py-3 px-4 font-mono">
                       <span className={`px-1.5 py-0.5 rounded text-[10px] font-extrabold ${
-                        Number(t.confidenceScore) >= 0.9 ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-rose-50 text-[#DB5375] border border-rose-200'
+                        Number(t.confidenceScore) >= 0.9 ? 'bg-[#22C55E]/15 text-[#15803d] border border-[#22C55E]/30' : 'bg-[#BAE6FD]/40 text-[#0E7490] border border-[#BAE6FD]'
                       }`}>
                         {(Number(t.confidenceScore) * 100).toFixed(0)}%
                       </span>
                     </td>
-                    <td className="py-3 px-4 font-mono text-[11px] text-slate-500">{t.bankReference}</td>
-                    <td className={`py-3 px-4 text-right font-black ${t.type === 'CREDIT' ? 'text-[#065f46]' : 'text-[#a72f4e]'}`}>
+                    <td className="py-3 px-4 font-mono text-[11px] text-[#082F49]/60">{t.bankReference}</td>
+                    <td className={`py-3 px-4 text-right font-black ${t.type === 'CREDIT' ? 'text-[#22C55E]' : 'text-[#082F49]'}`}>
                       {t.type === 'CREDIT' ? '+' : '-'}₹{Number(t.amount).toLocaleString('en-IN')}
                     </td>
                   </tr>
@@ -264,23 +264,23 @@ export default function Accounts() {
       {/* RBI AA LINK MODAL */}
       {showLinkModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-white/80 relative overflow-hidden fade-in floating-card">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]"></div>
-            <div className="flex items-center gap-2 mb-2 text-[#DB5375] mt-1">
-              <ShieldCheck className="w-5 h-5 text-[#DB5375]" />
-              <h3 className="text-lg font-extrabold text-slate-900">RBI Account Aggregator Consent</h3>
+          <div className="bg-[#F0FDFF] rounded-2xl max-w-md w-full p-6 shadow-2xl border border-[#BAE6FD] relative overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#0E7490]"></div>
+            <div className="flex items-center gap-2 mb-2 text-[#0E7490] mt-1">
+              <ShieldCheck className="w-5 h-5 text-[#0E7490]" />
+              <h3 className="text-lg font-extrabold text-[#082F49]">RBI Account Aggregator Consent</h3>
             </div>
-            <p className="text-xs text-slate-600 mb-4 font-medium">
+            <p className="text-xs text-[#082F49]/70 mb-4 font-medium">
               Securely authenticate and delegate read-only data access for 12 months under RBI regulatory guidelines.
             </p>
 
             <form onSubmit={handleLinkAccount} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Select Financial Institution</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Select Financial Institution</label>
                 <select
                   value={bankName}
                   onChange={(e) => setBankName(e.target.value)}
-                  className="w-full px-3 py-2 border-2 border-[#DB5375]/30 rounded-xl text-xs bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="w-full px-3 py-2 border border-[#BAE6FD] rounded-xl text-xs bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                 >
                   <option value="HDFC Bank">HDFC Bank</option>
                   <option value="State Bank of India (SBI)">State Bank of India (SBI)</option>
@@ -292,11 +292,11 @@ export default function Accounts() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Account Classification</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Account Classification</label>
                 <select
                   value={accountType}
                   onChange={(e) => setAccountType(e.target.value)}
-                  className="w-full px-3 py-2 border-2 border-[#DB5375]/30 rounded-xl text-xs bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="w-full px-3 py-2 border border-[#BAE6FD] rounded-xl text-xs bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                 >
                   <option value="SAVINGS">Savings Account</option>
                   <option value="CURRENT">Current Account</option>
@@ -306,7 +306,7 @@ export default function Accounts() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Last 4 Digits of Account Number</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Last 4 Digits of Account Number</label>
                 <input
                   type="text"
                   maxLength={4}
@@ -314,32 +314,32 @@ export default function Accounts() {
                   placeholder="8832"
                   value={accountNumber}
                   onChange={(e) => setAccountNumber(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm font-mono bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="w-full px-3.5 py-2 border border-[#BAE6FD] rounded-xl text-sm font-mono bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">Initial Synced Balance (₹)</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Initial Synced Balance (₹)</label>
                 <input
                   type="number"
                   step="0.01"
                   placeholder="50000.00"
                   value={initialBalance}
                   onChange={(e) => setInitialBalance(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="w-full px-3.5 py-2 border border-[#BAE6FD] rounded-xl text-sm bg-[#F0FDFF] text-[#082F49] font-medium focus:outline-none focus:border-[#0E7490]"
                 />
               </div>
 
-              <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
+              <div className="p-3.5 bg-[#BAE6FD]/20 border border-[#BAE6FD]/70 rounded-xl space-y-2">
                 <div className="flex items-start gap-2">
                   <input
                     type="checkbox"
                     id="consent"
                     checked={consentAgreed}
                     onChange={(e) => setConsentAgreed(e.target.checked)}
-                    className="mt-0.5 rounded text-[#DB5375] focus:ring-[#DB5375]"
+                    className="mt-0.5 rounded text-[#0E7490] focus:ring-[#0E7490]"
                   />
-                  <label htmlFor="consent" className="text-[11px] text-slate-800 font-medium leading-tight">
+                  <label htmlFor="consent" className="text-[11px] text-[#082F49] font-medium leading-tight">
                     I grant explicit consent to fetch account balances and transaction history for 12 months with 6-hour automatic synchronisation.
                   </label>
                 </div>

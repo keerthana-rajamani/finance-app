@@ -72,7 +72,7 @@ export default function FamilyFinance() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-transparent">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#0E7490]"></div>
       </div>
     );
   }
@@ -81,10 +81,10 @@ export default function FamilyFinance() {
     <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
-        <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 floating-card">
           <div>
-            <h1 className="text-2xl font-extrabold text-slate-900">Family Finance & Shared Budgets</h1>
-            <p className="text-xs text-slate-600 font-medium mt-1">
+            <h1 className="text-2xl font-extrabold text-[#082F49]">Family Finance & Shared Budgets</h1>
+            <p className="text-xs text-[#082F49]/70 font-medium mt-1">
               Household multi-user collaboration (up to 5 family members) with granular role-based permissions
             </p>
           </div>
@@ -97,8 +97,8 @@ export default function FamilyFinance() {
         </div>
 
         {/* Family Members Grid */}
-        <div className="theme-card p-6 space-y-4">
-          <h2 className="text-base font-extrabold text-slate-900">Active Family Member Access</h2>
+        <div className="theme-card p-6 space-y-4 floating-card">
+          <h2 className="text-base font-extrabold text-[#082F49]">Active Family Member Access</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {members.map((m) => (
@@ -106,25 +106,25 @@ export default function FamilyFinance() {
                 <div>
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="font-extrabold text-sm text-slate-900">{m.memberName}</h3>
-                      <p className="text-xs text-slate-600">{m.memberEmail}</p>
+                      <h3 className="font-extrabold text-sm text-[#082F49]">{m.memberName}</h3>
+                      <p className="text-xs text-[#082F49]/70">{m.memberEmail}</p>
                     </div>
                     <span className={m.status === 'ACTIVE' ? 'theme-badge-mint' : 'theme-badge-rose'}>
                       {m.status}
                     </span>
                   </div>
 
-                  <div className="mt-3 space-y-1.5 text-xs text-slate-700 font-medium">
-                    <p>Relationship: <strong className="text-slate-900 font-bold">{m.relationship}</strong></p>
-                    <p>Permission Scope: <strong className="text-[#a82948] font-bold">{m.accessScope}</strong></p>
+                  <div className="mt-3 space-y-1.5 text-xs text-[#082F49] font-medium">
+                    <p>Relationship: <strong className="text-[#082F49] font-bold">{m.relationship}</strong></p>
+                    <p>Permission Scope: <strong className="text-[#0E7490] font-bold">{m.accessScope}</strong></p>
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-100">
+                <div className="mt-4 pt-3 border-t border-[#BAE6FD]/40">
                   {m.status === 'ACTIVE' && (
                     <button
                       onClick={() => handleRevoke(m.id)}
-                      className="w-full py-2 bg-rose-50 hover:bg-rose-100 text-[#a82948] rounded-xl text-xs font-bold border border-rose-200 transition-colors flex items-center justify-center gap-1.5"
+                      className="w-full py-2 bg-[#BAE6FD]/30 hover:bg-[#BAE6FD]/60 text-[#082F49] rounded-xl text-xs font-bold border border-[#BAE6FD] transition-colors flex items-center justify-center gap-1.5"
                     >
                       <Trash2 className="w-3.5 h-3.5" /> Revoke Immediate Access
                     </button>
@@ -136,11 +136,11 @@ export default function FamilyFinance() {
         </div>
 
         {/* Expense Split Calculator (FR12) */}
-        <div className="theme-card p-6 space-y-4">
-          <h2 className="text-base font-extrabold text-slate-900">Family Expense Split Calculator</h2>
+        <div className="theme-card p-6 space-y-4 floating-card">
+          <h2 className="text-base font-extrabold text-[#082F49]">Family Expense Split Calculator</h2>
           <form onSubmit={calculateSplit} className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs items-end">
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">Total Expense Amount (₹)</label>
+              <label className="block text-xs font-bold text-[#082F49] mb-1">Total Expense Amount (₹)</label>
               <input
                 type="number"
                 step="0.01"
@@ -153,7 +153,7 @@ export default function FamilyFinance() {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-800 mb-1">Number of People</label>
+              <label className="block text-xs font-bold text-[#082F49] mb-1">Number of People</label>
               <input
                 type="number"
                 min="2"
@@ -173,9 +173,9 @@ export default function FamilyFinance() {
           </form>
 
           {splitResult && (
-            <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-900 font-semibold flex items-center justify-between">
+            <div className="p-4 bg-[#BAE6FD]/30 border border-[#BAE6FD] rounded-2xl text-xs text-[#082F49] font-semibold flex items-center justify-between">
               <span>Each member's equitable share:</span>
-              <strong className="text-base font-black text-[#DB5375]">₹{splitResult}</strong>
+              <strong className="text-base font-black text-[#0E7490]">₹{splitResult}</strong>
             </div>
           )}
         </div>
@@ -183,13 +183,13 @@ export default function FamilyFinance() {
 
       {/* INVITE MODAL */}
       {showModal && (
-        <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="relative bg-white/95 backdrop-blur-md rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border-2 border-white/80 overflow-hidden fade-in floating-card">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]" />
-            <h3 className="text-xl font-extrabold text-slate-900 mb-4">Invite Family Member</h3>
+        <div className="fixed inset-0 bg-[#082F49]/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="relative bg-[#F0FDFF] rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border-2 border-[#BAE6FD] overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#0E7490]" />
+            <h3 className="text-xl font-extrabold text-[#082F49] mb-4">Invite Family Member</h3>
             <form onSubmit={handleInvite} className="space-y-4">
               <div>
-                <label className="block text-xs font-bold text-slate-800 mb-1">Full Name</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Full Name</label>
                 <input
                   type="text"
                   required
@@ -201,7 +201,7 @@ export default function FamilyFinance() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-800 mb-1">Email Address</label>
+                <label className="block text-xs font-bold text-[#082F49] mb-1">Email Address</label>
                 <input
                   type="email"
                   required
@@ -214,7 +214,7 @@ export default function FamilyFinance() {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold text-slate-800 mb-1">Relationship</label>
+                  <label className="block text-xs font-bold text-[#082F49] mb-1">Relationship</label>
                   <select
                     value={relationship}
                     onChange={(e) => setRelationship(e.target.value)}
@@ -227,7 +227,7 @@ export default function FamilyFinance() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-800 mb-1">Access Scope</label>
+                  <label className="block text-xs font-bold text-[#082F49] mb-1">Access Scope</label>
                   <select
                     value={accessScope}
                     onChange={(e) => setAccessScope(e.target.value)}

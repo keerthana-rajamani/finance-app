@@ -61,7 +61,7 @@ ADVANCE TAX SCHEDULE:
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-transparent">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#0E7490]"></div>
       </div>
     );
   }
@@ -74,15 +74,15 @@ ADVANCE TAX SCHEDULE:
     <div className="min-h-screen bg-transparent py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
-        <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 floating-card">
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-2xl font-extrabold text-slate-900">Income Tax & Capital Gains Summary</h1>
+              <h1 className="text-2xl font-extrabold text-[#082F49]">Income Tax & Capital Gains Summary</h1>
               <span className="theme-badge font-black text-xs">
                 {tax?.financialYear}
               </span>
             </div>
-            <p className="text-xs text-slate-600 mt-1 font-medium">
+            <p className="text-xs text-[#082F49]/70 mt-1 font-medium">
               Automated capital gains calculation (LTCG/STCG), 80C deductions tracker, and advance tax calendar
             </p>
           </div>
@@ -90,39 +90,39 @@ ADVANCE TAX SCHEDULE:
             onClick={downloadTaxReport}
             className="btn-gradient text-xs py-2.5 px-4 shadow-md"
           >
-            <Download className="w-4 h-4 text-slate-900" /> Download Tax Report
+            <Download className="w-4 h-4 text-white" /> Download Tax Report
           </button>
         </div>
 
         {/* Section 80C Deduction Tracker Card (FR11) */}
-        <div className="theme-card p-6 space-y-4">
+        <div className="theme-card p-6 space-y-4 floating-card">
           <div className="flex justify-between items-center">
             <div>
-              <h2 className="text-base font-extrabold text-slate-900">Section 80C Deductions Headroom</h2>
-              <p className="text-xs text-slate-600 font-medium">ELSS Mutual Funds, PPF, EPF, Life Insurance Premium, Home Loan Principal</p>
+              <h2 className="text-base font-extrabold text-[#082F49]">Section 80C Deductions Headroom</h2>
+              <p className="text-xs text-[#082F49]/70 font-medium">ELSS Mutual Funds, PPF, EPF, Life Insurance Premium, Home Loan Principal</p>
             </div>
-            <span className="text-sm font-black text-slate-900">
+            <span className="text-sm font-black text-[#082F49]">
               ₹{eligible80c.toLocaleString('en-IN')} / ₹{limit80c.toLocaleString('en-IN')}
             </span>
           </div>
 
-          <div className="w-full h-3 rounded-full bg-slate-100 overflow-hidden border border-slate-200">
+          <div className="w-full h-3 rounded-full bg-[#BAE6FD]/30 overflow-hidden border border-[#BAE6FD]">
             <div
-              className="h-full bg-[#DB5375] rounded-full transition-all duration-500"
+              className="h-full bg-[#0E7490] rounded-full transition-all duration-500"
               style={{ width: `${Math.min((eligible80c / limit80c) * 100, 100)}%` }}
             ></div>
           </div>
 
           {headroom80c > 0 ? (
-            <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-2 text-slate-900 text-xs">
-              <AlertTriangle className="w-4 h-4 flex-shrink-0 text-[#DB5375]" />
+            <div className="p-3.5 bg-[#BAE6FD]/30 border border-[#BAE6FD] rounded-xl flex items-center gap-2 text-[#082F49] text-xs">
+              <AlertTriangle className="w-4 h-4 flex-shrink-0 text-[#0E7490]" />
               <span>
                 <strong>Tax Opportunity:</strong> You still have <strong>₹{headroom80c.toLocaleString('en-IN')}</strong> in unused 80C headroom. Investing in ELSS before March 31 can save up to ₹{(headroom80c * 0.3).toFixed(0)} in taxes.
               </span>
             </div>
           ) : (
-            <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2 text-emerald-800 text-xs font-semibold">
-              <CheckCircle className="w-4 h-4 flex-shrink-0 text-emerald-700" />
+            <div className="p-3 bg-[#22C55E]/15 border border-[#22C55E]/30 rounded-xl flex items-center gap-2 text-[#15803d] text-xs font-semibold">
+              <CheckCircle className="w-4 h-4 flex-shrink-0 text-[#22C55E]" />
               <span>Section 80C limit of ₹1,50,000 is fully exhausted! Maximum tax benefit achieved.</span>
             </div>
           )}
@@ -131,44 +131,44 @@ ADVANCE TAX SCHEDULE:
         {/* Income Breakdown & Computation Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="theme-card p-6 space-y-3 text-xs floating-card">
-            <h2 className="text-base font-extrabold text-slate-900 mb-2">Gross Income Breakdown</h2>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600 font-medium">Estimated Annual Salary</span>
-              <strong className="text-slate-900">₹{Number(tax?.grossIncome).toLocaleString('en-IN')}</strong>
+            <h2 className="text-base font-extrabold text-[#082F49] mb-2">Gross Income Breakdown</h2>
+            <div className="flex justify-between py-2 border-b border-[#BAE6FD]/40">
+              <span className="text-[#082F49]/70 font-medium">Estimated Annual Salary</span>
+              <strong className="text-[#082F49]">₹{Number(tax?.grossIncome).toLocaleString('en-IN')}</strong>
             </div>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600 font-medium">Savings & Deposit Interest (Schedule OS)</span>
-              <strong className="text-slate-900">₹{Number(tax?.interestIncome).toLocaleString('en-IN')}</strong>
+            <div className="flex justify-between py-2 border-b border-[#BAE6FD]/40">
+              <span className="text-[#082F49]/70 font-medium">Savings & Deposit Interest (Schedule OS)</span>
+              <strong className="text-[#082F49]">₹{Number(tax?.interestIncome).toLocaleString('en-IN')}</strong>
             </div>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600 font-medium">Short-Term Capital Gains (STCG @ 20%)</span>
-              <strong className="text-slate-900">₹{Number(tax?.stcg).toLocaleString('en-IN')}</strong>
+            <div className="flex justify-between py-2 border-b border-[#BAE6FD]/40">
+              <span className="text-[#082F49]/70 font-medium">Short-Term Capital Gains (STCG @ 20%)</span>
+              <strong className="text-[#082F49]">₹{Number(tax?.stcg).toLocaleString('en-IN')}</strong>
             </div>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600 font-medium">Long-Term Capital Gains (LTCG @ 12.5%)</span>
-              <strong className="text-slate-900">₹{Number(tax?.ltcg).toLocaleString('en-IN')}</strong>
+            <div className="flex justify-between py-2 border-b border-[#BAE6FD]/40">
+              <span className="text-[#082F49]/70 font-medium">Long-Term Capital Gains (LTCG @ 12.5%)</span>
+              <strong className="text-[#082F49]">₹{Number(tax?.ltcg).toLocaleString('en-IN')}</strong>
             </div>
-            <div className="flex justify-between py-2 text-[#DB5375] font-black">
+            <div className="flex justify-between py-2 text-[#0E7490] font-black">
               <span>Standard Deduction</span>
               <span>-₹{Number(tax?.standardDeduction).toLocaleString('en-IN')}</span>
             </div>
           </div>
 
           <div className="theme-card p-6 space-y-3 text-xs floating-card">
-            <h2 className="text-base font-extrabold text-slate-900 mb-2">Net Tax Liability Summary</h2>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600 font-medium">Net Taxable Income</span>
-              <strong className="text-slate-900 text-sm font-black">₹{Number(tax?.taxableIncome).toLocaleString('en-IN')}</strong>
+            <h2 className="text-base font-extrabold text-[#082F49] mb-2">Net Tax Liability Summary</h2>
+            <div className="flex justify-between py-2 border-b border-[#BAE6FD]/40">
+              <span className="text-[#082F49]/70 font-medium">Net Taxable Income</span>
+              <strong className="text-[#082F49] text-sm font-black">₹{Number(tax?.taxableIncome).toLocaleString('en-IN')}</strong>
             </div>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600 font-medium">Calculated Annual Tax</span>
-              <strong className="text-[#DB5375] text-sm font-black">₹{Number(tax?.estimatedTaxLiability).toLocaleString('en-IN')}</strong>
+            <div className="flex justify-between py-2 border-b border-[#BAE6FD]/40">
+              <span className="text-[#082F49]/70 font-medium">Calculated Annual Tax</span>
+              <strong className="text-[#0E7490] text-sm font-black">₹{Number(tax?.estimatedTaxLiability).toLocaleString('en-IN')}</strong>
             </div>
-            <div className="flex justify-between py-2 border-b border-slate-100">
-              <span className="text-slate-600 font-medium">Effective Tax Rate</span>
-              <strong className="text-[#065f46] font-extrabold">14.2%</strong>
+            <div className="flex justify-between py-2 border-b border-[#BAE6FD]/40">
+              <span className="text-[#082F49]/70 font-medium">Effective Tax Rate</span>
+              <strong className="text-[#22C55E] font-extrabold">14.2%</strong>
             </div>
-            <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl mt-2 text-[11px] text-slate-600 font-medium">
+            <div className="p-3 bg-[#BAE6FD]/30 border border-[#BAE6FD] rounded-xl mt-2 text-[11px] text-[#082F49]/70 font-medium">
               TDS reconciliation and Form 26AS data validation are performed per RBI/ITD standards.
             </div>
           </div>
@@ -177,21 +177,21 @@ ADVANCE TAX SCHEDULE:
         {/* Advance Tax Schedule (FR11) */}
         <div className="theme-card p-6 space-y-4 floating-card">
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-[#DB5375]" />
-            <h2 className="text-base font-extrabold text-slate-900">Mandatory Advance Tax Instalment Schedule</h2>
+            <Calendar className="w-4 h-4 text-[#0E7490]" />
+            <h2 className="text-base font-extrabold text-[#082F49]">Mandatory Advance Tax Instalment Schedule</h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {tax?.advanceTaxSchedule?.map((s, idx) => (
               <div key={idx} className="theme-card p-4 space-y-2 shadow-sm floating-card hover:-translate-y-1 transition-all">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="font-extrabold text-slate-900">{s.installment}</span>
+                  <span className="font-extrabold text-[#082F49]">{s.installment}</span>
                   <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold ${s.status === 'PAID' ? 'theme-badge-mint' : 'theme-badge-rose'}`}>
                     {s.status}
                   </span>
                 </div>
-                <p className="text-xs text-slate-600 font-medium">Due: <strong className="text-slate-900">{s.dueDate}</strong> ({s.percentage}%)</p>
-                <p className="text-base font-black text-slate-900">₹{Number(s.amount).toLocaleString('en-IN')}</p>
+                <p className="text-xs text-[#082F49]/70 font-medium">Due: <strong className="text-[#082F49]">{s.dueDate}</strong> ({s.percentage}%)</p>
+                <p className="text-base font-black text-[#082F49]">₹{Number(s.amount).toLocaleString('en-IN')}</p>
               </div>
             ))}
           </div>

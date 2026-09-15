@@ -19,6 +19,7 @@ import Investments from './pages/Investments';
 import TaxSummary from './pages/TaxSummary';
 import AIAdvisor from './pages/AIAdvisor';
 import FamilyFinance from './pages/FamilyFinance';
+import CompliancePrivacy from './pages/CompliancePrivacy';
 
 export default function App() {
   return (
@@ -33,6 +34,8 @@ export default function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/compliance" element={<CompliancePrivacy />} />
+                <Route path="/privacy" element={<CompliancePrivacy />} />
 
                 {/* Protected Routes (Appendix I & FR1 - FR3) */}
                 <Route

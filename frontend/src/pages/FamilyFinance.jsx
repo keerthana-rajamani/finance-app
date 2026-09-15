@@ -92,7 +92,7 @@ export default function FamilyFinance() {
             onClick={() => setShowModal(true)}
             className="btn-gradient text-xs font-extrabold"
           >
-            <UserPlus className="w-4 h-4 text-slate-900" /> Invite Family Member
+            <UserPlus className="w-4 h-4 text-white" /> Invite Family Member
           </button>
         </div>
 
@@ -102,7 +102,7 @@ export default function FamilyFinance() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {members.map((m) => (
-              <div key={m.id} className="p-5 rounded-2xl border-2 border-[#DB5375]/25 bg-gradient-to-br from-white/95 to-[#B3FFB3]/20 shadow-sm flex flex-col justify-between hover:border-[#DB5375]/40 transition-all">
+              <div key={m.id} className="theme-card p-5 shadow-sm flex flex-col justify-between floating-card hover:-translate-y-1 transition-all">
                 <div>
                   <div className="flex justify-between items-start">
                     <div>
@@ -120,11 +120,11 @@ export default function FamilyFinance() {
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-[#DB5375]/20">
+                <div className="mt-4 pt-3 border-t border-slate-100">
                   {m.status === 'ACTIVE' && (
                     <button
                       onClick={() => handleRevoke(m.id)}
-                      className="w-full py-2 bg-rose-50 hover:bg-rose-100 text-[#a82948] rounded-xl text-xs font-bold border border-[#DB5375]/30 transition-colors flex items-center justify-center gap-1.5"
+                      className="w-full py-2 bg-rose-50 hover:bg-rose-100 text-[#a82948] rounded-xl text-xs font-bold border border-rose-200 transition-colors flex items-center justify-center gap-1.5"
                     >
                       <Trash2 className="w-3.5 h-3.5" /> Revoke Immediate Access
                     </button>
@@ -173,9 +173,9 @@ export default function FamilyFinance() {
           </form>
 
           {splitResult && (
-            <div className="p-4 bg-gradient-to-r from-[#DB5375]/15 to-[#B3FFB3]/35 border-2 border-[#DB5375]/30 rounded-2xl text-xs text-slate-900 font-semibold flex items-center justify-between">
+            <div className="p-4 bg-slate-50 border border-slate-200 rounded-2xl text-xs text-slate-900 font-semibold flex items-center justify-between">
               <span>Each member's equitable share:</span>
-              <strong className="text-base font-black text-[#89233c]">₹{splitResult}</strong>
+              <strong className="text-base font-black text-[#DB5375]">₹{splitResult}</strong>
             </div>
           )}
         </div>
@@ -184,8 +184,8 @@ export default function FamilyFinance() {
       {/* INVITE MODAL */}
       {showModal && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="relative bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border-2 border-[#DB5375]/30 overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]" />
+          <div className="relative bg-white/95 backdrop-blur-md rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border-2 border-white/80 overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]" />
             <h3 className="text-xl font-extrabold text-slate-900 mb-4">Invite Family Member</h3>
             <form onSubmit={handleInvite} className="space-y-4">
               <div>

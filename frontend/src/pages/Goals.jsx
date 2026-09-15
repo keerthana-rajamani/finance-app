@@ -132,15 +132,9 @@ export default function Goals() {
                       </span>
                     </div>
 
-                    {/* Animated Circular Progress Ring (FR7) with Theme Gradient */}
+                    {/* Circular Progress Ring with Solid Theme Color */}
                     <div className="relative w-24 h-24 flex items-center justify-center">
                       <svg className="w-24 h-24 transform -rotate-90">
-                        <defs>
-                          <linearGradient id={`goalGrad-${g.id}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#DB5375" />
-                            <stop offset="100%" stopColor="#B3FFB3" />
-                          </linearGradient>
-                        </defs>
                         <circle
                           cx="48"
                           cy="48"
@@ -153,7 +147,7 @@ export default function Goals() {
                           cx="48"
                           cy="48"
                           r={radius}
-                          stroke={`url(#goalGrad-${g.id})`}
+                          stroke="#DB5375"
                           strokeWidth="8"
                           fill="transparent"
                           strokeDasharray={circumference}
@@ -182,22 +176,22 @@ export default function Goals() {
                       <span>Target Date:</span>
                       <strong className="text-slate-900">{g.targetDate} ({g.monthsRemaining} mos)</strong>
                     </div>
-                    <div className="flex justify-between text-slate-800 bg-[#B3FFB3]/30 border border-[#B3FFB3]/60 p-2.5 rounded-lg font-bold">
+                    <div className="flex justify-between text-slate-800 bg-rose-50 border border-rose-100 p-2.5 rounded-lg font-bold">
                       <span>Monthly Savings Needed:</span>
-                      <span className="text-[#a82948]">₹{Number(g.monthlySavingsNeeded).toLocaleString('en-IN')}/mo</span>
+                      <span className="text-[#DB5375]">₹{Number(g.monthlySavingsNeeded).toLocaleString('en-IN')}/mo</span>
                     </div>
                   </div>
 
                   {/* SIP Recommendation (FR7) */}
                   <div className="mt-3 p-2.5 bg-slate-50 rounded-lg text-[11px] text-slate-600 border border-slate-100">
                     <p className="font-semibold text-slate-800 flex items-center gap-1">
-                      <TrendingUp className="w-3 h-3 text-[#DB5375]" /> Suggested SIP Vehicle:
+                      <TrendingUp className="w-3 text-[#DB5375]" /> Suggested SIP Vehicle:
                     </p>
                     <p className="mt-0.5 text-slate-600">{g.sipRecommendation}</p>
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-[#DB5375]/20">
+                <div className="mt-4 pt-3 border-t border-slate-100">
                   <button
                     onClick={() => {
                       setSelectedGoal(g);
@@ -217,8 +211,8 @@ export default function Goals() {
       {/* CREATE GOAL MODAL */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-[#DB5375]/35 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]"></div>
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-white/80 relative overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]"></div>
             <h3 className="text-lg font-extrabold text-slate-900 mb-4 mt-1">Create Financial Goal</h3>
             {error && <p className="text-xs text-red-600 bg-red-50 p-2 rounded mb-3 border border-red-200">{error}</p>}
             <form onSubmit={handleCreateGoal} className="space-y-3">
@@ -306,8 +300,8 @@ export default function Goals() {
       {/* ADD FUNDS MODAL */}
       {showFundsModal && selectedGoal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-sm w-full p-6 shadow-2xl border-2 border-[#DB5375]/35 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]"></div>
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-sm w-full p-6 shadow-2xl border-2 border-white/80 relative overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]"></div>
             <h3 className="text-base font-extrabold text-slate-900 mb-2 mt-1">Contribute to {selectedGoal.name}</h3>
             <p className="text-xs text-slate-600 mb-4 font-medium">
               Current: ₹{Number(selectedGoal.currentAmount).toLocaleString('en-IN')} / ₹{Number(selectedGoal.targetAmount).toLocaleString('en-IN')}

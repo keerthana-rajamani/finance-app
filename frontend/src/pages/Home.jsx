@@ -17,7 +17,7 @@ export default function Home() {
               RBI Account Aggregator & AES-256 Enabled
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-              Master Your Money with <span className="bg-gradient-to-r from-[#DB5375] via-[#a32d4b] to-[#14532d] bg-clip-text text-transparent">AI-Powered</span> Financial Clarity
+              Master Your Money with <span className="text-[#DB5375]">AI-Powered</span> Financial Clarity
             </h1>
             <p className="mt-6 text-lg text-slate-700 leading-relaxed font-medium">
               Consolidate your bank accounts, automate expense categorization, monitor monthly budgets in real-time, track investment portfolios (XIRR), and optimize income tax deductions.
@@ -25,13 +25,13 @@ export default function Home() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/register"
-                className="btn-gradient px-7 py-3.5 text-base shadow-lg shadow-[#DB5375]/30 hover:scale-[1.02]"
+                className="btn-gradient px-7 py-3.5 text-base shadow-lg shadow-[#DB5375]/20"
               >
                 Get Started Free <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 to="/login"
-                className="btn-gradient-outline px-7 py-3.5 text-base hover:scale-[1.02]"
+                className="btn-gradient-outline px-7 py-3.5 text-base"
               >
                 Sign In with Demo Accounts
               </Link>
@@ -41,7 +41,7 @@ export default function Home() {
       </section>
 
       {/* Feature Highlights Grid */}
-      <section className="py-16 bg-white/90 backdrop-blur-md border-2 border-[#DB5375]/25 mx-4 sm:mx-6 lg:mx-8 rounded-3xl shadow-xl mb-12">
+      <section className="py-16 bg-white/90 backdrop-blur-md border-2 border-white/80 mx-4 sm:mx-6 lg:mx-8 rounded-3xl shadow-xl mb-12 fade-in">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
@@ -53,8 +53,8 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="theme-card p-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#DB5375] flex items-center justify-center mb-4 shadow-sm">
+            <div className="theme-card p-6 floating-card">
+              <div className="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 text-[#DB5375] flex items-center justify-center mb-4 shadow-xs">
                 <Wallet className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">Account Aggregation</h3>
@@ -63,8 +63,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="theme-card p-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#DB5375] flex items-center justify-center mb-4 shadow-sm">
+            <div className="theme-card p-6 floating-card">
+              <div className="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 text-[#DB5375] flex items-center justify-center mb-4 shadow-xs">
                 <PieChart className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">Real-Time Budgets</h3>
@@ -73,8 +73,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="theme-card p-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#DB5375] flex items-center justify-center mb-4 shadow-sm">
+            <div className="theme-card p-6 floating-card">
+              <div className="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 text-[#DB5375] flex items-center justify-center mb-4 shadow-xs">
                 <Target className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">Financial Goals & SIPs</h3>
@@ -83,8 +83,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="theme-card p-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#DB5375] flex items-center justify-center mb-4 shadow-sm">
+            <div className="theme-card p-6 floating-card">
+              <div className="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 text-[#DB5375] flex items-center justify-center mb-4 shadow-xs">
                 <TrendingUp className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">Portfolio & Net Worth</h3>
@@ -93,8 +93,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="theme-card p-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#DB5375] flex items-center justify-center mb-4 shadow-sm">
+            <div className="theme-card p-6 floating-card">
+              <div className="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 text-[#DB5375] flex items-center justify-center mb-4 shadow-xs">
                 <Cpu className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">AI Financial Advisor</h3>
@@ -103,8 +103,8 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="theme-card p-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#DB5375] flex items-center justify-center mb-4 shadow-sm">
+            <div className="theme-card p-6 floating-card">
+              <div className="w-12 h-12 rounded-xl bg-rose-50 border border-rose-100 text-[#DB5375] flex items-center justify-center mb-4 shadow-xs">
                 <Lock className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-slate-800 mb-2">Tax Filing Assistance</h3>

@@ -234,7 +234,7 @@ export default function Accounts() {
               </thead>
               <tbody className="divide-y divide-slate-100 bg-white/70">
                 {filteredTxns.map((t) => (
-                  <tr key={t.id} className="hover:bg-gradient-to-r hover:from-[#DB5375]/10 hover:to-[#B3FFB3]/15 transition-colors">
+                  <tr key={t.id} className="hover:bg-slate-50/80 transition-colors">
                     <td className="py-3 px-4 font-medium">{new Date(t.txnDate).toLocaleDateString()}</td>
                     <td className="py-3 px-4 font-bold text-slate-900">{t.merchant}</td>
                     <td className="py-3 px-4">
@@ -244,7 +244,7 @@ export default function Accounts() {
                     </td>
                     <td className="py-3 px-4 font-mono">
                       <span className={`px-1.5 py-0.5 rounded text-[10px] font-extrabold ${
-                        Number(t.confidenceScore) >= 0.9 ? 'bg-[#B3FFB3]/60 text-slate-900 border border-[#B3FFB3]' : 'bg-[#DB5375]/20 text-[#89233c] border border-[#DB5375]/30'
+                        Number(t.confidenceScore) >= 0.9 ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-rose-50 text-[#DB5375] border border-rose-200'
                       }`}>
                         {(Number(t.confidenceScore) * 100).toFixed(0)}%
                       </span>
@@ -264,8 +264,8 @@ export default function Accounts() {
       {/* RBI AA LINK MODAL */}
       {showLinkModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-[#DB5375]/35 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]"></div>
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-white/80 relative overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]"></div>
             <div className="flex items-center gap-2 mb-2 text-[#DB5375] mt-1">
               <ShieldCheck className="w-5 h-5 text-[#DB5375]" />
               <h3 className="text-lg font-extrabold text-slate-900">RBI Account Aggregator Consent</h3>
@@ -330,7 +330,7 @@ export default function Accounts() {
                 />
               </div>
 
-              <div className="p-3 bg-gradient-to-r from-white to-[#B3FFB3]/20 border-2 border-[#DB5375]/25 rounded-xl space-y-2">
+              <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-2">
                 <div className="flex items-start gap-2">
                   <input
                     type="checkbox"

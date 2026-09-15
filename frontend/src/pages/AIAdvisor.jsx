@@ -116,10 +116,10 @@ export default function AIAdvisor() {
         {/* Top Section: Health Score & 50-30-20 Rule */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Health Score Card (FR15) */}
-          <div className="theme-card p-6 space-y-4">
+          <div className="theme-card p-6 space-y-4 floating-card">
             <h2 className="text-base font-extrabold text-slate-900">Financial Health Score</h2>
             <div className="flex items-center gap-6">
-              <div className="w-32 h-32 rounded-full border-8 border-[#DB5375] flex flex-col items-center justify-center shadow-lg bg-gradient-to-br from-white/90 to-[#B3FFB3]/30">
+              <div className="w-32 h-32 rounded-full border-8 border-[#DB5375] flex flex-col items-center justify-center shadow-lg bg-white">
                 <span className="text-3xl font-black text-slate-900">{score}</span>
                 <span className="text-[10px] uppercase font-black text-[#DB5375] tracking-wider">/ 850</span>
               </div>
@@ -134,7 +134,7 @@ export default function AIAdvisor() {
             </div>
 
             {/* Tips */}
-            <div className="p-3 bg-gradient-to-r from-[#DB5375]/15 to-[#B3FFB3]/25 border border-[#DB5375]/30 rounded-xl space-y-1 text-xs">
+            <div className="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1 text-xs">
               <p className="font-extrabold text-slate-900 flex items-center gap-1">
                 <Lightbulb className="w-3.5 h-3.5 text-[#DB5375]" /> Personalized Money Tip:
               </p>
@@ -145,7 +145,7 @@ export default function AIAdvisor() {
           </div>
 
           {/* 50-30-20 Rule Breakdown (FR15) */}
-          <div className="theme-card p-6 space-y-4 text-xs">
+          <div className="theme-card p-6 space-y-4 text-xs floating-card">
             <h2 className="text-base font-extrabold text-slate-900">50-30-20 Budget Optimization</h2>
             <p className="text-slate-600 text-xs font-medium">
               Based on monthly recorded income of ₹{Number(insights?.totalIncome || 125000).toLocaleString('en-IN')}:
@@ -157,7 +157,7 @@ export default function AIAdvisor() {
                   <span>50% Needs (Rent, Utilities, Groceries)</span>
                   <span>Target: ₹{Number(rule?.needsTarget || 62500).toLocaleString('en-IN')}</span>
                 </div>
-                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden border border-[#DB5375]/20">
+                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden border border-slate-200">
                   <div className="h-full bg-[#DB5375] rounded-full" style={{ width: '50%' }}></div>
                 </div>
               </div>
@@ -167,7 +167,7 @@ export default function AIAdvisor() {
                   <span>30% Wants (Dining, Shopping, Movies)</span>
                   <span>Target: ₹{Number(rule?.wantsTarget || 37500).toLocaleString('en-IN')}</span>
                 </div>
-                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden border border-[#DB5375]/20">
+                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden border border-slate-200">
                   <div className="h-full bg-amber-400 rounded-full" style={{ width: '30%' }}></div>
                 </div>
               </div>
@@ -177,7 +177,7 @@ export default function AIAdvisor() {
                   <span>20% Savings & Debt Repayment</span>
                   <span>Target: ₹{Number(rule?.savingsTarget || 25000).toLocaleString('en-IN')}</span>
                 </div>
-                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden border border-[#DB5375]/20">
+                <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden border border-slate-200">
                   <div className="h-full bg-[#4ade80] rounded-full" style={{ width: '20%' }}></div>
                 </div>
               </div>
@@ -186,25 +186,25 @@ export default function AIAdvisor() {
         </div>
 
         {/* Debt Avalanche vs Snowball Comparison Box (FR15) */}
-        <div className="theme-card p-6 space-y-4">
+        <div className="theme-card p-6 space-y-4 floating-card">
           <h2 className="text-base font-extrabold text-slate-900">Debt Pay-off Optimizer</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-            <div className="p-4 bg-gradient-to-br from-white/95 to-[#B3FFB3]/25 rounded-2xl border-2 border-[#DB5375]/25 space-y-2 shadow-sm">
+            <div className="p-4 bg-white/95 rounded-2xl border border-slate-200 space-y-2 shadow-sm hover:-translate-y-1 transition-all">
               <h3 className="font-extrabold text-sm text-slate-900">Debt Avalanche Strategy (Recommended)</h3>
               <p className="text-slate-600 font-medium">
                 Prioritize paying off liabilities with the highest interest rates first (e.g. Axis Credit Card @ 42% APR).
               </p>
-              <div className="p-2 bg-[#B3FFB3]/50 text-slate-900 font-extrabold rounded-lg border border-[#B3FFB3]">
+              <div className="p-2 bg-emerald-50 text-emerald-800 font-extrabold rounded-lg border border-emerald-200">
                 Saves: ₹14,800 in total interest over 12 months
               </div>
             </div>
 
-            <div className="p-4 bg-gradient-to-br from-white/95 to-[#DB5375]/15 rounded-2xl border-2 border-[#DB5375]/25 space-y-2 shadow-sm">
+            <div className="p-4 bg-white/95 rounded-2xl border border-slate-200 space-y-2 shadow-sm hover:-translate-y-1 transition-all">
               <h3 className="font-extrabold text-sm text-slate-900">Debt Snowball Strategy</h3>
               <p className="text-slate-600 font-medium">
                 Prioritize paying off the smallest balance first for psychological momentum (e.g. Personal Microloan @ ₹12,000).
               </p>
-              <div className="p-2 bg-white text-[#a82948] font-extrabold rounded-lg border border-[#DB5375]/30">
+              <div className="p-2 bg-rose-50 text-[#DB5375] font-extrabold rounded-lg border border-rose-200">
                 Achieves: First debt cleared in 2.5 months
               </div>
             </div>
@@ -212,7 +212,7 @@ export default function AIAdvisor() {
         </div>
 
         {/* Interactive NLP Financial Chatbot (FR15) */}
-        <div className="theme-card p-6 space-y-4">
+        <div className="theme-card p-6 space-y-4 floating-card">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               <Bot className="w-5 h-5 text-[#DB5375]" />
@@ -228,22 +228,22 @@ export default function AIAdvisor() {
           </div>
 
           {/* Chat transcript */}
-          <div className="bg-gradient-to-br from-white/90 to-[#B3FFB3]/10 rounded-2xl p-4 h-80 overflow-y-auto space-y-3 border-2 border-[#DB5375]/25 shadow-inner">
+          <div className="bg-slate-50/90 rounded-2xl p-4 h-80 overflow-y-auto space-y-3 border border-slate-200 shadow-inner">
             {messages.map((m, idx) => (
               <div
                 key={idx}
                 className={`flex gap-2.5 ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {m.sender === 'bot' && (
-                  <div className="w-7 h-7 rounded-full bg-[#B3FFB3]/60 text-[#DB5375] flex items-center justify-center flex-shrink-0 text-xs shadow-sm border border-[#DB5375]/30">
+                  <div className="w-7 h-7 rounded-full bg-rose-50 text-[#DB5375] flex items-center justify-center flex-shrink-0 text-xs shadow-sm border border-rose-200">
                     <Bot className="w-4 h-4" />
                   </div>
                 )}
                 <div
                   className={`p-3 rounded-2xl max-w-xl text-xs leading-relaxed whitespace-pre-line ${
                     m.sender === 'user'
-                      ? 'bg-gradient-to-r from-[#DB5375] to-[#ff7c9b] text-white rounded-br-none shadow-md font-semibold'
-                      : 'bg-white text-slate-800 border-2 border-[#DB5375]/20 shadow-md rounded-bl-none font-medium'
+                      ? 'bg-[#DB5375] text-white rounded-br-none shadow-md font-semibold'
+                      : 'bg-white text-slate-800 border border-slate-200 shadow-md rounded-bl-none font-medium'
                   }`}
                 >
                   {m.text}

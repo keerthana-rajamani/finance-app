@@ -166,7 +166,7 @@ export default function Investments() {
               </thead>
               <tbody className="divide-y divide-slate-100 bg-white/70">
                 {investments.map((inv) => (
-                  <tr key={inv.id} className="hover:bg-gradient-to-r hover:from-[#DB5375]/10 hover:to-[#B3FFB3]/15 transition-colors">
+                  <tr key={inv.id} className="hover:bg-slate-50/80 transition-colors">
                     <td className="py-3 px-4 font-extrabold text-slate-900">{inv.assetName}</td>
                     <td className="py-3 px-4">
                       <span className="theme-badge text-[10px]">
@@ -189,8 +189,8 @@ export default function Investments() {
       {/* ADD INVESTMENT MODAL */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-[#DB5375]/35 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]"></div>
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-white/80 relative overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]"></div>
             <h3 className="text-lg font-extrabold text-slate-900 mb-4 mt-1">Add Portfolio Asset</h3>
             <form onSubmit={handleAddInvestment} className="space-y-3">
               <div>

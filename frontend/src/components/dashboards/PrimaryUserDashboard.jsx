@@ -46,7 +46,7 @@ export default function PrimaryUserDashboard({
   const totalBankBalance = accounts?.reduce((sum, a) => sum + (Number(a.balance) || 0), 0) || 185200;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 fade-in">
       {/* Welcome Header */}
       <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -69,7 +69,7 @@ export default function PrimaryUserDashboard({
             onClick={() => setShowAddTxnModal(true)}
             className="btn-gradient text-xs py-2 px-3.5 shadow-sm cursor-pointer"
           >
-            <PlusCircle className="w-4 h-4 text-slate-900" /> Add Expense
+            <PlusCircle className="w-4 h-4" /> Add Expense
           </button>
           <Link
             to="/budget"
@@ -97,11 +97,11 @@ export default function PrimaryUserDashboard({
                 ₹{netWorth ? Number(netWorth.netWorth).toLocaleString('en-IN') : '9,45,200'}
               </h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] text-slate-900 flex items-center justify-center shadow-md">
-              <TrendingUp className="w-5 h-5 text-slate-900" />
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 text-[#DB5375] flex items-center justify-center shadow-xs">
+              <TrendingUp className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-4 pt-3 border-t border-[#DB5375]/20 flex justify-between text-xs">
+          <div className="mt-4 pt-3 border-t border-slate-100 flex justify-between text-xs">
             <span className="text-slate-600">Assets: <strong className="text-[#a82948]">₹{netWorth ? Number(netWorth.totalAssets).toLocaleString('en-IN') : '11,20,000'}</strong></span>
             <span className="text-slate-600">Loans: <strong className="text-red-500">₹{netWorth ? Number(netWorth.totalLiabilities).toLocaleString('en-IN') : '1,74,800'}</strong></span>
           </div>
@@ -116,11 +116,11 @@ export default function PrimaryUserDashboard({
                 ₹{budgetSummary ? Number(budgetSummary.totalSpent).toLocaleString('en-IN') : '32,950'}
               </h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] text-slate-900 flex items-center justify-center shadow-md">
-              <PieChart className="w-5 h-5 text-slate-900" />
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 text-[#DB5375] flex items-center justify-center shadow-xs">
+              <PieChart className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-4 pt-3 border-t border-[#DB5375]/20 flex justify-between text-xs">
+          <div className="mt-4 pt-3 border-t border-slate-100 flex justify-between text-xs">
             <span className="text-slate-600">Limit: ₹{budgetSummary ? Number(budgetSummary.totalBudget).toLocaleString('en-IN') : '44,000'}</span>
             <span className="font-bold text-[#a82948]">
               {budgetSummary && budgetSummary.remainingBudget > 0 ? `₹${Number(budgetSummary.remainingBudget).toLocaleString('en-IN')} Left` : 'Over Budget!'}
@@ -137,11 +137,11 @@ export default function PrimaryUserDashboard({
                 ₹{Number(totalBankBalance).toLocaleString('en-IN')}
               </h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] text-slate-900 flex items-center justify-center shadow-md">
-              <Wallet className="w-5 h-5 text-slate-900" />
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 text-[#DB5375] flex items-center justify-center shadow-xs">
+              <Wallet className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-4 pt-3 border-t border-[#DB5375]/20 flex justify-between text-xs">
+          <div className="mt-4 pt-3 border-t border-slate-100 flex justify-between text-xs">
             <span className="text-slate-600">{accounts?.length || 2} Linked Accounts</span>
             <Link to="/accounts" className="text-[#DB5375] font-bold hover:underline">View All →</Link>
           </div>
@@ -161,11 +161,11 @@ export default function PrimaryUserDashboard({
                 </span>
               </div>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] text-slate-900 flex items-center justify-center shadow-md">
-              <Sparkles className="w-5 h-5 text-slate-900" />
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 text-[#DB5375] flex items-center justify-center shadow-xs">
+              <Sparkles className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-4 pt-3 border-t border-[#DB5375]/20 flex justify-between text-xs">
+          <div className="mt-4 pt-3 border-t border-slate-100 flex justify-between text-xs">
             <span className="text-slate-600">Savings: <strong className="text-slate-800">{analytics ? analytics.savingsRate : 28}%</strong></span>
             <Link to="/advisor" className="text-[#DB5375] font-bold hover:underline">Insights →</Link>
           </div>
@@ -180,7 +180,7 @@ export default function PrimaryUserDashboard({
           <div className="theme-card p-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-base font-extrabold text-slate-900">Recent Transactions</h2>
-              <Link to="/accounts" className="text-xs font-bold text-[#DB5375] hover:text-[#a72f4e]">
+              <Link to="/accounts" className="text-xs font-bold text-[#DB5375] hover:underline">
                 View All & Statements →
               </Link>
             </div>
@@ -190,9 +190,9 @@ export default function PrimaryUserDashboard({
                 <p className="text-xs text-slate-500 py-4">No recent transactions</p>
               ) : (
                 transactions.map((t) => (
-                  <div key={t.id} className="py-3 flex justify-between items-center text-sm hover:bg-gradient-to-r hover:from-[#DB5375]/5 hover:to-[#B3FFB3]/10 px-2 rounded-xl transition-colors">
+                  <div key={t.id} className="py-3 flex justify-between items-center text-sm hover:bg-slate-50 px-2 rounded-xl transition-colors">
                     <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${t.type === 'CREDIT' ? 'bg-[#B3FFB3]/60 text-slate-900' : 'bg-[#DB5375]/20 text-[#a72f4e]'}`}>
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${t.type === 'CREDIT' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-rose-50 text-[#a82948] border border-rose-200'}`}>
                         {t.type === 'CREDIT' ? <ArrowDownRight className="w-4 h-4" /> : <ArrowUpRight className="w-4 h-4" />}
                       </div>
                       <div>
@@ -201,7 +201,7 @@ export default function PrimaryUserDashboard({
                       </div>
                     </div>
                     <div className="text-right">
-                      <p className={`font-black ${t.type === 'CREDIT' ? 'text-[#065f46]' : 'text-[#a72f4e]'}`}>
+                      <p className={`font-black ${t.type === 'CREDIT' ? 'text-emerald-700' : 'text-[#a82948]'}`}>
                         {t.type === 'CREDIT' ? '+' : '-'}₹{Number(t.amount).toLocaleString('en-IN')}
                       </p>
                       <span className="text-[10px] text-slate-500 font-mono">Conf: {(Number(t.confidenceScore) * 100).toFixed(0)}%</span>
@@ -216,7 +216,7 @@ export default function PrimaryUserDashboard({
           <div className="theme-card p-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-base font-extrabold text-slate-900">Category Spend Tracking</h2>
-              <Link to="/budget" className="text-xs font-bold text-[#DB5375] hover:text-[#a72f4e]">
+              <Link to="/budget" className="text-xs font-bold text-[#DB5375] hover:underline">
                 Full Budget Tracker →
               </Link>
             </div>
@@ -241,7 +241,7 @@ export default function PrimaryUserDashboard({
                     </div>
                     <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
                       <div
-                        className={`h-full transition-all rounded-full ${isOver ? 'bg-red-500' : (isAlert ? 'bg-amber-500' : 'bg-gradient-to-r from-[#DB5375] to-[#B3FFB3]')}`}
+                        className={`h-full transition-all rounded-full ${isOver ? 'bg-red-500' : (isAlert ? 'bg-amber-500' : 'bg-[#DB5375]')}`}
                         style={{ width: `${pct}%` }}
                       ></div>
                     </div>
@@ -252,27 +252,27 @@ export default function PrimaryUserDashboard({
           </div>
         </div>
 
-        {/* Col 3: Goals & Upcoming Bills Sidebar */}
+        {/* Col 3: Goals, Upcoming Bills & Weekly AI Goal */}
         <div className="space-y-6">
           {/* Financial Goals Widget */}
           <div className="theme-card p-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-base font-extrabold text-slate-900">Active Goals</h2>
-              <Link to="/goals" className="text-xs font-bold text-[#DB5375] hover:text-[#b03050]">
+              <Link to="/goals" className="text-xs font-bold text-[#DB5375] hover:underline">
                 Manage →
               </Link>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {goals.map((g) => (
-                <div key={g.id} className="p-3 bg-gradient-to-r from-white/90 to-[#B3FFB3]/20 rounded-xl border border-[#DB5375]/20 shadow-sm">
+                <div key={g.id} className="p-3.5 bg-white rounded-xl border border-slate-200/80 shadow-xs hover:-translate-y-0.5 transition-all">
                   <div className="flex justify-between items-start">
                     <p className="text-xs font-bold text-slate-900">{g.name}</p>
                     <span className="text-xs font-black text-[#DB5375]">{g.progressPercent}%</span>
                   </div>
-                  <div className="w-full h-1.5 rounded-full bg-slate-200 mt-2">
+                  <div className="w-full h-1.5 rounded-full bg-slate-100 mt-2">
                     <div
-                      className="h-full bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] rounded-full"
+                      className="h-full bg-[#DB5375] rounded-full"
                       style={{ width: `${Math.min(g.progressPercent, 100)}%` }}
                     ></div>
                   </div>
@@ -288,7 +288,7 @@ export default function PrimaryUserDashboard({
           <div className="theme-card p-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-base font-extrabold text-slate-900">Upcoming Bills (7 Days)</h2>
-              <Link to="/bills" className="text-xs font-bold text-[#DB5375] hover:text-[#b03050]">
+              <Link to="/bills" className="text-xs font-bold text-[#DB5375] hover:underline">
                 Bill Manager →
               </Link>
             </div>
@@ -298,7 +298,7 @@ export default function PrimaryUserDashboard({
                 <p className="text-xs text-slate-500">No pending bills for the next 7 days</p>
               ) : (
                 upcomingBills.map((b) => (
-                  <div key={b.id} className="flex justify-between items-center p-3 rounded-xl bg-gradient-to-r from-[#DB5375]/10 to-[#B3FFB3]/25 border border-[#DB5375]/20 text-xs shadow-sm">
+                  <div key={b.id} className="flex justify-between items-center p-3 rounded-xl bg-white border border-slate-200/80 text-xs shadow-xs hover:-translate-y-0.5 transition-all">
                     <div>
                       <p className="font-bold text-slate-900">{b.name}</p>
                       <p className="text-[10px] text-slate-600 font-medium">Due Day: {b.dueDay}th of month</p>
@@ -310,14 +310,18 @@ export default function PrimaryUserDashboard({
             </div>
           </div>
 
-          {/* AI Advisor Money Tip Box */}
-          <div className="relative overflow-hidden p-4 bg-slate-900 text-white rounded-2xl shadow-md border border-slate-800">
-            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]"></div>
-            <div className="flex items-center gap-2 mb-2 mt-1">
-              <Sparkles className="w-4 h-4 text-[#B3FFB3]" />
-              <span className="text-xs font-bold uppercase tracking-wider text-[#B3FFB3]">Weekly AI Tip</span>
+          {/* Weekly AI Financial Goal & Tip Box (Single Color, Light, Floating) */}
+          <div className="theme-card p-5 relative overflow-hidden bg-white/95 border border-white/80 shadow-lg hover:-translate-y-1 transition-all">
+            <div className="flex items-center gap-2 mb-2">
+              <div className="w-8 h-8 rounded-lg bg-rose-50 border border-rose-200 flex items-center justify-center text-[#DB5375] shadow-xs">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="text-xs font-extrabold uppercase tracking-wider text-[#DB5375]">Weekly AI Goal & Tip</span>
+                <p className="text-[10px] text-slate-500 font-medium">Automated Intelligence Advisor</p>
+              </div>
             </div>
-            <p className="text-xs leading-relaxed text-slate-200">
+            <p className="text-xs leading-relaxed text-slate-700 font-medium mt-1">
               {analytics?.tips?.[0] || "Your Food spend reached 82% of its limit. Cooking home meals 2 days/week will save ₹3,800 this month."}
             </p>
           </div>
@@ -326,9 +330,9 @@ export default function PrimaryUserDashboard({
 
       {/* QUICK ADD TRANSACTION MODAL */}
       {showAddTxnModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-[#DB5375]/35 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]"></div>
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200 relative overflow-hidden fade-in">
+            <div className="h-1 bg-[#DB5375] absolute top-0 left-0 right-0"></div>
             <h3 className="text-lg font-extrabold text-slate-900 mb-4 mt-1">Record New Expense</h3>
             <form onSubmit={handleCreateTxn} className="space-y-3">
               <div>
@@ -336,7 +340,7 @@ export default function PrimaryUserDashboard({
                 <select
                   value={selectedAccountId}
                   onChange={(e) => setSelectedAccountId(e.target.value)}
-                  className="w-full px-3 py-2 border-2 border-[#DB5375]/30 rounded-xl text-xs bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="theme-input"
                 >
                   {accounts.map((a) => (
                     <option key={a.id} value={a.id}>
@@ -355,7 +359,7 @@ export default function PrimaryUserDashboard({
                   placeholder="850.00"
                   value={newTxnAmount}
                   onChange={(e) => setNewTxnAmount(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="theme-input"
                 />
               </div>
 
@@ -365,7 +369,7 @@ export default function PrimaryUserDashboard({
                   <select
                     value={newTxnCategory}
                     onChange={(e) => setNewTxnCategory(e.target.value)}
-                    className="w-full px-3 py-2 border-2 border-[#DB5375]/30 rounded-xl text-xs bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                    className="theme-input"
                   >
                     <option value="Food">Food</option>
                     <option value="Transport">Transport</option>
@@ -381,7 +385,7 @@ export default function PrimaryUserDashboard({
                   <select
                     value={newTxnType}
                     onChange={(e) => setNewTxnType(e.target.value)}
-                    className="w-full px-3 py-2 border-2 border-[#DB5375]/30 rounded-xl text-xs bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                    className="theme-input"
                   >
                     <option value="DEBIT">Debit (Spend)</option>
                     <option value="CREDIT">Credit (Income)</option>
@@ -396,7 +400,7 @@ export default function PrimaryUserDashboard({
                   placeholder="e.g. Swiggy, Uber, Amazon"
                   value={newTxnMerchant}
                   onChange={(e) => setNewTxnMerchant(e.target.value)}
-                  className="w-full px-3.5 py-2 border-2 border-[#DB5375]/30 rounded-xl text-sm bg-white text-slate-900 font-medium focus:outline-none focus:border-[#DB5375]"
+                  className="theme-input"
                 />
               </div>
 
@@ -422,4 +426,5 @@ export default function PrimaryUserDashboard({
     </div>
   );
 }
+
 

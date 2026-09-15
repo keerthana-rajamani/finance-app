@@ -8,7 +8,7 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
   const portfolioXirr = 14.50;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 fade-in">
       {/* Welcome Header */}
       <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -24,7 +24,7 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
         </div>
         <div className="flex items-center gap-2">
           <Link to="/investments" className="btn-gradient text-xs py-2 px-4 shadow-sm">
-            <TrendingUp className="w-4 h-4 text-slate-900" /> Full Holdings Matrix
+            <TrendingUp className="w-4 h-4" /> Full Holdings Matrix
           </Link>
           <Link to="/advisor" className="btn-gradient-outline text-xs py-2 px-4">
             <Sparkles className="w-4 h-4" /> AI Advisory Models
@@ -40,11 +40,11 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Client Assets Under Advisory</p>
               <h3 className="text-2xl font-black text-slate-900 mt-1">₹{Number(totalAssetsVal).toLocaleString('en-IN')}</h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
               <Wallet className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-[#DB5375]/20">
+          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
             Liquid Cash, Equity DEMAT & Mutual Funds
           </div>
         </div>
@@ -55,11 +55,11 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Portfolio XIRR Return</p>
               <h3 className="text-2xl font-black text-emerald-700 mt-1">+{portfolioXirr}% p.a.</h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
               <Award className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-[#DB5375]/20">
+          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
             Benchmark Nifty 50: <strong className="text-slate-900">+11.8%</strong> (+2.7% Alpha)
           </div>
         </div>
@@ -70,11 +70,11 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Client Health Score</p>
               <h3 className="text-2xl font-black text-slate-900 mt-1">{analytics?.healthScore || 745} / 850</h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
               <Sparkles className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-[#DB5375]/20">
+          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
             Grade: <strong className="text-[#a82948]">{analytics?.rating || 'Excellent'}</strong> (50-30-20 Compliant)
           </div>
         </div>
@@ -85,11 +85,11 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Consolidated Net Worth</p>
               <h3 className="text-2xl font-black text-slate-900 mt-1">₹{Number(netWorthVal).toLocaleString('en-IN')}</h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
               <TrendingUp className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-[#DB5375]/20">
+          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
             Debt-to-Asset Ratio: <strong className="text-slate-900">{netWorth?.debtToAssetRatio || '15.6'}%</strong> (Safe)
           </div>
         </div>
@@ -112,8 +112,8 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
                   <span className="text-slate-800">Equity & Stock Holdings</span>
                   <span className="text-[#a82948]">Actual: 55% | Target: 50% (+5% Overweight)</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-[#DB5375] to-[#ff7c9b] rounded-full" style={{ width: '55%' }}></div>
+                <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                  <div className="h-full bg-[#DB5375] rounded-full" style={{ width: '55%' }}></div>
                 </div>
               </div>
 
@@ -122,7 +122,7 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
                   <span className="text-slate-800">Debt & Fixed Income Funds</span>
                   <span className="text-amber-700">Actual: 15% | Target: 25% (-10% Underweight - Rebalance!)</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
+                <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
                   <div className="h-full bg-amber-500 rounded-full" style={{ width: '15%' }}></div>
                 </div>
               </div>
@@ -132,8 +132,8 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
                   <span className="text-slate-800">Gold & Sovereign Gold Bonds (SGB)</span>
                   <span className="text-slate-700">Actual: 10% | Target: 10% (Optimal)</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-amber-400 to-yellow-500 rounded-full" style={{ width: '10%' }}></div>
+                <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                  <div className="h-full bg-yellow-500 rounded-full" style={{ width: '10%' }}></div>
                 </div>
               </div>
 
@@ -142,13 +142,13 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
                   <span className="text-slate-800">Liquid Savings & Cash Buffer</span>
                   <span className="text-slate-700">Actual: 20% | Target: 15% (Healthy Emergency Buffer)</span>
                 </div>
-                <div className="w-full bg-slate-200 rounded-full h-2.5 overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-[#B3FFB3] to-emerald-400 rounded-full" style={{ width: '20%' }}></div>
+                <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                  <div className="h-full bg-emerald-500 rounded-full" style={{ width: '20%' }}></div>
                 </div>
               </div>
             </div>
 
-            <div className="p-3.5 bg-gradient-to-r from-[#DB5375]/10 to-[#B3FFB3]/25 border-2 border-[#DB5375]/25 rounded-2xl text-xs text-slate-800 flex items-start gap-2">
+            <div className="p-3.5 bg-rose-50/70 border border-rose-200 rounded-2xl text-xs text-slate-800 flex items-start gap-2">
               <Info className="w-4 h-4 text-[#DB5375] flex-shrink-0 mt-0.5" />
               <span>
                 <strong>Advisor Rebalancing Advice:</strong> Client is slightly overweight in high-beta equity. Recommend systematic transfer plan (STP) of ₹25,000 from liquid cash into High-Yield Corporate Debt funds to lock in 7.8% yield.
@@ -177,14 +177,14 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
                     <th className="p-2.5 rounded-r-xl">XIRR Return</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#DB5375]/15">
+                <tbody className="divide-y divide-slate-100">
                   {investments.length === 0 ? (
                     <tr>
                       <td colSpan="6" className="p-4 text-center text-slate-500">No client holdings recorded</td>
                     </tr>
                   ) : (
                     investments.map((inv) => (
-                      <tr key={inv.id} className="hover:bg-[#B3FFB3]/15 transition-colors font-medium">
+                      <tr key={inv.id} className="hover:bg-slate-50 transition-colors font-medium">
                         <td className="p-2.5 font-extrabold text-slate-900">{inv.assetName}</td>
                         <td className="p-2.5">
                           <span className="theme-badge text-[9px]">{inv.assetType}</span>
@@ -214,13 +214,13 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
                 goals.map((g) => {
                   const pct = Math.min(100, Math.round((Number(g.currentAmount) / Number(g.targetAmount)) * 100));
                   return (
-                    <div key={g.id} className="p-3.5 rounded-xl border-2 border-[#DB5375]/25 bg-gradient-to-br from-white/95 to-[#B3FFB3]/15 space-y-1.5 text-xs">
+                    <div key={g.id} className="p-3.5 rounded-xl border border-slate-200/80 bg-white space-y-1.5 text-xs shadow-xs hover:-translate-y-0.5 transition-all">
                       <div className="flex justify-between font-extrabold text-slate-900">
                         <span>{g.name}</span>
                         <span className="text-[#a82948]">{pct}%</span>
                       </div>
-                      <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
-                        <div className="h-full bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] rounded-full" style={{ width: `${pct}%` }}></div>
+                      <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div className="h-full bg-[#DB5375] rounded-full" style={{ width: `${pct}%` }}></div>
                       </div>
                       <div className="flex justify-between text-[11px] text-slate-600 font-medium">
                         <span>Target: ₹{Number(g.targetAmount).toLocaleString('en-IN')}</span>
@@ -240,7 +240,7 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
               onClick={() => alert("Quarterly wealth analysis generated and archived.")}
               className="btn-gradient w-full text-xs py-2.5 font-extrabold shadow-sm cursor-pointer"
             >
-              <FileText className="w-4 h-4 text-slate-900" /> Export Client Wealth Report
+              <FileText className="w-4 h-4" /> Export Client Wealth Report
             </button>
             <button 
               onClick={() => alert("Rebalancing recommendation dispatched to client via notification center.")}
@@ -251,7 +251,7 @@ export default function FinancialAdvisorDashboard({ user, netWorth, analytics, i
           </div>
 
           {/* Read-Only Governance Notice */}
-          <div className="p-4 rounded-2xl border-2 border-[#DB5375]/30 bg-white/90 text-xs text-slate-700 space-y-1">
+          <div className="theme-card p-4 rounded-2xl border border-white/80 bg-white/95 text-xs text-slate-700 space-y-1 shadow-md">
             <p className="font-extrabold text-slate-900 flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-emerald-600" /> Certified Read-Only Advisory
             </p>

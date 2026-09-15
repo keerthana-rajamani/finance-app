@@ -37,7 +37,7 @@ export default function FamilyMemberDashboard({ user, budgetSummary, upcomingBil
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 fade-in">
       {/* Welcome Header */}
       <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -53,7 +53,7 @@ export default function FamilyMemberDashboard({ user, budgetSummary, upcomingBil
         </div>
         <div className="flex items-center gap-2">
           <Link to="/budget" className="btn-gradient text-xs py-2 px-4 shadow-sm">
-            <PieChart className="w-4 h-4 text-slate-900" /> View Shared Budgets
+            <PieChart className="w-4 h-4" /> View Shared Budgets
           </Link>
           <Link to="/family" className="btn-gradient-outline text-xs py-2 px-4">
             <Users className="w-4 h-4" /> Family Settings
@@ -69,11 +69,11 @@ export default function FamilyMemberDashboard({ user, budgetSummary, upcomingBil
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Household Budget Pool</p>
               <h3 className="text-2xl font-black text-slate-900 mt-1">₹{Number(totalSharedBudget).toLocaleString('en-IN')}</h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
               <PieChart className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-[#DB5375]/20">
+          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
             Groceries, Utilities & Household Essentials
           </div>
         </div>
@@ -84,11 +84,11 @@ export default function FamilyMemberDashboard({ user, budgetSummary, upcomingBil
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Month-to-Date Spend</p>
               <h3 className="text-2xl font-black text-[#89233c] mt-1">₹{Number(totalSharedSpent).toLocaleString('en-IN')}</h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
               <TrendingUp className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-[#DB5375]/20">
+          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
             <strong className="text-[#a82948]">{budgetPct}% utilized</strong> • ₹{Number(totalSharedBudget - totalSharedSpent).toLocaleString('en-IN')} remaining
           </div>
         </div>
@@ -99,11 +99,11 @@ export default function FamilyMemberDashboard({ user, budgetSummary, upcomingBil
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Active Split Expenses</p>
               <h3 className="text-2xl font-black text-slate-900 mt-1">{recentSplits.length} Pending</h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
               <Scale className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-[#DB5375]/20">
+          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
             Equitable multi-member split enabled
           </div>
         </div>
@@ -114,11 +114,11 @@ export default function FamilyMemberDashboard({ user, budgetSummary, upcomingBil
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Shared Household Bills</p>
               <h3 className="text-2xl font-black text-slate-900 mt-1">{upcomingBills.length} Due Soon</h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
               <Calendar className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-[#DB5375]/20">
+          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
             Next: {upcomingBills[0]?.name || 'Bescom Electricity Bill'}
           </div>
         </div>
@@ -138,7 +138,7 @@ export default function FamilyMemberDashboard({ user, budgetSummary, upcomingBil
               <span className="theme-badge text-[10px] font-bold">FR12 Fair Share</span>
             </div>
 
-            <form onSubmit={handleAddSharedSplit} className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs items-end bg-gradient-to-br from-white/95 to-[#B3FFB3]/20 p-4 rounded-2xl border-2 border-[#DB5375]/25">
+            <form onSubmit={handleAddSharedSplit} className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs items-end bg-white p-4 rounded-2xl border border-slate-200/80 shadow-xs">
               <div>
                 <label className="block font-bold text-slate-800 mb-1">Expense Description</label>
                 <input
@@ -186,9 +186,9 @@ export default function FamilyMemberDashboard({ user, budgetSummary, upcomingBil
             {/* Recent Shared Splits Stream */}
             <div className="space-y-2 pt-2">
               <h3 className="text-xs font-extrabold text-[#89233c] uppercase tracking-wider">Recent Shared Splits</h3>
-              <div className="divide-y divide-[#DB5375]/15">
+              <div className="divide-y divide-slate-100">
                 {recentSplits.map((item) => (
-                  <div key={item.id} className="py-3 flex justify-between items-center text-xs">
+                  <div key={item.id} className="py-3 flex justify-between items-center text-xs hover:bg-slate-50 px-2 rounded-xl transition-colors">
                     <div>
                       <p className="font-extrabold text-slate-900">{item.desc}</p>
                       <p className="text-[11px] text-slate-500 font-medium">
@@ -209,18 +209,18 @@ export default function FamilyMemberDashboard({ user, budgetSummary, upcomingBil
           <div className="theme-card p-6 space-y-4">
             <div className="flex justify-between items-center">
               <h2 className="text-base font-extrabold text-slate-900">Household Expense Ledger</h2>
-              <Link to="/budget" className="text-xs font-bold text-[#DB5375] hover:text-[#a72f4e]">
+              <Link to="/budget" className="text-xs font-bold text-[#DB5375] hover:underline">
                 View Category Budgets →
               </Link>
             </div>
-            <div className="divide-y divide-[#DB5375]/15">
+            <div className="divide-y divide-slate-100">
               {transactions.length === 0 ? (
                 <p className="text-xs text-slate-500 py-4">No recent household expenses</p>
               ) : (
                 transactions.map((t) => (
-                  <div key={t.id} className="py-3 flex justify-between items-center text-xs">
+                  <div key={t.id} className="py-3 flex justify-between items-center text-xs hover:bg-slate-50 px-2 rounded-xl transition-colors">
                     <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-xl bg-[#B3FFB3]/40 border border-[#DB5375]/30 flex items-center justify-center font-bold text-[#a82948]">
+                      <div className="w-8 h-8 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center font-bold text-[#a82948]">
                         {t.category ? t.category[0] : 'H'}
                       </div>
                       <div>
@@ -251,7 +251,7 @@ export default function FamilyMemberDashboard({ user, budgetSummary, upcomingBil
                 <p className="text-xs text-slate-500 py-2">No bills due in the next 7 days</p>
               ) : (
                 upcomingBills.map((b) => (
-                  <div key={b.id} className="p-3.5 rounded-xl border-2 border-[#DB5375]/25 bg-gradient-to-br from-white/95 to-[#B3FFB3]/15 flex justify-between items-center text-xs">
+                  <div key={b.id} className="p-3.5 rounded-xl border border-slate-200/80 bg-white flex justify-between items-center text-xs shadow-xs hover:-translate-y-0.5 transition-all">
                     <div>
                       <p className="font-extrabold text-slate-900">{b.name}</p>
                       <span className="text-[10px] text-slate-600 font-semibold">Due Day: {b.dueDay} of month</span>
@@ -267,7 +267,7 @@ export default function FamilyMemberDashboard({ user, budgetSummary, upcomingBil
           </div>
 
           {/* Role Security & Privacy Notice */}
-          <div className="theme-card p-6 space-y-3 bg-gradient-to-br from-white/95 to-[#B3FFB3]/25">
+          <div className="theme-card p-6 space-y-3 bg-white/95 border border-white/80 shadow-md">
             <div className="flex items-center gap-2 text-slate-900">
               <ShieldCheck className="w-5 h-5 text-[#DB5375]" />
               <h3 className="text-sm font-extrabold">Family Privacy Shield</h3>
@@ -275,7 +275,7 @@ export default function FamilyMemberDashboard({ user, budgetSummary, upcomingBil
             <p className="text-xs text-slate-600 font-medium leading-relaxed">
               As a Family Member, you have access to the shared household budget, equitable expense splitting, and shared recurring bills. Personal investments, bank logins, and tax documents remain privately shielded by the primary user.
             </p>
-            <div className="pt-2 border-t border-[#DB5375]/20 text-[11px] font-bold text-[#89233c]">
+            <div className="pt-2 border-t border-slate-100 text-[11px] font-bold text-[#89233c]">
               Active Scope: SHARED_BUDGET
             </div>
           </div>

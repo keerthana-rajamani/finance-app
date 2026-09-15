@@ -114,9 +114,9 @@ export default function Bills() {
                   className={`p-2 rounded-xl border text-center transition-all ${
                     dayBills.length > 0
                       ? hasPending
-                        ? 'bg-gradient-to-br from-[#DB5375]/25 to-[#DB5375]/35 border-2 border-[#DB5375] font-black text-[#89233c] shadow-sm'
-                        : 'bg-[#B3FFB3]/60 border-2 border-[#B3FFB3] text-slate-900 font-extrabold'
-                      : 'bg-white/80 border border-[#DB5375]/20 text-slate-600'
+                        ? 'bg-rose-50 border-2 border-[#DB5375] font-black text-[#DB5375] shadow-xs'
+                        : 'bg-emerald-50 border border-emerald-200 text-emerald-800 font-extrabold'
+                      : 'bg-white border border-slate-200 text-slate-600'
                   }`}
                 >
                   <span className="text-xs block font-bold">{day}</span>
@@ -140,7 +140,7 @@ export default function Bills() {
               const isPaid = b.status === 'PAID';
 
               return (
-                <div key={b.id} className="p-5 rounded-2xl border-2 border-[#DB5375]/25 bg-gradient-to-br from-white/95 to-[#B3FFB3]/20 flex flex-col justify-between shadow-md">
+                <div key={b.id} className="theme-card p-5 flex flex-col justify-between shadow-md floating-card hover:-translate-y-1 transition-all">
                   <div>
                     <div className="flex justify-between items-start">
                       <h3 className="font-extrabold text-sm text-slate-900">{b.name}</h3>
@@ -160,16 +160,16 @@ export default function Bills() {
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-[#DB5375]/20">
+                  <div className="mt-4 pt-3 border-t border-slate-100">
                     {!isPaid ? (
                       <button
                         onClick={() => handlePayBill(b.id)}
                         className="w-full py-2 btn-gradient rounded-lg text-xs font-bold shadow-md transition-all flex items-center justify-center gap-1.5"
                       >
-                        <CheckCircle className="w-4 h-4 text-slate-900" /> Mark as Paid (Auto-Debit)
+                        <CheckCircle className="w-4 h-4 text-white" /> Mark as Paid (Auto-Debit)
                       </button>
                     ) : (
-                      <span className="block text-center text-xs text-[#065f46] font-bold py-1 bg-[#B3FFB3]/40 rounded-lg border border-[#B3FFB3]">
+                      <span className="block text-center text-xs text-[#065f46] font-bold py-1 bg-emerald-50 rounded-lg border border-emerald-200">
                         ✓ Paid for this cycle
                       </span>
                     )}
@@ -184,8 +184,8 @@ export default function Bills() {
       {/* ADD BILL MODAL */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-[#DB5375]/35 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]"></div>
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-white/80 relative overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]"></div>
             <h3 className="text-lg font-extrabold text-slate-900 mb-4 mt-1">Add Recurring Bill</h3>
             {error && <p className="text-xs text-red-600 bg-red-50 p-2 rounded mb-3 border border-red-200">{error}</p>}
             <form onSubmit={handleAddBill} className="space-y-3">

@@ -41,8 +41,8 @@ export default function Login() {
 
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-transparent px-4 py-12">
-      <div className="theme-card max-w-md w-full overflow-hidden">
-        <div className="h-1.5 w-full bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]" />
+      <div className="theme-card max-w-md w-full overflow-hidden fade-in floating-card">
+        <div className="h-1.5 w-full bg-[#DB5375]" />
         <div className="p-8">
           <div className="text-center mb-6">
             <h2 className="text-2xl font-extrabold text-slate-900">Sign in to your account</h2>
@@ -101,45 +101,45 @@ export default function Login() {
           >
             {loading ? "Authenticating..." : (
               <>
-                <LogIn className="w-4 h-4 text-slate-900" /> Login
+                <LogIn className="w-4 h-4 text-white" /> Login
               </>
             )}
           </button>
         </form>
 
         {/* Demo Role Switcher */}
-        <div className="mt-6 pt-6 border-t border-[#DB5375]/20">
-          <p className="text-xs font-extrabold text-[#89233c] uppercase tracking-wider text-center mb-3">
+        <div className="mt-6 pt-6 border-t border-slate-100">
+          <p className="text-xs font-extrabold text-[#DB5375] uppercase tracking-wider text-center mb-3">
             Quick Demo Accounts (Click to Fill)
           </p>
           <div className="grid grid-cols-2 gap-2 text-xs">
             <button
               onClick={() => fillDemo('john@example.com', 'Password@123')}
-              className="p-2.5 bg-gradient-to-r from-white/95 to-[#B3FFB3]/35 hover:from-[#DB5375]/20 hover:to-[#B3FFB3]/50 text-slate-900 rounded-xl font-bold text-left border-2 border-[#DB5375]/30 shadow-sm transition-all"
+              className="p-2.5 bg-white/95 hover:bg-rose-50 text-slate-900 rounded-xl font-bold text-left border border-slate-200 hover:border-[#DB5375]/40 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
               Primary User
-              <span className="block text-[10px] text-[#a82948] font-semibold">Full Financials</span>
+              <span className="block text-[10px] text-[#DB5375] font-semibold">Full Financials</span>
             </button>
             <button
               onClick={() => fillDemo('advisor@example.com', 'Password@123')}
-              className="p-2.5 bg-gradient-to-r from-white/95 to-[#B3FFB3]/35 hover:from-[#DB5375]/20 hover:to-[#B3FFB3]/50 text-slate-900 rounded-xl font-bold text-left border-2 border-[#DB5375]/30 shadow-sm transition-all"
+              className="p-2.5 bg-white/95 hover:bg-rose-50 text-slate-900 rounded-xl font-bold text-left border border-slate-200 hover:border-[#DB5375]/40 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
               Financial Advisor
-              <span className="block text-[10px] text-[#a82948] font-semibold">Read-only Portfolio</span>
+              <span className="block text-[10px] text-[#DB5375] font-semibold">Read-only Portfolio</span>
             </button>
             <button
               onClick={() => fillDemo('support@example.com', 'Password@123')}
-              className="p-2.5 bg-gradient-to-r from-white/95 to-[#B3FFB3]/35 hover:from-[#DB5375]/20 hover:to-[#B3FFB3]/50 text-slate-900 rounded-xl font-bold text-left border-2 border-[#DB5375]/30 shadow-sm transition-all"
+              className="p-2.5 bg-white/95 hover:bg-rose-50 text-slate-900 rounded-xl font-bold text-left border border-slate-200 hover:border-[#DB5375]/40 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
               Support Agent
-              <span className="block text-[10px] text-[#a82948] font-semibold">Masked Data Access</span>
+              <span className="block text-[10px] text-[#DB5375] font-semibold">Masked Data Access</span>
             </button>
             <button
               onClick={() => fillDemo('sarah@example.com', 'Password@123')}
-              className="p-2.5 bg-gradient-to-r from-white/95 to-[#B3FFB3]/35 hover:from-[#DB5375]/20 hover:to-[#B3FFB3]/50 text-slate-900 rounded-xl font-bold text-left border-2 border-[#DB5375]/30 shadow-sm transition-all"
+              className="p-2.5 bg-white/95 hover:bg-rose-50 text-slate-900 rounded-xl font-bold text-left border border-slate-200 hover:border-[#DB5375]/40 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all"
             >
               Family Member
-              <span className="block text-[10px] text-[#a82948] font-semibold">Shared Budget Access</span>
+              <span className="block text-[10px] text-[#DB5375] font-semibold">Shared Budget Access</span>
             </button>
           </div>
         </div>

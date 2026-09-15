@@ -64,7 +64,7 @@ export default function SupportDashboard({ user }) {
   );
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 fade-in">
       {/* Welcome Header */}
       <div className="theme-card p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
@@ -84,14 +84,14 @@ export default function SupportDashboard({ user }) {
             disabled={loading}
             className="btn-gradient text-xs py-2 px-4 shadow-sm flex items-center gap-2 cursor-pointer"
           >
-            <RefreshCw className={`w-4 h-4 text-slate-900 ${loading ? 'animate-spin' : ''}`} /> 
+            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} /> 
             Refresh Diagnostics
           </button>
         </div>
       </div>
 
       {actionSuccess && (
-        <div className="p-4 rounded-xl bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs font-bold flex items-center gap-2">
+        <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold flex items-center gap-2 shadow-xs">
           <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
           <span>{actionSuccess}</span>
         </div>
@@ -107,11 +107,11 @@ export default function SupportDashboard({ user }) {
                 {systemStatus?.gatewayStatus || 'OPERATIONAL'}
               </h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
               <Activity className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-[#DB5375]/20 flex justify-between">
+          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100 flex justify-between">
             <span>Latency: <strong>{systemStatus?.gatewayLatencyMs || 42}ms</strong></span>
             <span className="text-emerald-700 font-bold">99.98% Uptime</span>
           </div>
@@ -123,11 +123,11 @@ export default function SupportDashboard({ user }) {
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">PII Encryption</p>
               <h3 className="text-2xl font-black text-slate-900 mt-1">AES-256 GCM</h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
               <Lock className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-[#DB5375]/20">
+          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
             <span className="text-emerald-700 font-bold">Zero Plaintext Storage</span>
           </div>
         </div>
@@ -140,11 +140,11 @@ export default function SupportDashboard({ user }) {
                 {systemStatus?.activeConsents || accounts.length} Granted
               </h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
               <ShieldCheck className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-[#DB5375]/20">
+          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
             RBI AA 12-Month Revocable Token
           </div>
         </div>
@@ -155,11 +155,11 @@ export default function SupportDashboard({ user }) {
               <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Masked Accounts</p>
               <h3 className="text-2xl font-black text-slate-900 mt-1">{accounts.length} Accounts</h3>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md">
+            <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-100 flex items-center justify-center text-[#DB5375] shadow-xs">
               <Database className="w-5 h-5" />
             </div>
           </div>
-          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-[#DB5375]/20">
+          <div className="mt-3 text-xs text-slate-600 font-medium pt-2 border-t border-slate-100">
             Compliant with RBI FR3 & Appendix A
           </div>
         </div>
@@ -182,7 +182,7 @@ export default function SupportDashboard({ user }) {
                   placeholder="Search bank, account type..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-9 pr-3 py-1.5 text-xs rounded-xl border-2 border-[#DB5375]/30 bg-white/90 text-slate-900 focus:outline-none focus:border-[#DB5375]"
+                  className="pl-9 pr-3 py-1.5 text-xs rounded-xl border border-slate-300 bg-white text-slate-900 focus:outline-none focus:border-[#DB5375] focus:ring-2 focus:ring-[#DB5375]/20 shadow-xs"
                 />
               </div>
             </div>
@@ -198,7 +198,7 @@ export default function SupportDashboard({ user }) {
                     <th className="p-3 rounded-r-xl text-right">Diagnostic Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#DB5375]/15 font-medium">
+                <tbody className="divide-y divide-slate-100 font-medium">
                   {filteredAccounts.length === 0 ? (
                     <tr>
                       <td colSpan="5" className="p-4 text-center text-slate-500">
@@ -207,7 +207,7 @@ export default function SupportDashboard({ user }) {
                     </tr>
                   ) : (
                     filteredAccounts.map((acc) => (
-                      <tr key={acc.id} className="hover:bg-[#B3FFB3]/15 transition-colors">
+                      <tr key={acc.id} className="hover:bg-slate-50 transition-colors">
                         <td className="p-3 font-extrabold text-slate-900">
                           {acc.bankName}
                         </td>
@@ -228,7 +228,7 @@ export default function SupportDashboard({ user }) {
                             disabled={resyncingId === acc.id}
                             className="btn-gradient text-[11px] py-1 px-3 shadow-xs inline-flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
                           >
-                            <RefreshCw className={`w-3 h-3 text-slate-900 ${resyncingId === acc.id ? 'animate-spin' : ''}`} />
+                            <RefreshCw className={`w-3 h-3 ${resyncingId === acc.id ? 'animate-spin' : ''}`} />
                             {resyncingId === acc.id ? 'Resyncing...' : 'Re-sync'}
                           </button>
                         </td>
@@ -261,7 +261,7 @@ export default function SupportDashboard({ user }) {
                     <th className="p-2.5 rounded-r-xl">Client IP</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#DB5375]/15 font-mono text-[11px]">
+                <tbody className="divide-y divide-slate-100 font-mono text-[11px]">
                   {auditLogs.length === 0 ? (
                     <tr>
                       <td colSpan="5" className="p-4 text-center text-slate-500 font-sans">
@@ -270,14 +270,14 @@ export default function SupportDashboard({ user }) {
                     </tr>
                   ) : (
                     auditLogs.slice(0, 8).map((log) => (
-                      <tr key={log.id} className="hover:bg-[#B3FFB3]/15 transition-colors">
+                      <tr key={log.id} className="hover:bg-slate-50 transition-colors">
                         <td className="p-2.5 text-slate-600">
                           {log.timestamp ? new Date(log.timestamp).toLocaleTimeString() : 'Just now'}
                         </td>
                         <td className="p-2.5">
                           <span className={`px-2 py-0.5 rounded text-[9px] font-bold ${
-                            log.role === 'SUPPORT' ? 'bg-[#DB5375]/20 text-[#a82948]' :
-                            log.role === 'FINANCIAL_ADVISOR' ? 'bg-[#B3FFB3]/60 text-slate-900' :
+                            log.role === 'SUPPORT' ? 'bg-rose-50 text-[#a82948] border border-rose-200' :
+                            log.role === 'FINANCIAL_ADVISOR' ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' :
                             'bg-slate-100 text-slate-800'
                           }`}>
                             {log.role || 'USER'}
@@ -300,7 +300,7 @@ export default function SupportDashboard({ user }) {
           <div className="theme-card p-6 space-y-4">
             <h3 className="text-base font-extrabold text-slate-900">Compliance & Safeguards</h3>
             <div className="space-y-3 text-xs">
-              <div className="p-3 rounded-xl bg-gradient-to-br from-white/95 to-[#B3FFB3]/15 border-2 border-[#DB5375]/20 space-y-1">
+              <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1 shadow-xs hover:-translate-y-0.5 transition-all">
                 <p className="font-extrabold text-slate-900 flex items-center gap-1.5">
                   <ShieldCheck className="w-4 h-4 text-emerald-600" /> Masking Standard
                 </p>
@@ -309,7 +309,7 @@ export default function SupportDashboard({ user }) {
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl bg-gradient-to-br from-white/95 to-[#B3FFB3]/15 border-2 border-[#DB5375]/20 space-y-1">
+              <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1 shadow-xs hover:-translate-y-0.5 transition-all">
                 <p className="font-extrabold text-slate-900 flex items-center gap-1.5">
                   <Lock className="w-4 h-4 text-[#DB5375]" /> Revocation Control
                 </p>
@@ -318,7 +318,7 @@ export default function SupportDashboard({ user }) {
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl bg-gradient-to-br from-white/95 to-[#B3FFB3]/15 border-2 border-[#DB5375]/20 space-y-1">
+              <div className="p-3 rounded-xl bg-white border border-slate-200/80 space-y-1 shadow-xs hover:-translate-y-0.5 transition-all">
                 <p className="font-extrabold text-slate-900 flex items-center gap-1.5">
                   <FileText className="w-4 h-4 text-amber-600" /> Immutable Audit Trail
                 </p>
@@ -336,7 +336,7 @@ export default function SupportDashboard({ user }) {
               onClick={() => alert("Gateway latency check passed: 42ms response to Setu AA Sandbox")}
               className="btn-gradient w-full text-xs py-2.5 font-extrabold shadow-sm cursor-pointer"
             >
-              <Activity className="w-4 h-4 text-slate-900" /> Ping RBI AA Gateway
+              <Activity className="w-4 h-4" /> Ping RBI AA Gateway
             </button>
             <button 
               onClick={() => alert("Audit log report successfully exported for compliance review.")}

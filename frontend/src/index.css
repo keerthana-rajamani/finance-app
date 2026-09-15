@@ -29,38 +29,72 @@ body {
     @apply text-xl font-extrabold text-slate-900 flex items-center gap-2 hover:opacity-90 transition-opacity;
   }
   .nav-link {
-    @apply px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-800 hover:text-slate-950 hover:bg-gradient-to-r hover:from-[#DB5375]/15 hover:to-[#B3FFB3]/30 transition-all border border-transparent hover:border-[#DB5375]/25;
+    @apply px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-800 hover:text-slate-950 hover:bg-white/80 hover:shadow-sm hover:-translate-y-0.5 transition-all border border-transparent hover:border-white/60;
   }
   .nav-active {
-    @apply text-slate-950 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] font-black shadow-md border border-white/60 !important;
+    @apply text-white bg-[#DB5375] font-extrabold shadow-md hover:-translate-y-0.5 transition-all border border-transparent !important;
   }
   .btn-gradient {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#DB5375] to-[#B3FFB3] hover:brightness-105 active:scale-[0.98] text-slate-900 font-extrabold rounded-xl shadow-lg shadow-[#DB5375]/25 border border-white/40 transition-all cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-[#DB5375] hover:bg-[#c74363] active:scale-[0.98] text-white font-extrabold rounded-xl shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-200 cursor-pointer;
   }
   .btn-gradient-outline {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white/90 hover:bg-gradient-to-r hover:from-[#DB5375]/15 hover:to-[#B3FFB3]/25 active:scale-[0.98] text-[#a72f4e] font-extrabold rounded-xl border-2 border-[#DB5375] shadow-sm transition-all cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white/95 hover:bg-white active:scale-[0.98] text-[#DB5375] font-extrabold rounded-xl border-2 border-[#DB5375] shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 cursor-pointer;
   }
   .theme-card {
-    @apply bg-white/90 backdrop-blur-md rounded-2xl border-2 border-[#DB5375]/25 shadow-xl hover:shadow-2xl hover:border-[#DB5375]/40 transition-all;
+    @apply bg-white/95 backdrop-blur-md rounded-2xl border border-white/80 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300;
   }
   .theme-badge {
-    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-gradient-to-r from-[#DB5375]/20 to-[#B3FFB3]/50 text-[#89233c] border border-[#DB5375]/35 shadow-sm;
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-white text-[#DB5375] border border-rose-200 shadow-sm hover:-translate-y-0.5 transition-all;
   }
   .theme-badge-mint {
-    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-[#B3FFB3]/60 text-slate-900 border border-[#B3FFB3] shadow-sm;
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 shadow-sm hover:-translate-y-0.5 transition-all;
   }
   .theme-badge-rose {
-    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-[#DB5375] text-white border border-[#DB5375] shadow-sm;
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#DB5375] text-white border border-[#DB5375] shadow-sm hover:-translate-y-0.5 transition-all;
   }
   .theme-input {
-    @apply w-full px-3.5 py-2.5 bg-white/95 border-2 border-[#DB5375]/30 rounded-xl text-xs sm:text-sm text-slate-900 font-medium placeholder:text-slate-400 focus:outline-none focus:border-[#DB5375] focus:ring-2 focus:ring-[#DB5375]/30 transition-all;
+    @apply w-full px-3.5 py-2.5 bg-white border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 font-medium placeholder:text-slate-400 focus:outline-none focus:border-[#DB5375] focus:ring-2 focus:ring-[#DB5375]/20 shadow-sm transition-all;
   }
   .theme-table-header {
-    @apply bg-gradient-to-r from-[#DB5375]/20 to-[#B3FFB3]/35 text-slate-900 font-extrabold border-b-2 border-[#DB5375]/30;
+    @apply bg-slate-50 text-slate-800 font-extrabold border-b border-slate-200;
   }
   .theme-chip {
-    @apply px-3 py-1.5 rounded-full bg-gradient-to-r from-[#DB5375]/10 to-[#B3FFB3]/25 text-slate-800 font-semibold border border-[#DB5375]/30 hover:from-[#DB5375]/25 hover:to-[#B3FFB3]/45 transition-all text-[11px] shadow-sm;
+    @apply px-3 py-1.5 rounded-full bg-white text-slate-800 font-semibold border border-slate-200 hover:bg-slate-50 hover:shadow-sm hover:-translate-y-0.5 transition-all text-[11px] shadow-sm;
   }
+  .floating-element {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+  .floating-card {
+    @apply bg-white/95 backdrop-blur-md rounded-2xl border border-white/80 shadow-lg hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300;
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes fadeInSmooth {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+.fade-in {
+  animation: fadeInSmooth 0.4s ease-out forwards;
 }
 
 /* Global scrollbar in theme colors */

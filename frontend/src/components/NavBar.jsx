@@ -103,13 +103,13 @@ export default function NavBar() {
 
   return (
     <header className="bg-white/90 backdrop-blur-md border-b-2 border-[#DB5375]/30 sticky top-0 z-50 shadow-md">
-      <div className="h-1.5 w-full bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]" />
+      <div className="h-1.5 w-full bg-[#DB5375]" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           {/* Brand */}
           <div className="flex items-center gap-3">
             <Link to="/" className="nav-brand">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#DB5375] to-[#B3FFB3] flex items-center justify-center text-slate-900 shadow-md border border-white/50">
+              <div className="w-10 h-10 rounded-xl bg-[#DB5375] flex items-center justify-center text-white shadow-md border border-white/50">
                 <Wallet className="w-6 h-6" />
               </div>
               <span className="text-lg font-extrabold text-slate-900 tracking-tight hidden sm:inline">
@@ -221,7 +221,7 @@ export default function NavBar() {
                 <div className="relative" ref={dropdownRef}>
                   <button 
                     onClick={() => setShowNotifications(!showNotifications)}
-                    className="p-2 text-slate-700 hover:text-[#DB5375] hover:bg-gradient-to-r hover:from-[#DB5375]/15 hover:to-[#B3FFB3]/30 rounded-xl relative transition-all border border-transparent hover:border-[#DB5375]/30 cursor-pointer"
+                    className="p-2 text-slate-700 hover:text-[#DB5375] hover:bg-rose-50 rounded-xl relative transition-all border border-transparent hover:border-[#DB5375]/30 cursor-pointer"
                     aria-label="Notifications"
                   >
                     <Bell className="w-5 h-5 text-[#DB5375]" />
@@ -234,8 +234,8 @@ export default function NavBar() {
 
                   {/* Notifications Dropdown */}
                   {showNotifications && (
-                    <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white/95 backdrop-blur-md border-2 border-[#DB5375]/30 rounded-2xl shadow-2xl z-50 overflow-hidden">
-                      <div className="px-4 py-3 bg-gradient-to-r from-[#DB5375]/15 to-[#B3FFB3]/25 border-b border-[#DB5375]/20 flex justify-between items-center">
+                    <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white/95 backdrop-blur-md border-2 border-[#DB5375]/30 rounded-2xl shadow-2xl z-50 overflow-hidden fade-in">
+                      <div className="px-4 py-3 bg-slate-50 border-b border-slate-100 flex justify-between items-center">
                         <div className="flex items-center gap-2">
                           <span className="font-extrabold text-sm text-slate-900">Notifications</span>
                           {unreadCount > 0 ? (
@@ -265,7 +265,7 @@ export default function NavBar() {
                           )}
                         </div>
                       </div>
-                      <div className="max-h-80 overflow-y-auto divide-y divide-[#DB5375]/10">
+                      <div className="max-h-80 overflow-y-auto divide-y divide-slate-100">
                         {notifications.length === 0 ? (
                           <div className="p-6 text-center text-xs text-slate-500 space-y-1">
                             <p className="font-bold text-slate-700">You're all caught up!</p>
@@ -277,7 +277,7 @@ export default function NavBar() {
                             return (
                               <div 
                                 key={n.id} 
-                                className={`p-3.5 text-xs hover:bg-[#B3FFB3]/20 transition-all ${unread ? 'bg-[#DB5375]/10 border-l-4 border-[#DB5375]' : 'bg-white/80'}`}
+                                className={`p-3.5 text-xs hover:bg-slate-50 transition-all ${unread ? 'bg-rose-50/70 border-l-4 border-[#DB5375]' : 'bg-white'}`}
                               >
                                 <div className="flex justify-between items-start gap-2">
                                   <div className="flex items-center gap-1.5 flex-1">

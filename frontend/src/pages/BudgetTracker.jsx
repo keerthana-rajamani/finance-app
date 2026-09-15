@@ -124,7 +124,7 @@ export default function BudgetTracker() {
               const isAlert = c.isAlert && !isOver;
 
               return (
-                <div key={c.id} className="p-5 rounded-2xl border-2 border-[#DB5375]/25 bg-gradient-to-br from-white/95 to-[#B3FFB3]/20 space-y-3 shadow-md">
+                <div key={c.id} className="theme-card p-5 space-y-3 floating-card hover:-translate-y-1 transition-all shadow-md">
                   <div className="flex justify-between items-start">
                     <div>
                       <h3 className="font-bold text-slate-900 text-sm">{c.category}</h3>
@@ -148,7 +148,7 @@ export default function BudgetTracker() {
                   {/* Progress Bar */}
                   <div className="w-full h-3 rounded-full bg-slate-200 overflow-hidden">
                     <div
-                      className={`h-full rounded-full transition-all duration-500 ${isOver ? 'bg-red-500' : (isAlert ? 'bg-amber-500' : 'bg-gradient-to-r from-[#DB5375] to-[#B3FFB3]')}`}
+                      className={`h-full rounded-full transition-all duration-500 ${isOver ? 'bg-red-500' : (isAlert ? 'bg-amber-500' : 'bg-[#DB5375]')}`}
                       style={{ width: `${Math.min(pct, 100)}%` }}
                     ></div>
                   </div>
@@ -171,8 +171,8 @@ export default function BudgetTracker() {
       {/* MODAL */}
       {showModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-[#DB5375]/35 relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#DB5375] via-[#ff7c9b] to-[#B3FFB3]"></div>
+          <div className="bg-white/95 backdrop-blur-md rounded-2xl max-w-md w-full p-6 shadow-2xl border-2 border-white/80 relative overflow-hidden fade-in floating-card">
+            <div className="absolute top-0 left-0 right-0 h-1.5 bg-[#DB5375]"></div>
             <h3 className="text-lg font-extrabold text-slate-900 mb-4 mt-1">Configure Category Budget</h3>
             {error && <p className="text-xs text-red-600 bg-red-50 p-2 rounded mb-3 border border-red-200">{error}</p>}
             <form onSubmit={handleSaveBudget} className="space-y-4">
